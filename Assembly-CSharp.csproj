@@ -162,7 +162,7 @@
     <Compile Include="Assets\Scripts\Controller\ControllerGrabObject.cs" />
     <Compile Include="Assets\Scripts\GameLogic\Basket.cs" />
     <Compile Include="Assets\Scripts\GameLogic\PickUpObject.cs" />
-    <Compile Include="Assets\Scripts\LeaderBoard\LocalNetworkLeaderBoard.cs" />
+    <Compile Include="Assets\Scripts\Leaderboard\LocalNetworkLeaderboard.cs" />
     <Compile Include="Assets\Scripts\Test\LocalNetworkFileSynchronizationTest.cs" />
     <None Include="Assets\Extentions\SteamVR\Resources\SteamVR_Fade.shader" />
     <None Include="Assets\Extentions\SteamVR\Resources\SteamVR_ClearAll.shader" />
