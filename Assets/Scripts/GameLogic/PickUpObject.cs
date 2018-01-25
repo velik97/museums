@@ -8,6 +8,9 @@ public class PickUpObject : MonoBehaviour
 	public int points;
 
 	private static Dictionary<int, int> pointsByIndex;
+	
+	private Vector3 initialPosition;
+	private Quaternion initialRotation;
 
 	private void OnEnable()
 	{
@@ -18,6 +21,25 @@ public class PickUpObject : MonoBehaviour
 			pointsByIndex.Add(index, 0);
 
 		pointsByIndex[index] += points;
+	}
+
+	private void Awake()
+	{
+		initialPosition = transform.position;
+		initialRotation = transform.rotation;
+	}
+
+	public void PlaceInBusket(bool destroy)
+	{
+		if (destroy)
+		{
+			Destroy(gameObject);
+		}
+		else
+		{
+			transform.position = initialPosition;
+			transform.rotation = initialRotation;
+		}
 	}
 
 	public static int PointsByIndex(int i)

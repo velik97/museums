@@ -8,19 +8,36 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Extentions" t="Include">
-          <e p="OutlineEffect" t="Include">
+          <e p="Pocket Portal VR" t="Include">
             <e p="Demo" t="Include">
-              <e p="MaterialSwitcher.cs" t="Include" />
-              <e p="OutlineAnimation.cs" t="Include" />
-              <e p="Rotate.cs" t="Include" />
-              <e p="Toggle.cs" t="Include" />
+              <e p="Scripts" t="Include">
+                <e p="ARKitPlacement.cs" t="Include" />
+                <e p="ControllerGrabObject.cs" t="Include" />
+                <e p="GearGrabObject.cs" t="Include" />
+                <e p="MovementLimiter.cs" t="Include" />
+                <e p="ThrowObject.cs" t="Include" />
+              </e>
             </e>
-            <e p="LinkedSet.cs" t="Include" />
-            <e p="Outline.cs" t="Include" />
-            <e p="OutlineEffect.cs" t="Include" />
-            <e p="Resources" t="Include">
-              <e p="OutlineBufferShader.shader" t="Include" />
-              <e p="OutlineShader.shader" t="Include" />
+            <e p="Editor" t="Include">
+              <e p="DefineManager.cs" t="Include" />
+              <e p="SubdividedCubeEditor.cs" t="Include" />
+            </e>
+            <e p="Materials" t="Include">
+              <e p="PortalShader.shader" t="Include" />
+            </e>
+            <e p="Scripts" t="Include">
+              <e p="ARKitCameraRender.cs" t="Include" />
+              <e p="CameraExtensions.cs" t="Include" />
+              <e p="Dimension.cs" t="Include" />
+              <e p="DimensionChanger.cs" t="Include" />
+              <e p="GearCameraRenderInfo.cs" t="Include" />
+              <e p="LayerManager.cs" t="Include" />
+              <e p="MainCameraLayerManager.cs" t="Include" />
+              <e p="MeshDeformer.cs" t="Include" />
+              <e p="MeshDeformerInput.cs" t="Include" />
+              <e p="PlaneMeshDeformer.cs" t="Include" />
+              <e p="Portal.cs" t="Include" />
+              <e p="SubdividedCube.cs" t="Include" />
             </e>
           </e>
           <e p="SteamVR" t="Include">
@@ -192,14 +209,19 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="Controller" t="Include">
-            <e p="ControllerGrabObject.cs" t="Include" />
+            <e p="ControllerGrab.cs" t="Include" />
           </e>
           <e p="GameLogic" t="Include">
             <e p="Basket.cs" t="Include" />
             <e p="PickUpObject.cs" t="Include" />
+            <e p="PortalSwitch.cs" t="Include" />
+            <e p="TutorialBasket.cs" t="Include" />
           </e>
           <e p="LeaderBoard" t="Include">
             <e p="LocalNetworkLeaderBoard.cs" t="Include" />
+          </e>
+          <e p="Shaders" t="Include">
+            <e p="ScreenCutoutShader.shader" t="Include" />
           </e>
           <e p="Test" t="Include">
             <e p="LocalNetworkFileSynchronizationTest.cs" t="Include" />

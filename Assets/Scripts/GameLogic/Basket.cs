@@ -41,7 +41,7 @@ public class Basket : MonoBehaviour
         }
         
         overallPointsText.text = points + "/" + overallPoints;
-
-        Destroy(pu.gameObject);
+        
+        pu.PlaceInBusket(true);
     }
 }
