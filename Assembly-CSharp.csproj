@@ -423,11 +423,12 @@
     <Compile Include="Assets\Extentions\VRTK\Scripts\Utilities\VRTK_SDKTransformModify.cs" />
     <Compile Include="Assets\Extentions\VRTK\Scripts\Utilities\VRTK_SharedMethods.cs" />
     <Compile Include="Assets\Extentions\VRTK\Scripts\Utilities\VRTK_Simulator.cs" />
-    <Compile Include="Assets\Scripts\Controller\ControllerGrab.cs" />
     <Compile Include="Assets\Scripts\GameLogic\Basket.cs" />
     <Compile Include="Assets\Scripts\GameLogic\PickUpObject.cs" />
+    <Compile Include="Assets\Scripts\GameLogic\PickUpsRespawnArea.cs" />
     <Compile Include="Assets\Scripts\GameLogic\PortalSwitch.cs" />
     <Compile Include="Assets\Scripts\GameLogic\TutorialBasket.cs" />
+    <Compile Include="Assets\Scripts\GameLogic\TutorialManager.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\LocalNetworkLeaderboard.cs" />
     <Compile Include="Assets\Scripts\Test\LocalNetworkFileSynchronizationTest.cs" />
     <None Include="Assets\Extentions\SteamVR\Resources\SteamVR_Fade.shader" />

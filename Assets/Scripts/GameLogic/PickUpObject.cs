@@ -11,6 +11,7 @@ public class PickUpObject : MonoBehaviour
 	
 	private Vector3 initialPosition;
 	private Quaternion initialRotation;
+	private Rigidbody rb;
 
 	private void OnEnable()
 	{
@@ -27,6 +28,8 @@ public class PickUpObject : MonoBehaviour
 	{
 		initialPosition = transform.position;
 		initialRotation = transform.rotation;
+
+		rb = GetComponent<Rigidbody>();
 	}
 
 	public void PlaceInBusket(bool destroy)
@@ -37,8 +40,14 @@ public class PickUpObject : MonoBehaviour
 		}
 		else
 		{
-			transform.position = initialPosition;
+			transform.position = initialPosition + Vector3.up * .005f;
 			transform.rotation = initialRotation;
+
+			if (rb != null)
+			{
+				rb.velocity = Vector3.zero;
+				rb.angularVelocity = Vector3.zero;
+			}
 		}
 	}
 

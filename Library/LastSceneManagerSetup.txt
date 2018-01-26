@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Extentions/VRTK/Examples/014_Controller_SnappingObjectsOnGrab.unity
+- path: Assets/Scenes/Main.unity
   isLoaded: 1
   isActive: 1
