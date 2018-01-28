@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class TutorialManager : MonoBehaviour
+public class TutorialManager : MonoSingleton<TutorialManager>
 {
 	public List<TutorialBasket> tutorialBaskets;
 

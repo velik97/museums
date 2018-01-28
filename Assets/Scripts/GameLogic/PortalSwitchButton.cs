@@ -1,0 +1,71 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using VRTK;
+using VRTK.UnityEventHelper;
+
+public class PortalSwitchButton : MonoSingleton<PortalSwitchButton>
+{
+	public float localYCoordWhenShow;
+	public float localYCoordWhenHide;
+	public float moveTime;
+	public AnimationCurve moveCurve;
+	public Transform baseTransform;
+	
+	private VRTK_Button_UnityEvents buttonEvents;
+	private VRTK_Button button;
+
+	private void Start()
+	{
+		buttonEvents = GetComponent<VRTK_Button_UnityEvents>();
+		if (buttonEvents == null)
+		{
+			buttonEvents = gameObject.AddComponent<VRTK_Button_UnityEvents>();
+		}
+
+		button = GetComponent<VRTK_Button>();
+		button.enabled = false;
+		
+		buttonEvents.OnPushed.AddListener(ReactOnButton);
+		TutorialManager.Instance.onTutorialDone.AddListener(Show);
+	}
+
+	public void ReactOnButton(object sender, Control3DEventArgs e)
+	{		
+		DoorAutoClose.Instance.onDoorClosed.AddListener(PortalSwitch.Instance.SwitchPortal);
+		DoorAutoClose.Instance.onDoorClosed.AddListener(DoorAutoClose.Instance.onDoorClosed.RemoveAllListeners);
+		
+		DoorAutoClose.Instance.CloseDoor();
+	}
+
+	public void Show()
+	{
+		StartCoroutine(MoveButton(localYCoordWhenShow));
+		button.enabled = true;
+	}
+
+	public void Hide()
+	{
+		StartCoroutine(MoveButton(localYCoordWhenHide));
+		button.enabled = false;
+	}
+
+	private IEnumerator MoveButton(float endYCoord)
+	{
+		Vector3 startPosition = baseTransform.localPosition;
+		Vector3 endPosition = startPosition;
+		endPosition.y = endYCoord;
+
+		float t = 0;
+		float startTime = Time.time;
+		
+		while ((t = (Time.time - startTime) / moveTime) < 1f)
+		{
+			baseTransform.localPosition = Vector3.Lerp(startPosition, endPosition, moveCurve.Evaluate(t));
+			yield return null;
+		}
+
+		baseTransform.localPosition = endPosition;
+	}
+
+}
