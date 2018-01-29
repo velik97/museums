@@ -15,6 +15,8 @@ public static class DimensionChanger {
 		if(parent != null && parent.GetComponent<CharacterController>()) {
 			parent.gameObject.layer = toDimension.layer;
 		}
+
+		DimensionExtended.Current = toDimension as DimensionExtended;
 	}
 
 	public static void SwitchCameraRender(Camera camera, int fromDimensionLayer, int toDimensionLayer, Material dimensionSkybox) {

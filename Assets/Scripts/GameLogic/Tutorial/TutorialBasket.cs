@@ -5,49 +5,69 @@ using UnityEngine.Events;
 
 public class TutorialBasket : MonoBehaviour
 {
-	public int index;
+    public int index;
 
-	public UnityEvent onBasketFull;
+    public GameObject successPrefab;
+    public GameObject failurePrefab;
 
-	private int points;
-	private int overallPoints;
+    public Transform feedbackBirthPlace;
 
-	private bool isFull;
-    
-	private void Start()
-	{
-		points = 0;
-		overallPoints = PickUpObject.PointsByIndex(index);
+    public UnityEvent onBasketFull;
 
-		isFull = false;
+    [HideInInspector] public int inBasketCount;
+    [HideInInspector] public int overallCount;
 
-		if (points == overallPoints)
-		{
-			isFull = true;
-			onBasketFull.Invoke();
-		}
-	}
+    private bool isFull;
 
-	private void OnTriggerEnter(Collider other)
-	{
-		var pu = other.GetComponent<PickUpObject>();
-		if (pu != null)
-			CountNewPicjUpObject(pu);
-	}
+    private void Start()
+    {
+        inBasketCount = 0;
+        overallCount = PickUpObject.CountByIndex(index);
 
-	private void CountNewPicjUpObject(PickUpObject pu)
-	{
-		if (pu.index == index)
-		{
-			points += pu.points;
-		}
-		
-		pu.PlaceInBusket(pu.index == index);
+        isFull = false;
 
-		if (!isFull && points == overallPoints)
-		{
-			isFull = true;
-			onBasketFull.Invoke();
-		}
-	}
+        if (inBasketCount == overallCount)
+        {
+            isFull = true;
+            onBasketFull.Invoke();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        var pu = other.GetComponent<PickUpObject>();
+        if (pu != null)
+            CountNewPicjUpObject(pu);
+    }
+
+    private void CountNewPicjUpObject(PickUpObject pu)
+    {
+        if (pu.index == index)
+        {
+            inBasketCount++;
+            ShowSuccess();
+        }
+        else
+        {
+            ShowFailure();
+        }
+
+        pu.PlaceInBusket(pu.index == index);
+
+        if (!isFull && inBasketCount == overallCount)
+        {
+            isFull = true;
+            onBasketFull.Invoke();
+        }
+    }
+
+    private void ShowSuccess()
+    {
+        Instantiate(successPrefab, feedbackBirthPlace);
+    }
+
+    private void ShowFailure()
+    {
+        Instantiate(failurePrefab, feedbackBirthPlace);
+    }
 }

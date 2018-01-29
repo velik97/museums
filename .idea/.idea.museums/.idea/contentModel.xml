@@ -35,6 +35,9 @@
               <e p="MainCameraLayerManager.cs" t="Include" />
               <e p="MeshDeformer.cs" t="Include" />
               <e p="MeshDeformerInput.cs" t="Include" />
+              <e p="MyExtentions" t="Include">
+                <e p="DimensionExtended.cs" t="Include" />
+              </e>
               <e p="PlaneMeshDeformer.cs" t="Include" />
               <e p="Portal.cs" t="Include" />
               <e p="SubdividedCube.cs" t="Include" />
@@ -562,11 +565,15 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="GameLogic" t="Include">
+            <e p="AutoDestroy.cs" t="Include" />
             <e p="Basket.cs" t="Include" />
+            <e p="CollectQuestManager.cs" t="Include" />
+            <e p="DeleteObjectsAfterTutorial.cs" t="Include" />
             <e p="DoorAutoClose.cs" t="Include" />
             <e p="PickUpObject.cs" t="Include" />
             <e p="PickUpsRespawnArea.cs" t="Include" />
             <e p="PortalSwitchButton.cs" t="Include" />
+            <e p="Timer.cs" t="Include" />
             <e p="Tutorial" t="Include">
               <e p="PortalSwitch.cs" t="Include" />
               <e p="TutorialBasket.cs" t="Include" />
@@ -583,6 +590,9 @@
           <e p="Test" t="Include">
             <e p="LocalNetworkFileSynchronizationTest.cs" t="Include" />
           </e>
+        </e>
+        <e p="Shaders" t="Include">
+          <e p="DissolveBurn.shader" t="Include" />
         </e>
       </e>
       <e p="Library" t="ExcludeRecursive" />

@@ -21,7 +21,7 @@ public class Dimension : MonoBehaviour {
 	public List<Portal> connectedPortals;
 
 	[HideInInspector]
-	public Camera cam;
+	public Camera cam;	
 
 	private Dictionary<int, int> layerSwitchedChildren;
 
@@ -61,7 +61,7 @@ public class Dimension : MonoBehaviour {
             {
                 CameraExtensions.LayerCullingHide(camera, layer);
             }
-        }
+        }		
 	}
 
 	// Use this for initialization

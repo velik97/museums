@@ -62,6 +62,7 @@
     <None Include="Assets\Scripts\Shaders\ScreenCutoutShader.shader" />
     <None Include="Assets\Extentions\SteamVR\Resources\SteamVR_SphericalProjection.shader" />
     <None Include="Assets\Extentions\SteamVR\Resources\SteamVR_AlphaOut.shader" />
+    <None Include="Assets\Shaders\DissolveBurn.shader" />
     <None Include="Assets\Extentions\VRTK\Scripts\Internal\Shaders\TransparentFresnelBehind.shader" />
     <None Include="Assets\Extentions\SteamVR\readme.txt" />
     <None Include="Assets\Extentions\SteamVR\InteractionSystem\Core\Shaders\Silhouette.shader" />

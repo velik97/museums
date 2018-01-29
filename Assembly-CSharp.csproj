@@ -64,6 +64,7 @@
     <Compile Include="Assets\Extentions\Pocket Portal VR\Scripts\MainCameraLayerManager.cs" />
     <Compile Include="Assets\Extentions\Pocket Portal VR\Scripts\MeshDeformer.cs" />
     <Compile Include="Assets\Extentions\Pocket Portal VR\Scripts\MeshDeformerInput.cs" />
+    <Compile Include="Assets\Extentions\Pocket Portal VR\Scripts\MyExtentions\DimensionExtended.cs" />
     <Compile Include="Assets\Extentions\Pocket Portal VR\Scripts\PlaneMeshDeformer.cs" />
     <Compile Include="Assets\Extentions\Pocket Portal VR\Scripts\Portal.cs" />
     <Compile Include="Assets\Extentions\Pocket Portal VR\Scripts\SubdividedCube.cs" />
@@ -423,11 +424,15 @@
     <Compile Include="Assets\Extentions\VRTK\Scripts\Utilities\VRTK_SDKTransformModify.cs" />
     <Compile Include="Assets\Extentions\VRTK\Scripts\Utilities\VRTK_SharedMethods.cs" />
     <Compile Include="Assets\Extentions\VRTK\Scripts\Utilities\VRTK_Simulator.cs" />
+    <Compile Include="Assets\Scripts\GameLogic\AutoDestroy.cs" />
     <Compile Include="Assets\Scripts\GameLogic\Basket.cs" />
+    <Compile Include="Assets\Scripts\GameLogic\CollectQuestManager.cs" />
+    <Compile Include="Assets\Scripts\GameLogic\DeleteObjectsAfterTutorial.cs" />
     <Compile Include="Assets\Scripts\GameLogic\DoorAutoClose.cs" />
     <Compile Include="Assets\Scripts\GameLogic\PickUpObject.cs" />
     <Compile Include="Assets\Scripts\GameLogic\PickUpsRespawnArea.cs" />
     <Compile Include="Assets\Scripts\GameLogic\PortalSwitchButton.cs" />
+    <Compile Include="Assets\Scripts\GameLogic\Timer.cs" />
     <Compile Include="Assets\Scripts\GameLogic\Tutorial\PortalSwitch.cs" />
     <Compile Include="Assets\Scripts\GameLogic\Tutorial\TutorialBasket.cs" />
     <Compile Include="Assets\Scripts\GameLogic\Tutorial\TutorialManager.cs" />
@@ -445,6 +450,7 @@
     <None Include="Assets\Scripts\Shaders\ScreenCutoutShader.shader" />
     <None Include="Assets\Extentions\SteamVR\Resources\SteamVR_SphericalProjection.shader" />
     <None Include="Assets\Extentions\SteamVR\Resources\SteamVR_AlphaOut.shader" />
+    <None Include="Assets\Shaders\DissolveBurn.shader" />
     <None Include="Assets\Extentions\VRTK\Scripts\Internal\Shaders\TransparentFresnelBehind.shader" />
     <None Include="Assets\Extentions\SteamVR\readme.txt" />
     <None Include="Assets\Extentions\SteamVR\InteractionSystem\Core\Shaders\Silhouette.shader" />

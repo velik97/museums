@@ -8,6 +8,7 @@ public class PickUpObject : MonoBehaviour
 	public int points;
 
 	private static Dictionary<int, int> pointsByIndex;
+	private static Dictionary<int, int> countByIndex;
 	
 	private Vector3 initialPosition;
 	private Quaternion initialRotation;
@@ -18,10 +19,17 @@ public class PickUpObject : MonoBehaviour
 		if (pointsByIndex == null)
 			pointsByIndex = new Dictionary<int, int>();
 		
+		if (countByIndex == null)
+			countByIndex = new Dictionary<int, int>();
+		
 		if (!pointsByIndex.ContainsKey(index))
 			pointsByIndex.Add(index, 0);
+		
+		if (!countByIndex.ContainsKey(index))
+			countByIndex.Add(index, 0);
 
 		pointsByIndex[index] += points;
+		countByIndex[index]++;
 	}
 
 	private void Awake()
@@ -55,6 +63,14 @@ public class PickUpObject : MonoBehaviour
 	{
 		if (pointsByIndex.ContainsKey(i))
 			return pointsByIndex[i];
+
+		return 0;
+	}
+	
+	public static int CountByIndex(int i)
+	{
+		if (countByIndex.ContainsKey(i))
+			return countByIndex[i];
 
 		return 0;
 	}
