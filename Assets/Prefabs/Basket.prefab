@@ -610,18 +610,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b5db0758cbaad4d9897091e8568de0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overallPointsText: {fileID: 114775355763201620}
-  feedbackPrefab: {fileID: 1270228736504906, guid: 177c88806a0dfbe4a96d4730b92b8cf1,
+  overallCountText: {fileID: 114775355763201620}
+  feedbackPrefab: {fileID: 114923256205100822, guid: c3d3ec8f379239f41afc9629a9328f99,
     type: 2}
   successColor: {r: 0.23679909, g: 0.86764705, b: 0.185013, a: 1}
   failureColor: {r: 0.9705882, g: 0.11418684, b: 0.11418684, a: 1}
   feedbackBirthPlace: {fileID: 4330717895079934}
-  onBasketFull:
+  onPickUpsWithMyIndexOver:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onObjectPlacedInBasket:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   index: 4
+  inBasketPoints: 0
+  overallPoints: 0
 --- !u!114 &114775355763201620
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeleteObjectsAfterTutorial : MonoBehaviour
+public class SwitchTutorialToQuest : MonoBehaviour
 {
 	public Transform doorTransform;
 	public List<Transform> trackedObjects;
@@ -51,7 +51,7 @@ public class DeleteObjectsAfterTutorial : MonoBehaviour
 			if (dimension == null || dimension != DimensionExtended.Current)
 			{
 				obj.SetActive(false);
-			}
+			}		
 		}
 		
 		door.GetComponent<Animator>().SetTrigger("Disolve");

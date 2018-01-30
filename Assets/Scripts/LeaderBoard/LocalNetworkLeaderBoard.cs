@@ -6,7 +6,7 @@ using System.Xml;
 using System.Xml.Linq;
 using UnityEngine;
 
-public class LocalNetworkLeaderboard : MonoBehaviour
+public class LocalNetworkLeaderboard : MonoSingleton<LocalNetworkLeaderboard>
 {
     public string localLeaderboardFilePath;
     private string remoteLeaderboardPath;
@@ -92,10 +92,10 @@ public class LocalNetworkLeaderboard : MonoBehaviour
     /// <param name="name"></param>
     /// <param name="points"></param>
     /// <param name="status"></param>
-    public void AddNewScore(string name, int points, string status)
+    public Score AddNewScore(string name, int points, string status)
     {
         if (LocalLeaderboardXml == null)
-            return;
+            return null;
 
         List<Score> currentScores = GetScores(LocalLeaderboardXml);
 
@@ -109,10 +109,14 @@ public class LocalNetworkLeaderboard : MonoBehaviour
                 maxId = currentScore.id;
         }
 
-        Score newScore = new Score(computerId, maxId + 1, name, points, status);
+        int newId = maxId + 1;
+
+        Score newScore = new Score(computerId, newId, name, points, status);
 
         AddScoreToLocalLeaderboard(newScore);
         SaveLocalLeaderboard();
+
+        return newScore;
     }
 
     #endregion
@@ -147,7 +151,7 @@ public class LocalNetworkLeaderboard : MonoBehaviour
         }
     }
 
-    public XDocument RemoteLeaderboardXml
+    private XDocument RemoteLeaderboardXml
     {
         get
         {
@@ -205,10 +209,10 @@ public class LocalNetworkLeaderboard : MonoBehaviour
         {
             XElement newScore = new XElement(scoreLabel,
                 new XAttribute(computerIdAttribute, score.computerId.ToString()),
-                new XAttribute(idAttribute, score.id.ToString()),
-                new XElement(nameLabel, score.name),
-                new XElement(pointsLabel, score.points.ToString()),
-                new XElement(statusLabel, score.status)
+                new XAttribute(idAttribute,         score.id.ToString()),
+                new XElement(  nameLabel,           score.name),
+                new XElement(  pointsLabel,         score.points.ToString()),
+                new XElement(  statusLabel,         score.status)
             );
 
             LocalLeaderboardXml.Element(rootLabel).Element(scoresLabel).Add(newScore);

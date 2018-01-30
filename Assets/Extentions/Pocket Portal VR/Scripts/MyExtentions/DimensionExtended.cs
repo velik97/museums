@@ -7,6 +7,8 @@ using Object = UnityEngine.Object;
 
 public class DimensionExtended : Dimension
 {
+	public int index;
+	
 	public static DimensionExtended initial;
 	private static DimensionExtended current;
 	public static List<DimensionExtended> allDimensions;

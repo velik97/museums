@@ -6,38 +6,59 @@ using UnityEngine.UI;
 
 public class Basket : MonoBehaviour
 {
-    public Text overallPointsText;
+    public Text overallCountText;
     
-    public GameObject feedbackPrefab;
+    public FloatingFeedback feedbackPrefab;
     public Color successColor;
     public Color failureColor;
 
     public Transform feedbackBirthPlace;
 
-    public UnityEvent onBasketFull;
+    public UnityEvent onPickUpsWithMyIndexOver;
     public UnityEvent onObjectPlacedInBasket;
     
     public int index;
 
+    private static IntEvent onPickUpDestroyedWithFailure;
+
+    private int inBasketCount;
+    private int overAllCount;
+
     [HideInInspector] public int inBasketPoints;
     [HideInInspector] public int overallPoints;
-    
-    private int inBasketCount;
-    private int overallCount;
 
-    private bool isFull;
-    
+    private bool noMorePickUpsByMyIndex;
+
+    private void Awake()
+    {
+        if (onPickUpDestroyedWithFailure == null)
+            onPickUpDestroyedWithFailure = new IntEvent();
+        
+        onPickUpDestroyedWithFailure.AddListener(delegate(int destroyedIndex)
+        {
+            if (index == destroyedIndex)
+                overAllCount--;
+            
+            SetCountText();
+        });
+    }
+
     private void Start()
     {
         inBasketPoints = 0;
-        overallPoints = PickUpObject.PointsByIndex(index);
+        overallPoints = 0;
 
         inBasketCount = 0;
-        overallCount = PickUpObject.CountByIndex(index);
+        overAllCount = PickUpObject.PickUpsListByIndex[index].Count;
         
-        overallPointsText.text = inBasketPoints + "/" + overallPoints;
+        foreach (var pickUp in PickUpObject.PickUpsListByIndex[index])
+        {
+            overallPoints += pickUp.points;
+        }
+        
+        SetCountText();
 
-        isFull = false;
+        noMorePickUpsByMyIndex = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -54,44 +75,45 @@ public class Basket : MonoBehaviour
             inBasketPoints += pu.points;
             inBasketCount++;
 
-            if (!isFull && inBasketCount == overallCount)
+            pu.PlaceInBusket(true);
+            if (!noMorePickUpsByMyIndex && PickUpObject.PickUpsListByIndex[index].Count == 0)
             {
-                isFull = true;
-                onBasketFull.Invoke();
+                noMorePickUpsByMyIndex = true;
+                onPickUpsWithMyIndexOver.Invoke();
             }
-            ShowSuccess(pu.points);
+            ShowSuccess(pu.points, pu.pickUpName);
+            SetCountText();
         }
         else
-        {
+        {           
             inBasketPoints -= pu.points;
             inBasketPoints = inBasketPoints > 0 ? inBasketPoints : 0;
-            ShowFailure(pu.points);
-        }
-        
-        overallPointsText.text = inBasketPoints + "/" + overallPoints;
-        
-        pu.PlaceInBusket(true);
+            pu.PlaceInBusket(true);
+            ShowFailure(pu.points, pu.pickUpName);
+            onPickUpDestroyedWithFailure.Invoke(pu.index);
+        }               
         
         onObjectPlacedInBasket.Invoke();
     }
-    
-    private void ShowSuccess(int points)
+
+    private void SetCountText()
     {
-        GameObject feedback = Instantiate(feedbackPrefab, feedbackBirthPlace) as GameObject;
+        overallCountText.text = inBasketCount + "/" + overAllCount;
+    }
+    
+    private void ShowSuccess(int points, string name)
+    {
+        FloatingFeedback feedback = Instantiate(feedbackPrefab, feedbackBirthPlace) as FloatingFeedback;
 
-        Text text = feedback.GetComponentInChildren<Text>();
-
-        text.color = successColor;
-        text.text = "+" + points;
+        feedback.Set(points, name, successColor, true);
     }
 
-    private void ShowFailure(int points)
+    private void ShowFailure(int points, string name)
     {
-        GameObject feedback = Instantiate(feedbackPrefab, feedbackBirthPlace) as GameObject;
+        FloatingFeedback feedback = Instantiate(feedbackPrefab, feedbackBirthPlace) as FloatingFeedback;
         
-        Text text = feedback.GetComponentInChildren<Text>();
-
-        text.color = failureColor;
-        text.text = "-" + points;
+        feedback.Set(points, name, failureColor, false);
     }
 }
+
+public class IntEvent : UnityEvent<int> {}

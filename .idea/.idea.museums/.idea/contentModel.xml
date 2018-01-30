@@ -565,34 +565,39 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="GameLogic" t="Include">
-            <e p="AutoDestroy.cs" t="Include" />
             <e p="Basket.cs" t="Include" />
             <e p="CollectQuestManager.cs" t="Include" />
-            <e p="DeleteObjectsAfterTutorial.cs" t="Include" />
             <e p="DoorAutoClose.cs" t="Include" />
+            <e p="GameInfo.cs" t="Include" />
             <e p="PickUpObject.cs" t="Include" />
             <e p="PickUpsRespawnArea.cs" t="Include" />
             <e p="PortalSwitchButton.cs" t="Include" />
-            <e p="Timer.cs" t="Include" />
+            <e p="SwitchTutorialToQuest.cs" t="Include" />
             <e p="Tutorial" t="Include">
               <e p="PortalSwitch.cs" t="Include" />
               <e p="TutorialBasket.cs" t="Include" />
               <e p="TutorialManager.cs" t="Include" />
             </e>
+            <e p="Utils" t="Include">
+              <e p="AutoDestroy.cs" t="Include" />
+              <e p="FloatingFeedback.cs" t="Include" />
+              <e p="Timer.cs" t="Include" />
+            </e>
           </e>
           <e p="LeaderBoard" t="Include">
+            <e p="LeaderBoardUI.cs" t="Include" />
             <e p="LocalNetworkLeaderBoard.cs" t="Include" />
+            <e p="NameUI.cs" t="Include" />
+            <e p="ScoreUI.cs" t="Include" />
           </e>
           <e p="MonoSingleton.cs" t="Include" />
-          <e p="Shaders" t="Include">
-            <e p="ScreenCutoutShader.shader" t="Include" />
-          </e>
           <e p="Test" t="Include">
             <e p="LocalNetworkFileSynchronizationTest.cs" t="Include" />
           </e>
         </e>
         <e p="Shaders" t="Include">
           <e p="DissolveBurn.shader" t="Include" />
+          <e p="ScreenCutoutShader.shader" t="Include" />
         </e>
       </e>
       <e p="Library" t="ExcludeRecursive" />

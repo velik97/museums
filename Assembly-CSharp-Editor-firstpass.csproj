@@ -59,7 +59,7 @@
     <None Include="Assets\Extentions\VRTK\Scripts\Internal\Shaders\VRTK_OutlineBasic.shader" />
     <None Include="Assets\Extentions\Pocket Portal VR\Materials\PortalShader.shader" />
     <None Include="Assets\Extentions\VRTK\Scripts\Internal\Shaders\AdaptiveQualityDebugVisualization.shader" />
-    <None Include="Assets\Scripts\Shaders\ScreenCutoutShader.shader" />
+    <None Include="Assets\Shaders\ScreenCutoutShader.shader" />
     <None Include="Assets\Extentions\SteamVR\Resources\SteamVR_SphericalProjection.shader" />
     <None Include="Assets\Extentions\SteamVR\Resources\SteamVR_AlphaOut.shader" />
     <None Include="Assets\Shaders\DissolveBurn.shader" />

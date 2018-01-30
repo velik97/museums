@@ -23,7 +23,7 @@ public class TutorialManager : MonoSingleton<TutorialManager>
 		
 		for (var i = 0; i < tutorialBaskets.Count; i++)
 		{
-			tutorialBaskets[i].onBasketFull.AddListener(BasketBecameFull);
+			tutorialBaskets[i].onPickUpsWithMyIndexOver.AddListener(BasketBecameFull);
 		}
 		
 		onTutorialDone.AddListener(delegate

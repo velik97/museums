@@ -12,24 +12,18 @@ public class TutorialBasket : MonoBehaviour
 
     public Transform feedbackBirthPlace;
 
-    public UnityEvent onBasketFull;
+    public UnityEvent onPickUpsWithMyIndexOver;
 
-    [HideInInspector] public int inBasketCount;
-    [HideInInspector] public int overallCount;
-
-    private bool isFull;
+    private bool noMorePickUpsByMyIndex;
 
     private void Start()
     {
-        inBasketCount = 0;
-        overallCount = PickUpObject.CountByIndex(index);
+        noMorePickUpsByMyIndex = false;
 
-        isFull = false;
-
-        if (inBasketCount == overallCount)
+        if (PickUpObject.PickUpsListByIndex[index].Count == 0)
         {
-            isFull = true;
-            onBasketFull.Invoke();
+            noMorePickUpsByMyIndex = true;
+            onPickUpsWithMyIndexOver.Invoke();
         }
     }
 
@@ -44,7 +38,6 @@ public class TutorialBasket : MonoBehaviour
     {
         if (pu.index == index)
         {
-            inBasketCount++;
             ShowSuccess();
         }
         else
@@ -54,10 +47,10 @@ public class TutorialBasket : MonoBehaviour
 
         pu.PlaceInBusket(pu.index == index);
 
-        if (!isFull && inBasketCount == overallCount)
+        if (!noMorePickUpsByMyIndex && PickUpObject.PickUpsListByIndex[index].Count == 0)
         {
-            isFull = true;
-            onBasketFull.Invoke();
+            noMorePickUpsByMyIndex = true;
+            onPickUpsWithMyIndexOver.Invoke();
         }
     }
 

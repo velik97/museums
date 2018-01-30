@@ -31,10 +31,10 @@ public class CollectQuestManager : MonoBehaviour
         for (var i = 0; i < baskets.Count; i++)
         {
             int copy = i;
-            baskets[i].onBasketFull.AddListener(delegate
+            baskets[i].onPickUpsWithMyIndexOver.AddListener(delegate
             {
                 BasketDone();
-                baskets[copy].onBasketFull.RemoveAllListeners();
+                baskets[copy].onPickUpsWithMyIndexOver.RemoveAllListeners();
             });
 
             overallPoints += baskets[i].overallPoints;
@@ -85,5 +85,7 @@ public class CollectQuestManager : MonoBehaviour
         
         questIsDone = true;
         timer.StopTimer();
+        
+        Debug.Log("Done");
     }
 }

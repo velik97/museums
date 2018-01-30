@@ -6,30 +6,28 @@ public class PickUpObject : MonoBehaviour
 {
 	public int index;				// -1 is trash
 	public int points;
+	public string pickUpName;
 
-	private static Dictionary<int, int> pointsByIndex;
-	private static Dictionary<int, int> countByIndex;
+	private static Dictionary<int, List<PickUpObject>> pickUpsListByIndex; 
 	
 	private Vector3 initialPosition;
 	private Quaternion initialRotation;
 	private Rigidbody rb;
 
+	public static Dictionary<int, List<PickUpObject>> PickUpsListByIndex
+	{
+		get { return pickUpsListByIndex; }
+	}
+	
 	private void OnEnable()
 	{
-		if (pointsByIndex == null)
-			pointsByIndex = new Dictionary<int, int>();
+		if (pickUpsListByIndex == null)
+			pickUpsListByIndex = new Dictionary<int, List<PickUpObject>>();
+			
+		if (!pickUpsListByIndex.ContainsKey(index))	
+			pickUpsListByIndex.Add(index, new List<PickUpObject>());
 		
-		if (countByIndex == null)
-			countByIndex = new Dictionary<int, int>();
-		
-		if (!pointsByIndex.ContainsKey(index))
-			pointsByIndex.Add(index, 0);
-		
-		if (!countByIndex.ContainsKey(index))
-			countByIndex.Add(index, 0);
-
-		pointsByIndex[index] += points;
-		countByIndex[index]++;
+		pickUpsListByIndex[index].Add(this);
 	}
 
 	private void Awake()
@@ -44,6 +42,7 @@ public class PickUpObject : MonoBehaviour
 	{
 		if (destroy)
 		{
+			pickUpsListByIndex[index].Remove(this);
 			Destroy(gameObject);
 		}
 		else
@@ -58,20 +57,5 @@ public class PickUpObject : MonoBehaviour
 			}
 		}
 	}
-
-	public static int PointsByIndex(int i)
-	{
-		if (pointsByIndex.ContainsKey(i))
-			return pointsByIndex[i];
-
-		return 0;
-	}
-	
-	public static int CountByIndex(int i)
-	{
-		if (countByIndex.ContainsKey(i))
-			return countByIndex[i];
-
-		return 0;
-	}
+		
 }
