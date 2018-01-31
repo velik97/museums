@@ -53,6 +53,8 @@ public class SwitchTutorialToQuest : MonoBehaviour
 				obj.SetActive(false);
 			}		
 		}
+
+		GameInfo.Instance.locationId = DimensionExtended.Current.index;
 		
 		door.GetComponent<Animator>().SetTrigger("Disolve");
 		

@@ -590,9 +590,12 @@
             <e p="NameUI.cs" t="Include" />
             <e p="ScoreUI.cs" t="Include" />
           </e>
-          <e p="MonoSingleton.cs" t="Include" />
           <e p="Test" t="Include">
-            <e p="LocalNetworkFileSynchronizationTest.cs" t="Include" />
+            <e p="LocalNetworkDiscovery.cs" t="Include" />
+          </e>
+          <e p="Utils" t="Include">
+            <e p="DontDestroyOnLoad.cs" t="Include" />
+            <e p="MonoSingleton.cs" t="Include" />
           </e>
         </e>
         <e p="Shaders" t="Include">

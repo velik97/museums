@@ -19,12 +19,12 @@ public class LocalNetworkLeaderboard : MonoSingleton<LocalNetworkLeaderboard>
     private string rootLabel = "data";
 
     private string remotePathLabel = "remotePath";
-    private string computerIdLabel = "computerId";
 
     private string scoresLabel = "scores";
     private string scoreLabel = "score";
 
     private string computerIdAttribute = "computerId";
+    private string locationIdAttribute = "loactionId";
     private string idAttribute = "id";
 
     private string nameLabel = "name";
@@ -46,6 +46,14 @@ public class LocalNetworkLeaderboard : MonoSingleton<LocalNetworkLeaderboard>
     public List<Score> GetLocalScores()
     {
         return GetScores(LocalLeaderboardXml);
+    }
+    
+    /// <summary>
+    /// Returns all scores listed on local computer for specific location
+    /// </summary>
+    public List<Score> GetLocalScores(int locationId)
+    {
+        return GetScores(LocalLeaderboardXml, locationId);
     }
 
     /// <summary>
@@ -82,36 +90,32 @@ public class LocalNetworkLeaderboard : MonoSingleton<LocalNetworkLeaderboard>
                 AddScoreToLocalLeaderboard(remoteScore);
             }
         }
-
+        
         SaveLocalLeaderboard();
     }
 
     /// <summary>
     /// Adds new score to local leaderboard
     /// </summary>
-    /// <param name="name"></param>
-    /// <param name="points"></param>
-    /// <param name="status"></param>
-    public Score AddNewScore(string name, int points, string status)
+    public Score AddNewScore(int locationId, int computerId, string playerName, int points, string status)
     {
         if (LocalLeaderboardXml == null)
             return null;
 
         List<Score> currentScores = GetScores(LocalLeaderboardXml);
 
-
-        int computerId = int.Parse(LocalLeaderboardXml.Element(rootLabel).Element(computerIdLabel).Value);
         int maxId = 0;
 
         foreach (var currentScore in currentScores)
         {
-            if (currentScore.computerId == computerId && currentScore.id > maxId)
+            if (currentScore.locationId == locationId && currentScore.computerId == computerId
+                && currentScore.id > maxId)
                 maxId = currentScore.id;
         }
 
         int newId = maxId + 1;
 
-        Score newScore = new Score(computerId, newId, name, points, status);
+        Score newScore = new Score(computerId, locationId, newId, playerName, points, status);
 
         AddScoreToLocalLeaderboard(newScore);
         SaveLocalLeaderboard();
@@ -175,7 +179,6 @@ public class LocalNetworkLeaderboard : MonoSingleton<LocalNetworkLeaderboard>
         XDocument xDoc = new XDocument(
             new XElement(rootLabel,
                 new XElement(remotePathLabel, remoteLeaderboardPath),
-                new XElement(computerIdLabel, "1"),
                 new XElement(scoresLabel)
             )
         );
@@ -185,6 +188,28 @@ public class LocalNetworkLeaderboard : MonoSingleton<LocalNetworkLeaderboard>
         return xDoc;
     }
 
+    private List<Score> GetScores(XDocument xDoc, int locationId)
+    {
+        List<Score> scores = new List<Score>();
+        foreach (var scoresElement in xDoc.Element(rootLabel).Element(scoresLabel).Elements(scoreLabel))
+        {
+            if (int.Parse(scoresElement.Attribute(locationIdAttribute).Value) != locationId)
+                continue;
+            
+            Score newScore = new Score(
+                int.Parse(scoresElement.Attribute(computerIdAttribute).Value),
+                int.Parse(scoresElement.Attribute(locationIdAttribute).Value),
+                int.Parse(scoresElement.Attribute(idAttribute).Value),
+                scoresElement.Element(nameLabel).Value,
+                int.Parse(scoresElement.Element(pointsLabel).Value),
+                scoresElement.Element(statusLabel).Value
+            );
+
+            scores.Add(newScore);
+        }
+        return scores;
+    }
+    
     private List<Score> GetScores(XDocument xDoc)
     {
         List<Score> scores = new List<Score>();
@@ -192,6 +217,7 @@ public class LocalNetworkLeaderboard : MonoSingleton<LocalNetworkLeaderboard>
         {
             Score newScore = new Score(
                 int.Parse(scoresElement.Attribute(computerIdAttribute).Value),
+                int.Parse(scoresElement.Attribute(locationIdAttribute).Value),
                 int.Parse(scoresElement.Attribute(idAttribute).Value),
                 scoresElement.Element(nameLabel).Value,
                 int.Parse(scoresElement.Element(pointsLabel).Value),
@@ -209,7 +235,9 @@ public class LocalNetworkLeaderboard : MonoSingleton<LocalNetworkLeaderboard>
         {
             XElement newScore = new XElement(scoreLabel,
                 new XAttribute(computerIdAttribute, score.computerId.ToString()),
+                new XAttribute(locationIdAttribute, score.locationId.ToString()),
                 new XAttribute(idAttribute,         score.id.ToString()),
+                
                 new XElement(  nameLabel,           score.name),
                 new XElement(  pointsLabel,         score.points.ToString()),
                 new XElement(  statusLabel,         score.status)
@@ -231,15 +259,17 @@ public class LocalNetworkLeaderboard : MonoSingleton<LocalNetworkLeaderboard>
 public class Score : IComparable
 {
     public int computerId;
+    public int locationId;
     public int id;
 
     public string name;
     public int points;
     public string status;
 
-    public Score(int computerId, int id, string name, int points, string status)
+    public Score(int computerId, int locationId, int id, string name, int points, string status)
     {
         this.computerId = computerId;
+        this.locationId = locationId;
         this.id = id;
 
         this.name = name;
@@ -253,6 +283,21 @@ public class Score : IComparable
             return 1;
 
         Score otherScore = (Score) obj;
-        return otherScore.points - this.points;
+
+        if (otherScore.locationId == this.locationId)
+        {
+            if (otherScore.points == this.points)
+                return this.id - otherScore.id;
+
+            return otherScore.points - this.points;
+        }
+        
+        return this.locationId - otherScore.locationId;
+    }
+
+    public override string ToString()
+    {
+        return "computerId: " + computerId + ", locationId: " + locationId + ", id: " + id +
+               "\nname: " + name + ", points: " + points + ", status: " + status;
     }
 }

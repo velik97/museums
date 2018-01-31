@@ -20,6 +20,11 @@ public class LeaderBoardUI : MonoSingleton<LeaderBoardUI>
         get { return visiableNearCount + visiableTopCount + 1; }
     }
 
+    private void Start()
+    {
+//        LocalNetworkLeaderboard.Instance.AddNewScore(1, 1, "velik101", 109, "good boy11");
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.L))
@@ -31,7 +36,7 @@ public class LeaderBoardUI : MonoSingleton<LeaderBoardUI>
     public void ShowAllScores()
     {
         LocalNetworkLeaderboard.Instance.SynchronizeScores();
-        scores = LocalNetworkLeaderboard.Instance.GetLocalScores();
+        scores = LocalNetworkLeaderboard.Instance.GetLocalScores(GameInfo.Instance.locationId);
 
         scores.Sort();
         float step = 1f / (float) AllPositionsCount;

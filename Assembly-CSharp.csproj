@@ -442,8 +442,9 @@
     <Compile Include="Assets\Scripts\Leaderboard\LocalNetworkLeaderboard.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\NameUI.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\ScoreUI.cs" />
-    <Compile Include="Assets\Scripts\MonoSingleton.cs" />
-    <Compile Include="Assets\Scripts\Test\LocalNetworkFileSynchronizationTest.cs" />
+    <Compile Include="Assets\Scripts\Test\LocalNetworkDiscovery.cs" />
+    <Compile Include="Assets\Scripts\Utils\DontDestroyOnLoad.cs" />
+    <Compile Include="Assets\Scripts\Utils\MonoSingleton.cs" />
     <None Include="Assets\Extentions\SteamVR\Resources\SteamVR_Fade.shader" />
     <None Include="Assets\Extentions\SteamVR\Resources\SteamVR_ClearAll.shader" />
     <None Include="Assets\Extentions\SteamVR\InteractionSystem\Hints\Shaders\ControllerButtonHints.shader" />
