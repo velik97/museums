@@ -2,33 +2,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoSingleton<GameManager>
 {
-	public string startText;
+	public string startText = "The game will start soon...";
 	
 	public Transform doorTransform;
 	public List<Transform> trackedObjects;
 	public float minDistanceToDelete;
+	public float timeForQuest;
 
 	public List<GameObject> gameObjectsToDeleteAfterTutorial;
-	public GameObject door;
+
+	public string finalSceneName = "Final";
+
+	private bool tutorialIsDone;
 
 	private void Start()
 	{
 		VRCameraText.Instance.ShowText(startText);
-		Invoke("StartGame", 5f);
+		StartGame();
 	}
 
 	public void StartGame()
 	{
-		DimensionExtended.StartInteractionsWithCurrent();
-		VRCameraText.Instance.HideText();
-		VRCameraFade.Instance.FadeOut();
+		StartCoroutine(FadeInAndStartGame());
+		tutorialIsDone = false;
+	}
+
+	public void GameOver()
+	{
+		StartCoroutine(FadeOutAndLoadFinalScene());
 	}
 	
 	private void Update()
 	{
+		if (tutorialIsDone)
+			return;
 		CheckPosition();
 	}
 
@@ -49,12 +60,18 @@ public class GameManager : MonoSingleton<GameManager>
 			{
 				DoorAutoClose.Instance.onDoorClosed.AddListener(delegate
 				{
-					StartCoroutine(DeleteObjectsAndStartQuest());
+					TutorialDone();
+					DoorAutoClose.Instance.onDoorClosed.RemoveAllListeners();
 				});
 				DoorAutoClose.Instance.CloseDoor();
 				break;
 			}
 		}
+	}
+
+	private void TutorialDone()
+	{
+		StartCoroutine(DeleteObjectsAndStartQuest());
 	}
 
 	private IEnumerator DeleteObjectsAndStartQuest()
@@ -71,13 +88,27 @@ public class GameManager : MonoSingleton<GameManager>
 
 		GameInfo.Instance.locationId = DimensionExtended.Current.index;
 		
-		door.GetComponent<Animator>().SetTrigger("Disolve");
+		doorTransform.GetComponent<Animator>().SetTrigger("Disolve");
 		
 		yield return new WaitForSeconds(1f);
-		door.SetActive(false);
-		
-		this.gameObject.SetActive(false);
-		
-		DimensionExtended.Current.GetComponent<CollectQuestManager>().StartQuest();
+		doorTransform.gameObject.SetActive(false);
+				
+		DimensionExtended.Current.GetComponent<CollectQuestManager>().StartQuest(timeForQuest);
+	}
+
+	private IEnumerator FadeInAndStartGame()
+	{
+		yield return new WaitForSeconds(3f);
+		DimensionExtended.StartInteractionsWithCurrent();
+		VRCameraText.Instance.HideText();
+		yield return new WaitForSeconds(2f);
+		VRCameraFade.Instance.FadeIn();
+	}
+
+	private IEnumerator FadeOutAndLoadFinalScene()
+	{
+		VRCameraFade.Instance.FadeOut();
+		yield return new WaitForSeconds(2f);
+		SceneManager.LoadScene(finalSceneName);
 	}
 }

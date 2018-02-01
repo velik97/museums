@@ -9,6 +9,8 @@ public class GameInfo : MonoSingleton<GameInfo>
     public int computerId = 1;
     public int locationId = -1;
 
+    public int points;
+
     public List<Status> statuses;
 
     private void Awake()
@@ -16,16 +18,19 @@ public class GameInfo : MonoSingleton<GameInfo>
         DontDestroyOnLoad(this);
     }
 
-    public string StatusByPoints(int points)
+    public string Status
     {
-        statuses.Sort();
-        for (var i = 0; i < statuses.Count; i++)
+        get
         {
-            if (points <= statuses[i].upperPoints)
-                return statuses[i].status;
-        }
+            statuses.Sort();
+            for (var i = 0; i < statuses.Count; i++)
+            {
+                if (points <= statuses[i].upperPoints)
+                    return statuses[i].status;
+            }
 
-        return statuses[statuses.Count - 1].status;
+            return statuses[statuses.Count - 1].status;
+        }
     }
 }
 

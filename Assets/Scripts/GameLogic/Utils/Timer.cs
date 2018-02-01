@@ -38,6 +38,7 @@ public class Timer : MonoBehaviour
         {
             active = false;
             timeToEnd = 0f;
+            onTimeEnded.Invoke();
         }
 
         seconds = Mathf.RoundToInt(timeToEnd);

@@ -585,6 +585,7 @@
             </e>
           </e>
           <e p="LeaderBoard" t="Include">
+            <e p="LeaderboardSceneManager.cs" t="Include" />
             <e p="LeaderBoardUI.cs" t="Include" />
             <e p="LocalNetworkLeaderBoard.cs" t="Include" />
             <e p="NameUI.cs" t="Include" />

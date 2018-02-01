@@ -8,7 +8,6 @@ public class CollectQuestManager : MonoBehaviour
     public List<Basket> baskets;
     public Timer timer;
     public Text pointsText;
-    public float timeForQuest;
 
     private int doneBasketsCount;
     private bool questIsDone;
@@ -18,13 +17,17 @@ public class CollectQuestManager : MonoBehaviour
 
     private int[] pointsInBaskets;
 
-    public void StartQuest()
+    private float timeForQuest;
+    
+    public void StartQuest(float time)
     {
         doneBasketsCount = 0;
         questIsDone = false;
 
         collectedPoints = 0;
         overallPoints = 0;
+
+        timeForQuest = time;
         
         pointsInBaskets = new int[baskets.Count];
         
@@ -90,6 +93,9 @@ public class CollectQuestManager : MonoBehaviour
         {
             basket.Deactivate();
         }
+
+        GameInfo.Instance.points = collectedPoints;
+        GameManager.Instance.GameOver();
         
         Debug.Log("Done");
     }

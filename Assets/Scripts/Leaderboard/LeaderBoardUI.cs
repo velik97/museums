@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LeaderBoardUI : MonoSingleton<LeaderBoardUI>
+public class LeaderBoardUI : MonoBehaviour
 {
     public ScoreUI scoreUIPrefab;
     public int visiableTopCount = 3;
@@ -12,17 +12,12 @@ public class LeaderBoardUI : MonoSingleton<LeaderBoardUI>
 
     private List<Score> scores;
 
-    private Score myScore;
+    public Score myScore;
     private int myPlace = -1;
 
     private int AllPositionsCount
     {
         get { return visiableNearCount + visiableTopCount + 1; }
-    }
-
-    private void Start()
-    {
-//        LocalNetworkLeaderboard.Instance.AddNewScore(1, 1, "velik101", 109, "good boy11");
     }
 
     private void Update()
@@ -45,12 +40,12 @@ public class LeaderBoardUI : MonoSingleton<LeaderBoardUI>
 
         if (myScore != null)
         {
-            myPlace = scores.FindIndex(o => o.id == myScore.id && o.computerId == myScore.computerId);
-            Debug.Log(myPlace + 1);
+            myPlace = scores.FindIndex(
+                o => o.id == myScore.id && o.computerId == myScore.computerId && o.locationId == myScore.locationId);
 
             if (myPlace < AllPositionsCount)
             {
-                for (place = 0; place < AllPositionsCount; place++)
+                for (place = 0; place < AllPositionsCount && place < scores.Count; place++)
                 {
                     scoreUi = Instantiate(scoreUIPrefab, transform) as ScoreUI;
                     scoreUi.SetPoisition(step * (AllPositionsCount - 1 - place), step * (AllPositionsCount - place));
@@ -100,4 +95,5 @@ public class LeaderBoardUI : MonoSingleton<LeaderBoardUI>
             }
         }
     }
+    
 }

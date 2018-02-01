@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class LocalNetworkLeaderboard : MonoSingleton<LocalNetworkLeaderboard>
 {
-    public string localLeaderboardFilePath;
+    public string localLeaderboardFilePath = "C:\\net folder\\leaderboard.xml";
     private string remoteLeaderboardPath;
 
     private XDocument localLeaderboardXml;

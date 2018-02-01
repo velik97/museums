@@ -13,8 +13,8 @@ public class VRCameraText : MonoSingleton<VRCameraText>
     public AnimationCurve fadeCurve;
 
     private VRCameraFade fade;
-    [SerializeField]
-    private Text m_text;
+    
+    public Text m_text;
 
     private bool isFading = false;
 
@@ -22,7 +22,7 @@ public class VRCameraText : MonoSingleton<VRCameraText>
     {
         fade = GetComponent<VRCameraFade>();
         if (m_text == null)
-            m_text = fade.FadeImage.GetComponentInChildren<Text>();
+            m_text = fade.fadeImage.GetComponentInChildren<Text>();
     }
     
     public void SetColorIndex(int colorIndex)

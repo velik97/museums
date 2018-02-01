@@ -12,35 +12,29 @@ public class VRCameraFade : MonoSingleton<VRCameraFade>
 {
     public event Action OnFadeComplete;                             // This is called when the fade in or out has finished.
 
-    [SerializeField] private Image m_FadeImage;                     // Reference to the image that covers the screen.
-    [SerializeField] private Color m_FadeColor = Color.black;       // The colour the image fades out to.
-    [SerializeField] private AnimationCurve m_FadeCurve;
-    [SerializeField] private float m_FadeDuration = 2.0f;           // How long it takes to fade in seconds.
-    [SerializeField] private bool m_FadeInOnSceneLoad = false;      // Whether a fade in should happen as soon as the scene is loaded.
-    [SerializeField] private bool m_FadeInOnStart = false;          // Whether a fade in should happen just but Updates start.
+    public Image fadeImage;                     // Reference to the image that covers the screen.
+    public Color fadeColor = Color.black;       // The colour the image fades out to.
+    public AnimationCurve fadeCurve;
+    public float fadeDuration = 2.0f;           // How long it takes to fade in seconds.
+    public bool fadeInOnSceneLoad = false;      // Whether a fade in should happen as soon as the scene is loaded.
+    public bool fadeInOnStart = false;          // Whether a fade in should happen just but Updates start.
 
-    private bool m_IsFading;                                        // Whether the screen is currently fading.
-    private float m_FadeStartTime;                                  // The time when fading started.
-    private Color m_FadeOutColor;                                   // This is a transparent version of the fade colour, it will ensure fading looks normal.
-
-
-    public Image FadeImage { get { return m_FadeImage; } }
-    public bool IsFading { get { return m_IsFading; } }
-    public float FadeTime { get { return m_FadeDuration; } }
-
+    private bool isFading;                                        // Whether the screen is currently fading.
+    private float fadeStartTime;                                  // The time when fading started.
+    private Color fadeOutColor;                                   // This is a transparent version of the fade colour, it will ensure fading looks normal.
 
     private void Awake()
     {
-        m_FadeOutColor = new Color(m_FadeColor.r, m_FadeColor.g, m_FadeColor.b, 0f);
-        m_FadeImage.enabled = true;
+        fadeOutColor = new Color(fadeColor.r, fadeColor.g, fadeColor.b, 0f);
+        fadeImage.enabled = true;
     }
 
     private void Start()
     {
         // If applicable set the immediate colour to be faded out and then fade in.
-        if (m_FadeInOnStart)
+        if (fadeInOnStart)
         {
-            m_FadeImage.color = m_FadeColor;
+            fadeImage.color = fadeColor;
             FadeIn();
         }
     }
@@ -58,9 +52,9 @@ public class VRCameraFade : MonoSingleton<VRCameraFade>
     private void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
         // If applicable set the immediate colour to be faded out and then fade in.
-        if (m_FadeInOnSceneLoad)
+        if (fadeInOnSceneLoad)
         {
-            m_FadeImage.color = m_FadeColor;
+            fadeImage.color = fadeColor;
             FadeIn();
         }
     }
@@ -70,44 +64,44 @@ public class VRCameraFade : MonoSingleton<VRCameraFade>
         switch (colorIndex)
         {
             case 0:
-                m_FadeColor = Color.white;
-                m_FadeOutColor = new Color(1,1,1,0);
+                fadeColor = Color.white;
+                fadeOutColor = new Color(1,1,1,0);
                 break;
             case 1:
-                m_FadeColor = Color.black;
-                m_FadeOutColor = new Color(0,0,0,0);
+                fadeColor = Color.black;
+                fadeOutColor = new Color(0,0,0,0);
                 break;
             case 2:
-                m_FadeColor = new Color(178,0,0,1);
-                m_FadeOutColor = new Color(178, 0, 0, 0);
+                fadeColor = new Color(178,0,0,1);
+                fadeOutColor = new Color(178, 0, 0, 0);
                 break;
             case 3:
-                m_FadeColor = Color.black;
-                m_FadeOutColor = Color.white;
+                fadeColor = Color.black;
+                fadeOutColor = Color.white;
                 break;
             case 4:
-                m_FadeColor = Color.black;
-                m_FadeOutColor = m_FadeColor;
+                fadeColor = Color.black;
+                fadeOutColor = fadeColor;
                 break;
         }
     }
 
     public void SetDuration(float duration)
     {
-        m_FadeDuration = duration;
+        fadeDuration = duration;
     }
 
     public void StopFade(Color newFade)
     {
         StopAllCoroutines();
-        m_FadeImage.color = newFade;
-        m_FadeColor = newFade;
+        fadeImage.color = newFade;
+        fadeColor = newFade;
     }
 
     // Since no duration is specified with this overload use the default duration.
     public void FadeOut()
     {
-        FadeOut(m_FadeDuration);
+        FadeOut(fadeDuration);
     }
 
 
@@ -117,7 +111,7 @@ public class VRCameraFade : MonoSingleton<VRCameraFade>
 
         StopAllCoroutines();
 
-        StartCoroutine(BeginFade(m_FadeOutColor, m_FadeColor, duration));
+        StartCoroutine(BeginFade(fadeOutColor, fadeColor, duration));
     }
 
     public void FadeOut(float duration, Color fadeOutColor)
@@ -132,55 +126,54 @@ public class VRCameraFade : MonoSingleton<VRCameraFade>
 
     public void FadeOut(Color fadeOutColor)
     {
-        FadeOut(m_FadeDuration, fadeOutColor);
+        FadeOut(fadeDuration, fadeOutColor);
     }
 
 
     // Since no duration is specified with this overload use the default duration.
     public void FadeIn()
     {
-        FadeIn(m_FadeDuration);
+        FadeIn(fadeDuration);
     }
 
 
     public void FadeIn(float duration)
     {
-        Debug.Log("fade in");
         // If not already fading start a coroutine to fade from the fade colour to the fade out colour.
         StopAllCoroutines();
 
-        StartCoroutine(BeginFade(m_FadeColor, m_FadeOutColor, duration));
+        StartCoroutine(BeginFade(fadeColor, fadeOutColor, duration));
     }
 
     public IEnumerator BeginFadeOut()
     {
 
-        yield return StartCoroutine(BeginFade(m_FadeOutColor, m_FadeColor, m_FadeDuration));
+        yield return StartCoroutine(BeginFade(fadeOutColor, fadeColor, fadeDuration));
     }
 
 
     public IEnumerator BeginFadeOut(float duration)
     {
-        yield return StartCoroutine(BeginFade(m_FadeOutColor, m_FadeColor, duration));
+        yield return StartCoroutine(BeginFade(fadeOutColor, fadeColor, duration));
     }
 
 
     public IEnumerator BeginFadeIn()
     {
-        yield return StartCoroutine(BeginFade(m_FadeColor, m_FadeOutColor, m_FadeDuration));
+        yield return StartCoroutine(BeginFade(fadeColor, fadeOutColor, fadeDuration));
     }
 
 
     public IEnumerator BeginFadeIn(float duration)
     {
-        yield return StartCoroutine(BeginFade(m_FadeColor, m_FadeOutColor, duration));
+        yield return StartCoroutine(BeginFade(fadeColor, fadeOutColor, duration));
     }
 
 
     private IEnumerator BeginFade(Color startCol, Color endCol, float duration)
     {
         // Fading is now happening.  This ensures it won't be interupted by non-coroutine calls.
-        m_IsFading = true;
+        isFading = true;
 
         // Execute this loop once per frame until the timer exceeds the duration.
         float timer = 0f;
@@ -188,17 +181,17 @@ public class VRCameraFade : MonoSingleton<VRCameraFade>
         while (timer <= duration)
         {
             // Set the colour based on the normalised time.
-            m_FadeImage.color = Color.Lerp(startCol, endCol, m_FadeCurve.Evaluate(timer / duration));
+            fadeImage.color = Color.Lerp(startCol, endCol, fadeCurve.Evaluate(timer / duration));
 
             // Increment the timer by the time between frames and return next frame.
             timer += Time.deltaTime;
             yield return null;
         }
 
-        m_FadeImage.color = endCol;
+        fadeImage.color = endCol;
 
         // Fading is finished so allow other fading calls again.
-        m_IsFading = false;
+        isFading = false;
 
         // If anything is subscribed to OnFadeComplete call it.
         if (OnFadeComplete != null)
