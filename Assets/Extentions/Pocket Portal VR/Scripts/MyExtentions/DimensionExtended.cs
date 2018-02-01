@@ -31,35 +31,30 @@ public class DimensionExtended : Dimension
 		}
 	}
 
-	private void Start()
+	public static void StartInteractionsWithCurrent()
+	{
+		Current.SwitchOnInteractions();
+	}
+
+	private void Start ()
 	{
 		if (initialWorld)
 		{
 			current = this;
-			initial = this;
-			SwitchOnInteractions();
+			initial = this;			
 		}
-		else
-		{
-			SwitchOffInteractions();
-		}
+		
+		SwitchOffAutoDisablingOnInteractableObjects();
+		SwitchOffInteractions();
 
 		if (allDimensions == null)
 			allDimensions = new List<DimensionExtended>();
 		
-		allDimensions.Add(this);
-		SwitchOffAutoDisablingOnInteractableObjects();
+		allDimensions.Add(this);		
 	}
 
 	private void SwitchOffInteractions()
-	{
-//		Collider[] colliders = GetComponentsInChildren<Collider>();
-//		
-//		foreach (var coll in colliders)
-//		{
-//			coll.enabled = false;
-//		}
-		
+	{		
 		foreach (var componentType in interactionComponentTypes)
 		{
 			Component[] interactionComponentsInChildrens = GetComponentsInChildren(componentType);
@@ -74,12 +69,6 @@ public class DimensionExtended : Dimension
 	
 	private void SwitchOnInteractions()
 	{
-//		Collider[] colliders = GetComponentsInChildren<Collider>();
-//		
-//		foreach (var coll in colliders)
-//		{
-//			coll.enabled = true;
-//		}
 		
 		foreach (var componentType in interactionComponentTypes)
 		{

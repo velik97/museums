@@ -569,10 +569,10 @@
             <e p="CollectQuestManager.cs" t="Include" />
             <e p="DoorAutoClose.cs" t="Include" />
             <e p="GameInfo.cs" t="Include" />
+            <e p="GameManager.cs" t="Include" />
             <e p="PickUpObject.cs" t="Include" />
             <e p="PickUpsRespawnArea.cs" t="Include" />
             <e p="PortalSwitchButton.cs" t="Include" />
-            <e p="SwitchTutorialToQuest.cs" t="Include" />
             <e p="Tutorial" t="Include">
               <e p="PortalSwitch.cs" t="Include" />
               <e p="TutorialBasket.cs" t="Include" />
@@ -594,12 +594,16 @@
             <e p="LocalNetworkDiscovery.cs" t="Include" />
           </e>
           <e p="Utils" t="Include">
+            <e p="DirectionFollower.cs" t="Include" />
             <e p="DontDestroyOnLoad.cs" t="Include" />
             <e p="MonoSingleton.cs" t="Include" />
+            <e p="VRCameraFade.cs" t="Include" />
+            <e p="VRCameraText.cs" t="Include" />
           </e>
         </e>
         <e p="Shaders" t="Include">
           <e p="DissolveBurn.shader" t="Include" />
+          <e p="Overlay.shader" t="Include" />
           <e p="ScreenCutoutShader.shader" t="Include" />
         </e>
       </e>

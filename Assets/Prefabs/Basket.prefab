@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 65379098901797866}
   - component: {fileID: 23162043492449220}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Cover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,6 +132,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1655764724951468
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4380448066476494}
+  - component: {fileID: 33086922335727650}
+  - component: {fileID: 65406909067266420}
+  - component: {fileID: 23903895543249878}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1704006683297012
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,11 +224,12 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4909770312018674}
+  - {fileID: 4380448066476494}
   - {fileID: 4007792682285148}
   - {fileID: 4731290394985820}
   - {fileID: 4384899592157216}
   - {fileID: 4612945151482714}
+  - {fileID: 4909770312018674}
   m_Father: {fileID: 4303560597851196}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -222,7 +241,7 @@ Transform:
   m_GameObject: {fileID: 1339014629471236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.8, y: 0.51, z: -0.3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0000005, y: 1, z: 1.0000005}
   m_Children:
   - {fileID: 4284356539678340}
   - {fileID: 224172683234731530}
@@ -243,6 +262,19 @@ Transform:
   m_Father: {fileID: 4303560597851196}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!4 &4380448066476494
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1655764724951468}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.22, y: 0.02, z: 0.22}
+  m_Children: []
+  m_Father: {fileID: 4284356539678340}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4384899592157216
 Transform:
   m_ObjectHideFlags: 1
@@ -289,11 +321,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1233530359938220}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.22, y: 0.02, z: 0.22}
+  m_LocalPosition: {x: 0, y: 0.19, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.02, z: 0.2}
   m_Children: []
   m_Father: {fileID: 4284356539678340}
-  m_RootOrder: 0
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23162043492449220
 MeshRenderer:
@@ -308,7 +340,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 5fb4b893e3c84aa44992ad2b7cccbd6d, type: 2}
+  - {fileID: 2100000, guid: fadbfb8a8ef4c1542b22bd4078c25438, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -423,6 +455,38 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!23 &23903895543249878
+MeshRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1655764724951468}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_Materials:
+  - {fileID: 2100000, guid: 5fb4b893e3c84aa44992ad2b7cccbd6d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 1
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!23 &23951541735162410
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -455,6 +519,13 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!33 &33086922335727650
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1655764724951468}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!33 &33394040766944958
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -508,6 +579,18 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1844946043319490}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65406909067266420
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1655764724951468}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -616,6 +699,17 @@ MonoBehaviour:
   successColor: {r: 0.23679909, g: 0.86764705, b: 0.185013, a: 1}
   failureColor: {r: 0.9705882, g: 0.11418684, b: 0.11418684, a: 1}
   feedbackBirthPlace: {fileID: 4330717895079934}
+  cover: {fileID: 1233530359938220}
+  materials:
+  - {fileID: 2100000, guid: 5fb4b893e3c84aa44992ad2b7cccbd6d, type: 2}
+  - {fileID: 2100000, guid: a82800a950b99fa41b8010e7f52451f8, type: 2}
+  - {fileID: 2100000, guid: 95d16b4967d713f4285bda20cb734dda, type: 2}
+  colorMeshRenderers:
+  - {fileID: 23903895543249878}
+  - {fileID: 23535427860580616}
+  - {fileID: 23834121782961952}
+  - {fileID: 23403590120193088}
+  - {fileID: 23951541735162410}
   onPickUpsWithMyIndexOver:
     m_PersistentCalls:
       m_Calls: []
@@ -626,7 +720,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  index: 4
+  index: 5
   inBasketPoints: 0
   overallPoints: 0
 --- !u!114 &114775355763201620

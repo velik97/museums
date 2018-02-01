@@ -86,6 +86,11 @@ public class CollectQuestManager : MonoBehaviour
         questIsDone = true;
         timer.StopTimer();
         
+        foreach (var basket in baskets)
+        {
+            basket.Deactivate();
+        }
+        
         Debug.Log("Done");
     }
 }

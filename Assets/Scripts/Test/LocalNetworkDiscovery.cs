@@ -22,6 +22,8 @@ public class LocalNetworkDiscovery : NetworkDiscovery
 //            broadcastData = msg;
 //        });
         
+        print(GameInfo.Instance.computerId);
+        
         IPAddress[] localIPs = Dns.GetHostAddresses(Dns.GetHostName());
         foreach (IPAddress addr in localIPs)
         {

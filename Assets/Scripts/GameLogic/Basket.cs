@@ -14,6 +14,11 @@ public class Basket : MonoBehaviour
 
     public Transform feedbackBirthPlace;
 
+    public GameObject cover;
+
+    public List<Material> materials;
+    public List<MeshRenderer> colorMeshRenderers;
+    
     public UnityEvent onPickUpsWithMyIndexOver;
     public UnityEvent onObjectPlacedInBasket;
     
@@ -59,6 +64,26 @@ public class Basket : MonoBehaviour
         SetCountText();
 
         noMorePickUpsByMyIndex = false;
+        
+        cover.SetActive(false);
+        
+        SetMaterial();        
+    }
+
+    private void SetMaterial()
+    {
+        foreach (var colorMeshRenderer in colorMeshRenderers)
+        {
+            colorMeshRenderer.material = materials[(index - 1) % materials.Count];
+        }
+    }
+
+    public void Deactivate()
+    {
+        cover.SetActive(true);
+        UnityEngine.BoxCollider boxCollider = GetComponent<BoxCollider>();
+        if (boxCollider != null)
+            boxCollider.enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -69,7 +94,7 @@ public class Basket : MonoBehaviour
     }
 
     private void CountNewPicjUpObject(PickUpObject pu)
-    {
+    {            
         if (pu.index == index)
         {
             inBasketPoints += pu.points;

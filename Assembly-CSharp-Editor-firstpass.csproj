@@ -54,6 +54,7 @@
     <None Include="Assets\Extentions\SteamVR\Resources\SteamVR_Fade.shader" />
     <None Include="Assets\Extentions\SteamVR\Resources\SteamVR_ClearAll.shader" />
     <None Include="Assets\Extentions\SteamVR\InteractionSystem\Hints\Shaders\ControllerButtonHints.shader" />
+    <None Include="Assets\Shaders\Overlay.shader" />
     <None Include="Assets\Extentions\VRTK\Scripts\Internal\Shaders\UIOverlay.shader" />
     <None Include="Assets\Extentions\SteamVR\InteractionSystem\Teleport\Shaders\Highlight.shader" />
     <None Include="Assets\Extentions\VRTK\Scripts\Internal\Shaders\VRTK_OutlineBasic.shader" />

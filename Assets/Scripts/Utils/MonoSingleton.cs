@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using System.Collections.Generic;
 
 public abstract class MonoSingleton <T> : MonoBehaviour where T : MonoBehaviour {
 
@@ -14,12 +15,23 @@ public abstract class MonoSingleton <T> : MonoBehaviour where T : MonoBehaviour 
 				if (instance == null) {
 					instance = (T) FindObjectOfType (typeof(T));
 
-					if (FindObjectsOfType (typeof(T)).Length > 1) {
-						Debug.LogError ("[Singleton] Something went really wrong " +
-						                " - there should never be more than 1 singleton of type " + typeof(T).ToString () +
-						                "! Reopening the scene might fix it.");
+					T[] instances = (T[]) FindObjectsOfType(typeof(T));
+
+					if (instances.Length > 1)
+					{
+						Debug.LogWarning("[Singleton] More than 1 singleton of type " + typeof(T).ToString () +
+						                "! Deleting all despite the first one.");
+						for (var i = 1; i < instances.Length; i++)
+						{
+							Destroy(instances[i].gameObject);						
+						}
+						instance = instances[0];
 					} else if (instance == null) {
-						Debug.LogError ("[Singleton] There are no object of type " + typeof(T).ToString ());
+						Debug.LogWarning("[Singleton] There are no object of type " + typeof(T).ToString () +
+						                "! Crating new insance.");
+						GameObject newInstanceGameObject = new GameObject("[" + typeof(T).ToString() + "]");
+
+						instance = newInstanceGameObject.AddComponent<T>();
 					}
 				}
 

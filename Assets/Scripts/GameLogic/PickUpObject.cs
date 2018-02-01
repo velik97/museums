@@ -7,7 +7,7 @@ public class PickUpObject : MonoBehaviour
 	public int index;				// -1 is trash
 	public int points;
 	public string pickUpName;
-
+	
 	private static Dictionary<int, List<PickUpObject>> pickUpsListByIndex; 
 	
 	private Vector3 initialPosition;
@@ -37,7 +37,7 @@ public class PickUpObject : MonoBehaviour
 
 		rb = GetComponent<Rigidbody>();
 	}
-
+	
 	public void PlaceInBusket(bool destroy)
 	{
 		if (destroy)

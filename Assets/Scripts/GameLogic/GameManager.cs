@@ -3,15 +3,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SwitchTutorialToQuest : MonoBehaviour
+public class GameManager : MonoSingleton<GameManager>
 {
+	public string startText;
+	
 	public Transform doorTransform;
 	public List<Transform> trackedObjects;
 	public float minDistanceToDelete;
 
-	public List<GameObject> gameObjectsToDelete;
+	public List<GameObject> gameObjectsToDeleteAfterTutorial;
 	public GameObject door;
 
+	private void Start()
+	{
+		VRCameraText.Instance.ShowText(startText);
+		Invoke("StartGame", 5f);
+	}
+
+	public void StartGame()
+	{
+		DimensionExtended.StartInteractionsWithCurrent();
+		VRCameraText.Instance.HideText();
+		VRCameraFade.Instance.FadeOut();
+	}
+	
 	private void Update()
 	{
 		CheckPosition();
@@ -44,7 +59,7 @@ public class SwitchTutorialToQuest : MonoBehaviour
 
 	private IEnumerator DeleteObjectsAndStartQuest()
 	{
-		foreach (var obj in gameObjectsToDelete)
+		foreach (var obj in gameObjectsToDeleteAfterTutorial)
 		{
 			DimensionExtended dimension = obj.GetComponent<DimensionExtended>();
 			

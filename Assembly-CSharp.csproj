@@ -428,10 +428,10 @@
     <Compile Include="Assets\Scripts\GameLogic\CollectQuestManager.cs" />
     <Compile Include="Assets\Scripts\GameLogic\DoorAutoClose.cs" />
     <Compile Include="Assets\Scripts\GameLogic\GameInfo.cs" />
+    <Compile Include="Assets\Scripts\GameLogic\GameManager.cs" />
     <Compile Include="Assets\Scripts\GameLogic\PickUpObject.cs" />
     <Compile Include="Assets\Scripts\GameLogic\PickUpsRespawnArea.cs" />
     <Compile Include="Assets\Scripts\GameLogic\PortalSwitchButton.cs" />
-    <Compile Include="Assets\Scripts\GameLogic\SwitchTutorialToQuest.cs" />
     <Compile Include="Assets\Scripts\GameLogic\Tutorial\PortalSwitch.cs" />
     <Compile Include="Assets\Scripts\GameLogic\Tutorial\TutorialBasket.cs" />
     <Compile Include="Assets\Scripts\GameLogic\Tutorial\TutorialManager.cs" />
@@ -443,11 +443,15 @@
     <Compile Include="Assets\Scripts\Leaderboard\NameUI.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\ScoreUI.cs" />
     <Compile Include="Assets\Scripts\Test\LocalNetworkDiscovery.cs" />
+    <Compile Include="Assets\Scripts\Utils\DirectionFollower.cs" />
     <Compile Include="Assets\Scripts\Utils\DontDestroyOnLoad.cs" />
     <Compile Include="Assets\Scripts\Utils\MonoSingleton.cs" />
+    <Compile Include="Assets\Scripts\Utils\VRCameraFade.cs" />
+    <Compile Include="Assets\Scripts\Utils\VRCameraText.cs" />
     <None Include="Assets\Extentions\SteamVR\Resources\SteamVR_Fade.shader" />
     <None Include="Assets\Extentions\SteamVR\Resources\SteamVR_ClearAll.shader" />
     <None Include="Assets\Extentions\SteamVR\InteractionSystem\Hints\Shaders\ControllerButtonHints.shader" />
+    <None Include="Assets\Shaders\Overlay.shader" />
     <None Include="Assets\Extentions\VRTK\Scripts\Internal\Shaders\UIOverlay.shader" />
     <None Include="Assets\Extentions\SteamVR\InteractionSystem\Teleport\Shaders\Highlight.shader" />
     <None Include="Assets\Extentions\VRTK\Scripts\Internal\Shaders\VRTK_OutlineBasic.shader" />
