@@ -30,15 +30,13 @@ public class CollectQuestManager : MonoBehaviour
         timeForQuest = time;
         
         pointsInBaskets = new int[baskets.Count];
-        
+
+        print("start quest");
+                
         for (var i = 0; i < baskets.Count; i++)
         {
             int copy = i;
-            baskets[i].onPickUpsWithMyIndexOver.AddListener(delegate
-            {
-                BasketDone();
-                baskets[copy].onPickUpsWithMyIndexOver.RemoveAllListeners();
-            });
+            baskets[i].onPickUpsWithMyIndexOver.AddListener(BasketDone);
 
             overallPoints += baskets[i].overallPoints;
             pointsInBaskets[i] = 0;
@@ -76,6 +74,8 @@ public class CollectQuestManager : MonoBehaviour
     private void BasketDone()
     {
         doneBasketsCount++;
+
+        print(2 + " done count: " + doneBasketsCount + ", all count: " + baskets.Count); 
         
         if (doneBasketsCount == baskets.Count)
             Done();

@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 95615943457533142}
   - component: {fileID: 114376232104455500}
   - component: {fileID: 114923256205100822}
+  - component: {fileID: 114937463345086020}
   m_Layer: 5
   m_Name: Feedback
   m_TagString: Untagged
@@ -222,6 +223,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114937463345086020
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1137173425790140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03ddf9b287168264e96343a200e00287, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  refCamera: {fileID: 0}
 --- !u!114 &114955090373064954
 MonoBehaviour:
   m_ObjectHideFlags: 1

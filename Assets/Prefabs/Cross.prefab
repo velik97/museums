@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114578878152034792}
   - component: {fileID: 95225205760401620}
   - component: {fileID: 114252544268518898}
+  - component: {fileID: 114804118109951838}
   m_Layer: 5
   m_Name: Cross
   m_TagString: Untagged
@@ -120,6 +121,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114804118109951838
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1151205589052196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03ddf9b287168264e96343a200e00287, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  refCamera: {fileID: 0}
 --- !u!114 &114960472626058886
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -1,0 +1,170 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class StartGameUI : MonoSingleton<StartGameUI>
+{
+    public InputField nameField;
+    public InputField timeField;
+    public Button startButton;
+
+    public Image loadingImage;
+    public Image matchImage;
+    public Image notMatchImage;
+
+    public int minGameTime;
+    public int maxGameTime;
+    
+    public float checkDuration = .4f;
+
+    private List<Score> scores;
+
+    [HideInInspector] public string finalPlayerName;
+    private int gameMinutesTime;
+
+    private string lastTimeStringInput;
+
+    public int GameMinutesTime
+    {
+        get
+        {
+            if (gameMinutesTime == 0)
+            {
+                if (!PlayerPrefs.HasKey("GameTime"))
+                {
+                    gameMinutesTime = minGameTime;
+                    PlayerPrefs.SetInt("GameTime", gameMinutesTime);
+                }
+                gameMinutesTime = PlayerPrefs.GetInt("GameTime");
+            }
+            return gameMinutesTime;
+        }
+        set
+        {
+            gameMinutesTime = value;
+            PlayerPrefs.SetInt("GameTime", gameMinutesTime);
+        }
+    }
+
+    public List<Score> Scores
+    {
+        get
+        {
+            if (scores == null)
+                scores = LocalNetworkLeaderboard.Instance.GetLocalScores();
+            return scores;
+        }
+    }
+
+    private void Start()
+    {
+        nameField.onValueChanged.AddListener(CheckName);
+        SetEmpty();
+        
+        startButton.onClick.AddListener(GameManager.Instance.StartGame);
+        startButton.onClick.AddListener(delegate
+        {
+            gameObject.SetActive(false);
+        });
+
+        lastTimeStringInput = GameMinutesTime.ToString();
+        timeField.text = lastTimeStringInput;
+        
+        timeField.onValueChanged.AddListener(CheckTimeFormat);
+        timeField.onEndEdit.AddListener(CheckTimeBounds);
+    }
+
+    private void CheckName(string playerName)
+    {
+        SetLoading();
+        StopAllCoroutines();
+        if (playerName == "")
+        {
+            SetEmpty();
+            return;
+        }
+        StartCoroutine(WaitForCheck(playerName));
+    }
+
+    private void CheckTimeFormat(string timeString)
+    {
+        if (!int.TryParse(timeString, out gameMinutesTime))
+            timeField.text = lastTimeStringInput;
+        else
+            lastTimeStringInput = timeString;
+    }
+    
+    private void CheckTimeBounds(string timeString)
+    {
+        if (!int.TryParse(timeString, out gameMinutesTime))
+        {
+            timeField.text = lastTimeStringInput;
+            gameMinutesTime = int.Parse(lastTimeStringInput);
+        }
+
+        gameMinutesTime = Mathf.Clamp(gameMinutesTime, minGameTime, maxGameTime);
+
+        GameMinutesTime = gameMinutesTime;
+
+        lastTimeStringInput = GameMinutesTime.ToString();
+        timeField.text = lastTimeStringInput;
+    }
+
+    private IEnumerator WaitForCheck(string playerName)
+    {
+        yield return new WaitForSeconds(checkDuration);
+
+        bool contains = false;
+        
+        foreach (var score in Scores)
+        {
+            if (score.name == playerName)
+            {
+                contains = true;
+                break;
+            }                
+        }
+        
+        if (contains)
+            SetNotMatch();
+        else 
+            SetMatch();
+    }
+
+    private void SetLoading()
+    {
+        loadingImage.gameObject.SetActive(true);
+        matchImage.gameObject.SetActive(false);
+        notMatchImage.gameObject.SetActive(false);
+        
+        startButton.interactable = false;
+    }
+    
+    private void SetMatch()
+    {
+        loadingImage.gameObject.SetActive(false);
+        matchImage.gameObject.SetActive(true);
+        notMatchImage.gameObject.SetActive(false);
+        
+        startButton.interactable = true;
+    }
+    
+    private void SetNotMatch()
+    {
+        loadingImage.gameObject.SetActive(false);
+        matchImage.gameObject.SetActive(false);
+        notMatchImage.gameObject.SetActive(true);
+        
+        startButton.interactable = false;
+    }
+
+    private void SetEmpty()
+    {
+        loadingImage.gameObject.SetActive(false);
+        matchImage.gameObject.SetActive(false);
+        notMatchImage.gameObject.SetActive(false);
+        
+        startButton.interactable = false;
+    }
+}

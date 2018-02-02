@@ -39,6 +39,7 @@ public class TutorialManager : MonoSingleton<TutorialManager>
 		{
 			tutorialDone = true;
 			onTutorialDone.Invoke();
+			PortalSwitch.Instance.SwitchPortal();
 		}
 	}
 }

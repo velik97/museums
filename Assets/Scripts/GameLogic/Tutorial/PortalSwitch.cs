@@ -31,7 +31,7 @@ public class PortalSwitch : MonoSingleton<PortalSwitch>
     public void SwitchPortal()
     {
         currentIndex++;
-        currentIndex %= portals.Count + 1;
+        currentIndex %= portals.Count;
         SwitchPortal(currentIndex);
     }
 

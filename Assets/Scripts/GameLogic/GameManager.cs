@@ -3,10 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoSingleton<GameManager>
 {
 	public string startText = "The game will start soon...";
+
+	public InputField nameField;
 	
 	public Transform doorTransform;
 	public List<Transform> trackedObjects;
@@ -22,11 +25,12 @@ public class GameManager : MonoSingleton<GameManager>
 	private void Start()
 	{
 		VRCameraText.Instance.ShowText(startText);
-		StartGame();
 	}
 
 	public void StartGame()
 	{
+		GameInfo.Instance.playerName = StartGameUI.Instance.finalPlayerName;
+		timeForQuest = StartGameUI.Instance.GameMinutesTime * 60;
 		StartCoroutine(FadeInAndStartGame());
 		tutorialIsDone = false;
 	}
@@ -71,6 +75,10 @@ public class GameManager : MonoSingleton<GameManager>
 
 	private void TutorialDone()
 	{
+		if (tutorialIsDone)
+			return;
+		
+		tutorialIsDone = true;
 		StartCoroutine(DeleteObjectsAndStartQuest());
 	}
 

@@ -45,7 +45,7 @@ public class Basket : MonoBehaviour
                 overAllCount--;
             
             SetCountText();
-        });
+        });        
     }
 
     private void Start()
@@ -94,7 +94,9 @@ public class Basket : MonoBehaviour
     }
 
     private void CountNewPicjUpObject(PickUpObject pu)
-    {            
+    {     
+        onObjectPlacedInBasket.Invoke();
+        
         if (pu.index == index)
         {
             inBasketPoints += pu.points;
@@ -102,7 +104,7 @@ public class Basket : MonoBehaviour
 
             pu.PlaceInBusket(true);
             if (!noMorePickUpsByMyIndex && PickUpObject.PickUpsListByIndex[index].Count == 0)
-            {
+            {                
                 noMorePickUpsByMyIndex = true;
                 onPickUpsWithMyIndexOver.Invoke();
             }
@@ -117,8 +119,7 @@ public class Basket : MonoBehaviour
             ShowFailure(pu.points, pu.pickUpName);
             onPickUpDestroyedWithFailure.Invoke(pu.index);
         }               
-        
-        onObjectPlacedInBasket.Invoke();
+                
     }
 
     private void SetCountText()
