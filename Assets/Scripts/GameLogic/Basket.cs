@@ -30,6 +30,8 @@ public class Basket : MonoBehaviour
 
     private static Dictionary<int, Basket> basketByIndex;
 
+    private PickUpObject lastPickUpObject;
+
     private void Awake()
     {
         if (basketByIndex == null)
@@ -83,7 +85,12 @@ public class Basket : MonoBehaviour
     }
 
     private void CountNewPicjUpObject(PickUpObject pu)
-    {             
+    {
+        if (lastPickUpObject == pu)
+            return;
+
+        lastPickUpObject = pu;
+        
         if (pu.index == index)
         {
             inBasketObjectsCount++;
@@ -92,7 +99,7 @@ public class Basket : MonoBehaviour
             ShowSuccess(pu.points, pu.pickUpName);
             SetCountText();
             
-            CollectQuestManager.current.AddPoints(-pu.points);
+            CollectQuestManager.current.AddPoints(pu.points);
         }
         else
         {                   
@@ -105,7 +112,7 @@ public class Basket : MonoBehaviour
                 basketByIndex[pu.index].SetCountText();
             }
             
-            CollectQuestManager.current.AddPoints(pu.points);
+            CollectQuestManager.current.AddPoints(-pu.points);
         }               
           
         onObjectPlacedInBasket.Invoke();        

@@ -7,31 +7,47 @@ using VRTK.UnityEventHelper;
 public class DisappearOnGrab : MonoBehaviour
 {
     private MeshRenderer[] meshRenderers;
-    private VRTK_InteractGrab_UnityEvents grabEvents;
+    private VRTK_InteractGrab grab;
+
+    private bool grabbing;
 
     private void Awake()
     {
         meshRenderers = GetComponentsInChildren<MeshRenderer>();
-        
-        grabEvents = GetComponent<VRTK_InteractGrab_UnityEvents>();
-        if (grabEvents == null)
-        {
-            grabEvents = gameObject.AddComponent<VRTK_InteractGrab_UnityEvents>();
-        }
-        
-        grabEvents.OnControllerGrabInteractableObject.AddListener(Disappear);
-        grabEvents.OnControllerUngrabInteractableObject.AddListener(Appear);
+
+        grab = GetComponent<VRTK_InteractGrab>();
+        grabbing = false;
     }
 
-    private void Disappear(object sender, ObjectInteractEventArgs args)
+    private void Update()
     {
+        if (grabbing)
+        {
+            if (grab.GetGrabbedObject() == null)
+            {
+                grabbing = false;
+                Appear();
+            }
+        }
+        else
+        {
+            if (grab.GetGrabbedObject() != null)
+            {
+                grabbing = true;
+                Disappear();
+            }
+        }
+    }
+
+    private void Disappear()
+    {       
         foreach (var meshRenderer in meshRenderers)
         {
             meshRenderer.enabled = false;
         }
     }
     
-    private void Appear(object sender, ObjectInteractEventArgs args)
+    private void Appear()
     {
         foreach (var meshRenderer in meshRenderers)
         {
