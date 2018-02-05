@@ -575,6 +575,7 @@
             <e p="Tutorial" t="Include">
               <e p="PortalSwitch.cs" t="Include" />
               <e p="PortalSwitchButton.cs" t="Include" />
+              <e p="SlideShow.cs" t="Include" />
               <e p="TutorialBasket.cs" t="Include" />
               <e p="TutorialManager.cs" t="Include" />
             </e>

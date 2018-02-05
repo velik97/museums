@@ -13,7 +13,6 @@ public class PortalSwitchButton : MonoSingleton<PortalSwitchButton>
 	public Transform baseTransform;
 	
 	private VRTK_Button_UnityEvents buttonEvents;
-	private VRTK_Button button;
 
 	private void Start()
 	{
@@ -22,11 +21,7 @@ public class PortalSwitchButton : MonoSingleton<PortalSwitchButton>
 		{
 			buttonEvents = gameObject.AddComponent<VRTK_Button_UnityEvents>();
 		}
-
-		button = GetComponent<VRTK_Button>();
-		button.enabled = false;
-		
-		buttonEvents.OnPushed.AddListener(ReactOnButton);
+				
 		TutorialManager.Instance.onTutorialDone.AddListener(Show);
 	}
 
@@ -41,13 +36,13 @@ public class PortalSwitchButton : MonoSingleton<PortalSwitchButton>
 	public void Show()
 	{
 		StartCoroutine(MoveButton(localYCoordWhenShow));
-		button.enabled = true;
+		buttonEvents.OnPushed.AddListener(ReactOnButton);
 	}
 
 	public void Hide()
 	{
 		StartCoroutine(MoveButton(localYCoordWhenHide));
-		button.enabled = false;
+		buttonEvents.OnPushed.RemoveAllListeners();
 	}
 
 	private IEnumerator MoveButton(float endYCoord)

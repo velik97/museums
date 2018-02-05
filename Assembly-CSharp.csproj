@@ -433,6 +433,7 @@
     <Compile Include="Assets\Scripts\GameLogic\PickUpsRespawnArea.cs" />
     <Compile Include="Assets\Scripts\GameLogic\Tutorial\PortalSwitch.cs" />
     <Compile Include="Assets\Scripts\GameLogic\Tutorial\PortalSwitchButton.cs" />
+    <Compile Include="Assets\Scripts\GameLogic\Tutorial\SlideShow.cs" />
     <Compile Include="Assets\Scripts\GameLogic\Tutorial\TutorialBasket.cs" />
     <Compile Include="Assets\Scripts\GameLogic\Tutorial\TutorialManager.cs" />
     <Compile Include="Assets\Scripts\GameLogic\Utils\AutoDestroy.cs" />
