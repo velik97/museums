@@ -125,11 +125,14 @@ public class StartGameUI : MonoSingleton<StartGameUI>
                 break;
             }                
         }
-        
+
         if (contains)
             SetNotMatch();
-        else 
+        else
+        {
             SetMatch();
+            finalPlayerName = playerName;
+        }        
     }
 
     private void SetLoading()

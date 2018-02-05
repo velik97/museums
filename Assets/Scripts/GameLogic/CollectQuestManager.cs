@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,36 +16,29 @@ public class CollectQuestManager : MonoBehaviour
     private int collectedPoints;
     private int overallPoints;
 
-    private int[] pointsInBaskets;
-
     private float timeForQuest;
+
+    public static CollectQuestManager current;
     
     public void StartQuest(float time)
     {
+        current = this;
+        
         doneBasketsCount = 0;
         questIsDone = false;
 
         collectedPoints = 0;
         overallPoints = 0;
 
-        timeForQuest = time;
-        
-        pointsInBaskets = new int[baskets.Count];
-
-        print("start quest");
+        timeForQuest = time;        
                 
-        for (var i = 0; i < baskets.Count; i++)
+        foreach (Basket b in baskets)
         {
-            int copy = i;
-            baskets[i].onPickUpsWithMyIndexOver.AddListener(BasketDone);
-
-            overallPoints += baskets[i].overallPoints;
-            pointsInBaskets[i] = 0;
-            
-            baskets[i].onObjectPlacedInBasket.AddListener(delegate
+            b.onObjectPlacedInBasket.AddListener(CheckAllBaskets);
+            foreach (var pu in PickUpObject.PickUpsListByIndex[b.index])
             {
-                SetPoints(copy);
-            });
+                overallPoints += pu.points;
+            }
         }
         
         timer.onTimeEnded.AddListener(delegate
@@ -58,27 +52,22 @@ public class CollectQuestManager : MonoBehaviour
         pointsText.text = collectedPoints + "/" + overallPoints;
     }
 
-    private void SetPoints(int basketNumber)
+    private void CheckAllBaskets()
     {
-        pointsInBaskets[basketNumber] = baskets[basketNumber].inBasketPoints;
-        collectedPoints = 0;
-        
-        foreach (var points in pointsInBaskets)
+        if (baskets.All(o => o.BasketIsFull() == true))
         {
-            collectedPoints += points;
+            Done();
         }
+    }
+
+    public void AddPoints(int points)
+    {
+        collectedPoints += points;
+
+        if (collectedPoints < 0)
+            collectedPoints = 0;
         
         pointsText.text = collectedPoints + "/" + overallPoints;
-    }
-    
-    private void BasketDone()
-    {
-        doneBasketsCount++;
-
-        print(2 + " done count: " + doneBasketsCount + ", all count: " + baskets.Count); 
-        
-        if (doneBasketsCount == baskets.Count)
-            Done();
     }
     
     private void Done()

@@ -20,13 +20,13 @@ public class PortalSwitch : MonoSingleton<PortalSwitch>
         currentIndex = initial;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SwitchPortal();
-        }
-    }
+//    private void Update()
+//    {
+//        if (Input.GetKeyDown(KeyCode.Space))
+//        {
+//            SwitchPortal();
+//        }
+//    }
 
     public void SwitchPortal()
     {
@@ -38,9 +38,6 @@ public class PortalSwitch : MonoSingleton<PortalSwitch>
     public void SwitchPortal(int index)
     {
         bool atLeastOneIsActive = false;
-
-        Portal portal;
-//        portal.
 
         for (var i = 0; i < portals.Count; i++)
         {

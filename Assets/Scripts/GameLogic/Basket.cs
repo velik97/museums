@@ -19,47 +19,36 @@ public class Basket : MonoBehaviour
     public List<Material> materials;
     public List<MeshRenderer> colorMeshRenderers;
     
-    public UnityEvent onPickUpsWithMyIndexOver;
     public UnityEvent onObjectPlacedInBasket;
     
-    public int index;
+    public int index;    
 
-    private static IntEvent onPickUpDestroyedWithFailure;
-
-    private int inBasketCount;
-    private int overAllCount;
-
-    [HideInInspector] public int inBasketPoints;
-    [HideInInspector] public int overallPoints;
+    private int inBasketObjectsCount;
+    [HideInInspector] public int overAllObjectsCount;
 
     private bool noMorePickUpsByMyIndex;
 
+    private static Dictionary<int, Basket> basketByIndex;
+
     private void Awake()
     {
-        if (onPickUpDestroyedWithFailure == null)
-            onPickUpDestroyedWithFailure = new IntEvent();
-        
-        onPickUpDestroyedWithFailure.AddListener(delegate(int destroyedIndex)
+        if (basketByIndex == null)
+            basketByIndex = new Dictionary<int, Basket>();
+
+        if (!basketByIndex.ContainsKey(index))
         {
-            if (index == destroyedIndex)
-                overAllCount--;
-            
-            SetCountText();
-        });        
+            basketByIndex.Add(index, this);
+        }
+        else
+        {
+            Debug.LogError("More than 1 basket with index: " + index + "!");
+        }
     }
 
     private void Start()
-    {
-        inBasketPoints = 0;
-        overallPoints = 0;
-
-        inBasketCount = 0;
-        overAllCount = PickUpObject.PickUpsListByIndex[index].Count;
-        
-        foreach (var pickUp in PickUpObject.PickUpsListByIndex[index])
-        {
-            overallPoints += pickUp.points;
-        }
+    {        
+        inBasketObjectsCount = 0;
+        overAllObjectsCount = PickUpObject.PickUpsListByIndex[index].Count;
         
         SetCountText();
 
@@ -94,37 +83,47 @@ public class Basket : MonoBehaviour
     }
 
     private void CountNewPicjUpObject(PickUpObject pu)
-    {     
-        onObjectPlacedInBasket.Invoke();
-        
+    {             
         if (pu.index == index)
         {
-            inBasketPoints += pu.points;
-            inBasketCount++;
+            inBasketObjectsCount++;
 
-            pu.PlaceInBusket(true);
-            if (!noMorePickUpsByMyIndex && PickUpObject.PickUpsListByIndex[index].Count == 0)
-            {                
-                noMorePickUpsByMyIndex = true;
-                onPickUpsWithMyIndexOver.Invoke();
-            }
+            pu.PlaceInBusket(true);            
             ShowSuccess(pu.points, pu.pickUpName);
             SetCountText();
+            
+            CollectQuestManager.current.AddPoints(-pu.points);
         }
         else
-        {           
-            inBasketPoints -= pu.points;
-            inBasketPoints = inBasketPoints > 0 ? inBasketPoints : 0;
+        {                   
             pu.PlaceInBusket(true);
             ShowFailure(pu.points, pu.pickUpName);
-            onPickUpDestroyedWithFailure.Invoke(pu.index);
+
+            if (basketByIndex.ContainsKey(pu.index))
+            {
+                basketByIndex[pu.index].overAllObjectsCount--;
+                basketByIndex[pu.index].SetCountText();
+            }
+            
+            CollectQuestManager.current.AddPoints(pu.points);
         }               
-                
+          
+        onObjectPlacedInBasket.Invoke();        
     }
 
-    private void SetCountText()
+    public bool BasketIsFull()
     {
-        overallCountText.text = inBasketCount + "/" + overAllCount;
+        if (!noMorePickUpsByMyIndex && overAllObjectsCount == inBasketObjectsCount)
+        {                
+            noMorePickUpsByMyIndex = true;
+        }
+
+        return noMorePickUpsByMyIndex;
+    }
+
+    public void SetCountText()
+    {
+        overallCountText.text = inBasketObjectsCount + "/" + overAllObjectsCount;
     }
     
     private void ShowSuccess(int points, string name)
