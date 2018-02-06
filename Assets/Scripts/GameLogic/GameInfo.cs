@@ -7,7 +7,7 @@ public class GameInfo : MonoSingleton<GameInfo>
 {
     public string playerName = "";
     public int computerId = 1;
-    public int locationId = -1;
+    public int locationId = 1;
 
     public int points;
 

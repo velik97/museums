@@ -584,6 +584,7 @@
               <e p="FloatingFeedback.cs" t="Include" />
               <e p="LookAtUser.cs" t="Include" />
               <e p="Timer.cs" t="Include" />
+              <e p="TimerDisplay.cs" t="Include" />
             </e>
           </e>
           <e p="LeaderBoard" t="Include">
@@ -591,6 +592,7 @@
             <e p="LeaderBoardUI.cs" t="Include" />
             <e p="LocalNetworkLeaderBoard.cs" t="Include" />
             <e p="NameUI.cs" t="Include" />
+            <e p="OperatorLeaderBoardUI.cs" t="Include" />
             <e p="ScoreUI.cs" t="Include" />
           </e>
           <e p="OperatorUI" t="Include">

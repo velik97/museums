@@ -7,6 +7,7 @@ public class StartGameUI : MonoSingleton<StartGameUI>
 {
     public InputField nameField;
     public InputField timeField;
+    public Dropdown startTimeDropDown;
     public Button startButton;
 
     public Image loadingImage;
@@ -47,6 +48,28 @@ public class StartGameUI : MonoSingleton<StartGameUI>
         }
     }
 
+    public int StartTimeOption
+    {
+        get
+        {
+            int option;
+            if (!PlayerPrefs.HasKey("StartTimeOptin"))
+            {
+                option = 0;
+                PlayerPrefs.SetInt("StartTimeOptin", option);
+            }
+            else
+            {
+                option = PlayerPrefs.GetInt("StartTimeOptin");
+            }
+            return option;
+        }
+        set
+        {
+            PlayerPrefs.SetInt("StartTimeOptin", value);
+        }
+    }
+
     public List<Score> Scores
     {
         get
@@ -60,11 +83,13 @@ public class StartGameUI : MonoSingleton<StartGameUI>
     private void Start()
     {
         nameField.onValueChanged.AddListener(CheckName);
+        startTimeDropDown.value = StartTimeOption;
         SetEmpty();
         
-        startButton.onClick.AddListener(GameManager.Instance.StartGame);
         startButton.onClick.AddListener(delegate
         {
+            StartTimeOption = startTimeDropDown.value;
+            GameManager.Instance.StartGame();
             gameObject.SetActive(false);
         });
 

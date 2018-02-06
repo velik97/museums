@@ -25,6 +25,7 @@ public class Basket : MonoBehaviour
 
     private int inBasketObjectsCount;
     [HideInInspector] public int overAllObjectsCount;
+    [HideInInspector] public int initialObjectsCount;
 
     private bool noMorePickUpsByMyIndex;
 
@@ -51,6 +52,7 @@ public class Basket : MonoBehaviour
     {        
         inBasketObjectsCount = 0;
         overAllObjectsCount = PickUpObject.PickUpsListByIndex[index].Count;
+        initialObjectsCount = overAllObjectsCount;
         
         SetCountText();
 
@@ -124,6 +126,18 @@ public class Basket : MonoBehaviour
         {                
             noMorePickUpsByMyIndex = true;
         }
+
+        return noMorePickUpsByMyIndex;
+    }
+    
+    public bool BasketIsFull(out bool successfully)
+    {
+        if (!noMorePickUpsByMyIndex && overAllObjectsCount == inBasketObjectsCount)
+        {                
+            noMorePickUpsByMyIndex = true;
+        }
+
+        successfully = inBasketObjectsCount == initialObjectsCount;
 
         return noMorePickUpsByMyIndex;
     }

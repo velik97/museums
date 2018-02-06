@@ -26,6 +26,14 @@ public class ScoreUI : MonoBehaviour
 		statusText.text = "...";
 		pointsText.text = "";
 	}
+	
+	public void SetClear()
+	{
+		placeText.text  = "";
+		nameText.text   = "";
+		statusText.text = "";
+		pointsText.text = "";
+	}
 
 	public void SetInfo (Score score, int place)
 	{

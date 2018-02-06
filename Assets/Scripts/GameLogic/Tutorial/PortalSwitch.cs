@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PortalSwitch : MonoSingleton<PortalSwitch>
 {
     public List<GameObject> portals;
+    public Text dimensionNameText;
+    public List<string> dimensionNames;
 
     [Tooltip("Walls near portals surface should be disabled, when portals are arctive")]
     public List<GameObject> underPortalWalls;
@@ -18,15 +21,8 @@ public class PortalSwitch : MonoSingleton<PortalSwitch>
         SwitchPortal(initial);
 
         currentIndex = initial;
+        dimensionNameText.text = "";
     }
-
-//    private void Update()
-//    {
-//        if (Input.GetKeyDown(KeyCode.Space))
-//        {
-//            SwitchPortal();
-//        }
-//    }
 
     public void SwitchPortal()
     {
@@ -52,5 +48,7 @@ public class PortalSwitch : MonoSingleton<PortalSwitch>
         }
 
         currentIndex = index;
+        if (currentIndex < dimensionNames.Count)        
+            dimensionNameText.text = dimensionNames[currentIndex];
     }
 }

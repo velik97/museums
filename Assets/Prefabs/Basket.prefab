@@ -208,8 +208,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1522314395999368}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.100000024, y: 0.100000024, z: 0}
-  m_LocalScale: {x: 0.22000012, y: 0.020000007, z: 0.22}
+  m_LocalPosition: {x: 0.100000024, y: 0.12, z: 0}
+  m_LocalScale: {x: 0.22, y: 0.02, z: 0.18}
   m_Children: []
   m_Father: {fileID: 4284356539678340}
   m_RootOrder: 1
@@ -282,7 +282,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1623983052965708}
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0.100000024, z: 0.099999994}
+  m_LocalPosition: {x: 0, y: 0.12, z: 0.099999994}
   m_LocalScale: {x: 0.22, y: 0.02, z: 0.22}
   m_Children: []
   m_Father: {fileID: 4284356539678340}
@@ -295,7 +295,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1948422256167784}
   m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0.100000024, z: -0.099999994}
+  m_LocalPosition: {x: 0, y: 0.12, z: -0.099999994}
   m_LocalScale: {x: 0.22, y: 0.02, z: 0.22}
   m_Children: []
   m_Father: {fileID: 4284356539678340}
@@ -308,8 +308,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1844946043319490}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.100000024, y: 0.100000024, z: 0}
-  m_LocalScale: {x: 0.22000012, y: 0.020000007, z: 0.22}
+  m_LocalPosition: {x: -0.100000024, y: 0.12, z: 0}
+  m_LocalScale: {x: 0.22, y: 0.02, z: 0.18}
   m_Children: []
   m_Father: {fileID: 4284356539678340}
   m_RootOrder: 2
@@ -321,8 +321,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1233530359938220}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.19, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.02, z: 0.2}
+  m_LocalPosition: {x: 0, y: 0.21, z: 0}
+  m_LocalScale: {x: 0.18, y: 0.02, z: 0.18}
   m_Children: []
   m_Father: {fileID: 4284356539678340}
   m_RootOrder: 5
@@ -710,19 +710,14 @@ MonoBehaviour:
   - {fileID: 23834121782961952}
   - {fileID: 23403590120193088}
   - {fileID: 23951541735162410}
-  onPickUpsWithMyIndexOver:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
   onObjectPlacedInBasket:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  index: 5
-  inBasketPoints: 0
-  overallPoints: 0
+  index: 4
+  overAllObjectsCount: 0
+  initialObjectsCount: 0
 --- !u!114 &114775355763201620
 MonoBehaviour:
   m_ObjectHideFlags: 1

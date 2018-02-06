@@ -440,10 +440,12 @@
     <Compile Include="Assets\Scripts\GameLogic\Utils\FloatingFeedback.cs" />
     <Compile Include="Assets\Scripts\GameLogic\Utils\LookAtUser.cs" />
     <Compile Include="Assets\Scripts\GameLogic\Utils\Timer.cs" />
+    <Compile Include="Assets\Scripts\GameLogic\Utils\TimerDisplay.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\LeaderBoardUI.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\LeaderboardSceneManager.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\LocalNetworkLeaderboard.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\NameUI.cs" />
+    <Compile Include="Assets\Scripts\Leaderboard\OperatorLeaderBoardUI.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\ScoreUI.cs" />
     <Compile Include="Assets\Scripts\OperatorUI\StartGameUI.cs" />
     <Compile Include="Assets\Scripts\Test\LocalNetworkDiscovery.cs" />

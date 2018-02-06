@@ -5,6 +5,7 @@ using UnityEngine;
 public class LeaderboardSceneManager : MonoBehaviour
 {
     public LeaderBoardUI leaderBoardUI;
+    public int initialLocaionId;
 
     private void Start()
     {
@@ -21,7 +22,7 @@ public class LeaderboardSceneManager : MonoBehaviour
         }
         else
         {
-            GameInfo.Instance.locationId = 3;
+            GameInfo.Instance.locationId = initialLocaionId;
         }
 
         leaderBoardUI.ShowAllScores();

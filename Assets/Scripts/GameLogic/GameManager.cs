@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoSingleton<GameManager>
-{
+{		
 	public string startText = "The game will start soon...";
 
 	public InputField nameField;
@@ -18,9 +18,10 @@ public class GameManager : MonoSingleton<GameManager>
 
 	public List<GameObject> gameObjectsToDeleteAfterTutorial;
 
-	public string finalSceneName = "Final";
+	public string[] finalSceneNames;
 
 	private bool tutorialIsDone;
+	private StartTimeOption startTimeOption;
 
 	private void Start()
 	{
@@ -30,6 +31,8 @@ public class GameManager : MonoSingleton<GameManager>
 	public void StartGame()
 	{
 		GameInfo.Instance.playerName = StartGameUI.Instance.finalPlayerName;
+		startTimeOption = (StartTimeOption) StartGameUI.Instance.StartTimeOption;
+		print("start time: " + startTimeOption);
 		timeForQuest = StartGameUI.Instance.GameMinutesTime * 60;
 		StartCoroutine(FadeInAndStartGame());
 		tutorialIsDone = false;
@@ -102,6 +105,8 @@ public class GameManager : MonoSingleton<GameManager>
 		doorTransform.gameObject.SetActive(false);
 				
 		DimensionExtended.Current.GetComponent<CollectQuestManager>().StartQuest(timeForQuest);
+		if (startTimeOption == StartTimeOption.AfetrTutorial)
+			Timer.Instance.StartTimer(timeForQuest);
 	}
 
 	private IEnumerator FadeInAndStartGame()
@@ -111,12 +116,21 @@ public class GameManager : MonoSingleton<GameManager>
 		VRCameraText.Instance.HideText();
 		yield return new WaitForSeconds(2f);
 		VRCameraFade.Instance.FadeIn();
+		
+		if (startTimeOption == StartTimeOption.FromStart)
+			Timer.Instance.StartTimer(timeForQuest);
 	}
 
 	private IEnumerator FadeOutAndLoadFinalScene()
 	{
 		VRCameraFade.Instance.FadeOut();
 		yield return new WaitForSeconds(2f);
-		SceneManager.LoadScene(finalSceneName);
+		SceneManager.LoadScene(finalSceneNames[GameInfo.Instance.locationId - 1]);
 	}
+}
+
+public enum StartTimeOption
+{
+	FromStart = 0,
+	AfetrTutorial = 1
 }
