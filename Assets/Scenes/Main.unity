@@ -962,9 +962,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 10
-  points: 5
-  pickUpName: green ball
+  id: 31
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &113330465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1361,9 +1367,9 @@ GameObject:
   - component: {fileID: 151585348}
   - component: {fileID: 151585347}
   - component: {fileID: 151585346}
-  - component: {fileID: 151585345}
   - component: {fileID: 151585354}
   - component: {fileID: 151585355}
+  - component: {fileID: 151585345}
   m_Layer: 0
   m_Name: Sphere1
   m_TagString: Untagged
@@ -1392,12 +1398,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 151585343}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
+  m_Script: {fileID: 11500000, guid: 045dff3a729cc09498f1449fd3e3fda1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 1
-  points: 10
-  pickUpName: 
+  index: 0
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &151585346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1688,9 +1700,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 6
-  points: 20
-  pickUpName: red ball
+  id: 13
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &167313053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1928,9 +1946,9 @@ GameObject:
   - component: {fileID: 183444113}
   - component: {fileID: 183444112}
   - component: {fileID: 183444111}
-  - component: {fileID: 183444110}
   - component: {fileID: 183444119}
   - component: {fileID: 183444120}
+  - component: {fileID: 183444110}
   m_Layer: 0
   m_Name: Sphere2
   m_TagString: Untagged
@@ -1959,12 +1977,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 183444108}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
+  m_Script: {fileID: 11500000, guid: 045dff3a729cc09498f1449fd3e3fda1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 2
-  points: 10
-  pickUpName: 
+  index: 1
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &183444111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2532,9 +2556,9 @@ GameObject:
   - component: {fileID: 245467731}
   - component: {fileID: 245467730}
   - component: {fileID: 245467729}
-  - component: {fileID: 245467728}
   - component: {fileID: 245467737}
   - component: {fileID: 245467738}
+  - component: {fileID: 245467728}
   m_Layer: 0
   m_Name: Sphere3
   m_TagString: Untagged
@@ -2563,12 +2587,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 245467726}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
+  m_Script: {fileID: 11500000, guid: 045dff3a729cc09498f1449fd3e3fda1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 3
-  points: 10
-  pickUpName: 
+  index: 2
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &245467729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2785,9 +2815,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 10
-  points: 15
-  pickUpName: green ball
+  id: 32
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &261654017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2992,9 +3028,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 11
-  points: 20
-  pickUpName: yellow ball
+  id: 38
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &264019105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3764,6 +3806,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5fb4b893e3c84aa44992ad2b7cccbd6d, type: 2}
+    - target: {fileID: 114607423284055898, guid: a5764201a8d996b4bad69b44775bf47e,
+        type: 2}
+      propertyPath: museum
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a5764201a8d996b4bad69b44775bf47e, type: 2}
   m_IsPrefabParent: 0
@@ -4007,84 +4054,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 344660343}
---- !u!1 &349584391
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1458909548114978, guid: a5764201a8d996b4bad69b44775bf47e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 349584392}
-  - component: {fileID: 349584394}
-  - component: {fileID: 349584393}
-  m_Layer: 5
-  m_Name: Header
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &349584392
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 224050957949406054, guid: a5764201a8d996b4bad69b44775bf47e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 349584391}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1207050569}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.8}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &349584393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114775355763201620, guid: a5764201a8d996b4bad69b44775bf47e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 349584391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 100
-    m_FontStyle: 1
-    m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 200
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'Leaderboard:'
---- !u!222 &349584394
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 222131015137934938, guid: a5764201a8d996b4bad69b44775bf47e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 349584391}
 --- !u!1 &350967989
 GameObject:
   m_ObjectHideFlags: 0
@@ -4360,7 +4329,7 @@ MonoBehaviour:
   forceKeepInitialLayers: 0
   connectedPortals: []
   cam: {fileID: 0}
-  index: 2
+  location: 1
 --- !u!4 &366815222
 Transform:
   m_ObjectHideFlags: 0
@@ -4398,8 +4367,6 @@ MonoBehaviour:
     type: 2}
   successColor: {r: 0.2861159, g: 0.9264706, b: 0.34352702, a: 1}
   feedbackBirthPlace: {fileID: 2123651898}
-  bonusForCompleteBasket: 50
-  bonusForAllCompeteBaskets: 100
   completedBaskets: 
 --- !u!1 &371405841
 GameObject:
@@ -4700,6 +4667,11 @@ MonoBehaviour:
   - {fileID: 422192848}
   - {fileID: 1009191081}
   - {fileID: 555579833}
+  onGameOver:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   finalSceneNames:
   - Final1
   - Final2
@@ -4712,49 +4684,6 @@ GameObject:
 Transform:
   m_PrefabParentObject: {fileID: 415564, guid: d68e9e7dde1a3e34cb897e384d794527, type: 2}
   m_PrefabInternal: {fileID: 587009367}
---- !u!1 &409189402
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 1458909548114978, guid: a5764201a8d996b4bad69b44775bf47e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 409189403}
-  - component: {fileID: 409189405}
-  m_Layer: 5
-  m_Name: List
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &409189403
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 224050957949406054, guid: a5764201a8d996b4bad69b44775bf47e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 409189402}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1207050569}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.8}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &409189405
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 222131015137934938, guid: a5764201a8d996b4bad69b44775bf47e,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 409189402}
 --- !u!1 &418740095
 GameObject:
   m_ObjectHideFlags: 0
@@ -4789,7 +4718,7 @@ MonoBehaviour:
   forceKeepInitialLayers: 0
   connectedPortals: []
   cam: {fileID: 0}
-  index: 3
+  location: 2
 --- !u!4 &418740097
 Transform:
   m_ObjectHideFlags: 0
@@ -4827,8 +4756,6 @@ MonoBehaviour:
     type: 2}
   successColor: {r: 0.2861159, g: 0.9264706, b: 0.34352702, a: 1}
   feedbackBirthPlace: {fileID: 1827590094}
-  bonusForCompleteBasket: 50
-  bonusForAllCompeteBaskets: 100
   completedBaskets: 
 --- !u!1 &422192848
 GameObject:
@@ -5054,9 +4981,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 4
-  points: 15
-  pickUpName: green ball
+  id: 2
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &431419047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5329,9 +5262,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 12
-  points: 10
-  pickUpName: red ball
+  id: 40
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &443049981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5769,9 +5708,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 9
-  points: 20
-  pickUpName: red ball
+  id: 28
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &484951634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5952,17 +5897,17 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 492054964}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.055}
-  m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.72}
+  m_LocalScale: {x: 0.0011173191, y: 0.0005128205, z: 0.033333354}
   m_Children:
   - {fileID: 1419612218}
-  m_Father: {fileID: 1443436258}
+  m_Father: {fileID: 1113438344}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0, y: 2}
+  m_AnchoredPosition: {x: -0, y: 0.2326}
   m_SizeDelta: {x: 800, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &492054966
@@ -6492,9 +6437,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: -1
-  points: 5
-  pickUpName: trash
+  id: -5
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &518838183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6781,9 +6732,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 12
-  points: 5
-  pickUpName: red ball
+  id: 41
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &528760778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7017,9 +6974,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 7
-  points: 20
-  pickUpName: green ball
+  id: 18
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &537670802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7470,9 +7433,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 4
-  points: 10
-  pickUpName: green ball
+  id: 0
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &546389962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7905,9 +7874,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 6
-  points: 5
-  pickUpName: red ball
+  id: 11
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &558766406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8239,7 +8214,7 @@ Transform:
   m_LocalScale: {x: 0.1, y: 0.05, z: 2}
   m_Children: []
   m_Father: {fileID: 1113438344}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &581156628
 MeshRenderer:
@@ -8939,9 +8914,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 8
-  points: 15
-  pickUpName: yellow ball
+  id: 22
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &683596315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9530,9 +9511,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 5
-  points: 5
-  pickUpName: yellow ball
+  id: 6
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &760171853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9857,9 +9844,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 12
-  points: 20
-  pickUpName: red ball
+  id: 43
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &773642321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10121,6 +10114,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a82800a950b99fa41b8010e7f52451f8, type: 2}
+    - target: {fileID: 114607423284055898, guid: a5764201a8d996b4bad69b44775bf47e,
+        type: 2}
+      propertyPath: museum
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a5764201a8d996b4bad69b44775bf47e, type: 2}
   m_IsPrefabParent: 0
@@ -10377,9 +10375,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 8
-  points: 10
-  pickUpName: yellow ball
+  id: 20
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &828701427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10584,9 +10588,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 11
-  points: 15
-  pickUpName: yellow ball
+  id: 37
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &830009516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11054,9 +11064,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 5
-  points: 10
-  pickUpName: yellow ball
+  id: 5
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &863763360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11426,9 +11442,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: -1
-  points: 5
-  pickUpName: trash
+  id: -2
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &894028343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11749,6 +11771,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a82800a950b99fa41b8010e7f52451f8, type: 2}
+    - target: {fileID: 114607423284055898, guid: a5764201a8d996b4bad69b44775bf47e,
+        type: 2}
+      propertyPath: museum
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a5764201a8d996b4bad69b44775bf47e, type: 2}
   m_IsPrefabParent: 0
@@ -11926,8 +11953,9 @@ GameObject:
   - component: {fileID: 972971507}
   - component: {fileID: 972971506}
   - component: {fileID: 972971508}
+  - component: {fileID: 972971509}
   m_Layer: 0
-  m_Name: LocalNetworkLeaderboard
+  m_Name: '[LocalNetworkLeaderboard]'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11967,6 +11995,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac8c35c2dd24f8b4e86d4a5c1713cb80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &972971509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 972971505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fa6bffe05b2bd64eae1b7a21bde5a27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &991168402
@@ -12279,9 +12318,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 5
-  points: 20
-  pickUpName: yellow ball
+  id: 8
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &1031475888
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12597,9 +12642,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 8
-  points: 5
-  pickUpName: yellow ball
+  id: 21
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &1073844974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13005,12 +13056,12 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.975, z: 0}
   m_LocalScale: {x: 0.895, y: 1.95, z: 0.03}
   m_Children:
-  - {fileID: 2019369824}
   - {fileID: 1408142946}
   - {fileID: 581156627}
   - {fileID: 1836678010}
+  - {fileID: 492054965}
   m_Father: {fileID: 1443436258}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1113438345
 MonoBehaviour:
@@ -13204,11 +13255,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minAngleDifferenceToStopClosing: 1
   minAngleToAutoClose: 10
-  onDoorClosed:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
 --- !u!65 &1113438355
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13456,9 +13502,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: -1
-  points: 5
-  pickUpName: trash
+  id: -7
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &1145275290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13682,6 +13734,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: fadbfb8a8ef4c1542b22bd4078c25438, type: 2}
+    - target: {fileID: 114607423284055898, guid: a5764201a8d996b4bad69b44775bf47e,
+        type: 2}
+      propertyPath: museum
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a5764201a8d996b4bad69b44775bf47e, type: 2}
   m_IsPrefabParent: 0
@@ -13963,9 +14020,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 12
-  points: 15
-  pickUpName: red ball
+  id: 42
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &1191400334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14253,101 +14316,17 @@ AudioListener:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1200055833}
   m_Enabled: 1
---- !u!1 &1207050568
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1207050569}
-  - component: {fileID: 1207050570}
-  - component: {fileID: 1207050572}
-  - component: {fileID: 1207050571}
-  m_Layer: 0
-  m_Name: LeaderBoard
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1207050569
+--- !u!224 &1207050569 stripped
 RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1207050568}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 349584392}
-  - {fileID: 1805100411}
-  - {fileID: 409189403}
-  m_Father: {fileID: 756555400}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1000, y: 700}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1207050570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1207050568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 067489859b35f9d42b43e2f5484cf740, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreUIPrefab: {fileID: 114916334337579294, guid: 3e8210b4b7b6d524fa7cc893c3f12fb3,
+  m_PrefabParentObject: {fileID: 224641083469669470, guid: 7e451135ed52dec4da7b785d83fae3ad,
     type: 2}
-  visiableCount: 10
-  leaderBoardObject: {fileID: 1207050568}
-  listTransform: {fileID: 409189403}
-  loadBar: {fileID: 1816513279}
-  header: {fileID: 349584393}
-  locationNames:
-  - "\u041C\u043E\u044F \u0443\u043B\u0438\u0446\u0430"
-  - "\u0420\u0430\u0441\u043A\u043E\u043F\u043A\u0438"
-  - "\u0427\u0435\u0440\u0434\u0430\u043A"
-  waitbeforeNextTime: 5
---- !u!114 &1207050571
+  m_PrefabInternal: {fileID: 2068022330}
+--- !u!114 &1207050570 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1207050568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.8627451}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &1207050572
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1207050568}
+  m_PrefabParentObject: {fileID: 114937814581376732, guid: 7e451135ed52dec4da7b785d83fae3ad,
+    type: 2}
+  m_PrefabInternal: {fileID: 2068022330}
+  m_Script: {fileID: 11500000, guid: 067489859b35f9d42b43e2f5484cf740, type: 3}
 --- !u!1001 &1207919471
 Prefab:
   m_ObjectHideFlags: 0
@@ -14616,9 +14595,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: -1
-  points: 5
-  pickUpName: trash
+  id: -9
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &1241677604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14774,6 +14759,47 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.75
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1248235587
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1248235589}
+  - component: {fileID: 1248235588}
+  m_Layer: 0
+  m_Name: '[WaveGameSetter]'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1248235588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1248235587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4835520abcb83ee47a3e95493e3c91ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  setWavesCount: 3
+--- !u!4 &1248235589
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1248235587}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.24999997, y: 1.25, z: 0.014999926}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1253351959
 GameObject:
   m_ObjectHideFlags: 0
@@ -14823,9 +14849,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: -1
-  points: 5
-  pickUpName: trash
+  id: -3
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &1253351962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15030,9 +15062,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 11
-  points: 10
-  pickUpName: yellow ball
+  id: 35
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &1253600529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15659,9 +15697,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 4
-  points: 20
-  pickUpName: green ball
+  id: 3
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &1313132350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16173,9 +16217,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: -1
-  points: 5
-  pickUpName: trash
+  id: -6
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &1373151492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16461,7 +16511,7 @@ Prefab:
     - target: {fileID: 114368398365069942, guid: 6716cd1626708fa449fe27652ab5f8cf,
         type: 2}
       propertyPath: index
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 23961163844483592, guid: 6716cd1626708fa449fe27652ab5f8cf,
         type: 2}
@@ -16551,7 +16601,7 @@ Transform:
   m_LocalScale: {x: 0.05, y: 1, z: 0.025}
   m_Children: []
   m_Father: {fileID: 1113438344}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1408142947
 MeshRenderer:
@@ -16929,7 +16979,6 @@ Transform:
   - {fileID: 2034176194}
   - {fileID: 1585778935}
   - {fileID: 1642166520}
-  - {fileID: 492054965}
   - {fileID: 1113438344}
   m_Father: {fileID: 2102453122}
   m_RootOrder: 3
@@ -17070,9 +17119,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 10
-  points: 20
-  pickUpName: green ball
+  id: 33
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &1468010894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17258,8 +17313,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: velik97
   computerId: 1
-  locationId: -1
+  dataBase: {fileID: 11400000, guid: 640e6c943f3ee414f9a402b046ba0d81, type: 2}
+  location: 0
   points: 0
+  completeBasketBonus: 0
+  completeAllBasketsBonus: 0
   statuses:
   - status: "\u041D\u0435\u0430\u043D\u0434\u0435\u0440\u0442\u0430\u043B\u0435\u0446"
     upperPoints: 15
@@ -17281,6 +17339,8 @@ MonoBehaviour:
     upperPoints: 135
   - status: "\u0418\u043D\u0434\u0438\u0430\u043D\u0430 \u0414\u0436\u043E\u043D\u0441"
     upperPoints: 150
+  artefacts: []
+  trash: []
 --- !u!4 &1473135938
 Transform:
   m_ObjectHideFlags: 0
@@ -17659,6 +17719,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 95d16b4967d713f4285bda20cb734dda, type: 2}
+    - target: {fileID: 114607423284055898, guid: a5764201a8d996b4bad69b44775bf47e,
+        type: 2}
+      propertyPath: museum
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a5764201a8d996b4bad69b44775bf47e, type: 2}
   m_IsPrefabParent: 0
@@ -17865,9 +17930,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 6
-  points: 10
-  pickUpName: red ball
+  id: 10
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &1566804082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18223,9 +18294,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 8
-  points: 20
-  pickUpName: yellow ball
+  id: 23
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &1588733093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18430,7 +18507,7 @@ MonoBehaviour:
   forceKeepInitialLayers: 0
   connectedPortals: []
   cam: {fileID: 0}
-  index: 0
+  location: -1
 --- !u!114 &1606072864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18857,9 +18934,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: -1
-  points: 5
-  pickUpName: trash
+  id: -8
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &1630603521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19659,6 +19742,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 95d16b4967d713f4285bda20cb734dda, type: 2}
+    - target: {fileID: 114607423284055898, guid: a5764201a8d996b4bad69b44775bf47e,
+        type: 2}
+      propertyPath: museum
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a5764201a8d996b4bad69b44775bf47e, type: 2}
   m_IsPrefabParent: 0
@@ -19719,7 +19807,7 @@ MonoBehaviour:
   forceKeepInitialLayers: 0
   connectedPortals: []
   cam: {fileID: 0}
-  index: 1
+  location: 0
 --- !u!114 &1671749044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19740,8 +19828,6 @@ MonoBehaviour:
     type: 2}
   successColor: {r: 0.2861159, g: 0.9264706, b: 0.34352702, a: 1}
   feedbackBirthPlace: {fileID: 2084937691}
-  bonusForCompleteBasket: 50
-  bonusForAllCompeteBaskets: 100
   completedBaskets: 
 --- !u!1 &1682858880
 GameObject:
@@ -19792,9 +19878,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 9
-  points: 15
-  pickUpName: red ball
+  id: 27
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &1682858883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20115,9 +20207,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 7
-  points: 10
-  pickUpName: green ball
+  id: 15
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &1722384055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20431,9 +20529,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 11
-  points: 5
-  pickUpName: yellow ball
+  id: 36
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &1752569550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20864,9 +20968,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 9
-  points: 10
-  pickUpName: red ball
+  id: 25
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &1803582193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21022,40 +21132,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.75
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &1805100410
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1805100411}
-  m_Layer: 0
-  m_Name: LoadingBar
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1805100411
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1805100410}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1816513279}
-  m_Father: {fileID: 1207050569}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.795}
-  m_AnchorMax: {x: 1, y: 0.805}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1810314005
 GameObject:
   m_ObjectHideFlags: 0
@@ -21140,74 +21216,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1810314005}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1816513278
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1816513279}
-  - component: {fileID: 1816513281}
-  - component: {fileID: 1816513280}
-  m_Layer: 0
-  m_Name: Bar
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1816513279
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1816513278}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1805100411}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1816513280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1816513278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.39511245, g: 0.86050904, b: 0.9264706, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
---- !u!222 &1816513281
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1816513278}
 --- !u!1 &1823379520
 GameObject:
   m_ObjectHideFlags: 0
@@ -21257,9 +21265,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 5
-  points: 15
-  pickUpName: yellow ball
+  id: 7
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &1823379523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21596,9 +21610,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 7
-  points: 15
-  pickUpName: green ball
+  id: 17
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &1825995954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22007,7 +22027,7 @@ Transform:
   m_LocalScale: {x: 0.10000004, y: 0.049999997, z: 2.0000012}
   m_Children: []
   m_Father: {fileID: 1113438344}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1836678011
 MeshRenderer:
@@ -22389,7 +22409,7 @@ Prefab:
     - target: {fileID: 114368398365069942, guid: 6716cd1626708fa449fe27652ab5f8cf,
         type: 2}
       propertyPath: index
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 23386171347874278, guid: 6716cd1626708fa449fe27652ab5f8cf,
         type: 2}
@@ -22461,6 +22481,11 @@ Prefab:
     - target: {fileID: 1261799353618502, guid: 6716cd1626708fa449fe27652ab5f8cf, type: 2}
       propertyPath: m_Name
       value: Busket1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114368398365069942, guid: 6716cd1626708fa449fe27652ab5f8cf,
+        type: 2}
+      propertyPath: index
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6716cd1626708fa449fe27652ab5f8cf, type: 2}
@@ -22613,9 +22638,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 6
-  points: 15
-  pickUpName: red ball
+  id: 12
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &1914412542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23030,6 +23061,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 95d16b4967d713f4285bda20cb734dda, type: 2}
+    - target: {fileID: 114607423284055898, guid: a5764201a8d996b4bad69b44775bf47e,
+        type: 2}
+      propertyPath: museum
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a5764201a8d996b4bad69b44775bf47e, type: 2}
   m_IsPrefabParent: 0
@@ -23088,9 +23124,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: -1
-  points: 5
-  pickUpName: trash
+  id: -4
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &1950205210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23326,9 +23368,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 4
-  points: 5
-  pickUpName: green ball
+  id: 1
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &1979537695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23712,47 +23760,6 @@ Transform:
   m_Father: {fileID: 1628685016}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2019369823
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 2019369824}
-  - component: {fileID: 2019369825}
-  m_Layer: 8
-  m_Name: Collider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &2019369824
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2019369823}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1113438344}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2019369825
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2019369823}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.98, z: 3}
-  m_Center: {x: 0.06, y: 0, z: 0}
 --- !u!1001 &2023908697
 Prefab:
   m_ObjectHideFlags: 0
@@ -23854,6 +23861,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a82800a950b99fa41b8010e7f52451f8, type: 2}
+    - target: {fileID: 114607423284055898, guid: a5764201a8d996b4bad69b44775bf47e,
+        type: 2}
+      propertyPath: museum
+      value: 7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a5764201a8d996b4bad69b44775bf47e, type: 2}
   m_IsPrefabParent: 0
@@ -24465,9 +24477,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 7
-  points: 5
-  pickUpName: green ball
+  id: 16
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &2054400194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24672,9 +24690,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: -1
-  points: 5
-  pickUpName: trash
+  id: -1
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &2057647226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24830,6 +24854,106 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.75
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &2068022330
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 756555400}
+    m_Modifications:
+    - target: {fileID: 224641083469669470, guid: 7e451135ed52dec4da7b785d83fae3ad,
+        type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224641083469669470, guid: 7e451135ed52dec4da7b785d83fae3ad,
+        type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224641083469669470, guid: 7e451135ed52dec4da7b785d83fae3ad,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224641083469669470, guid: 7e451135ed52dec4da7b785d83fae3ad,
+        type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224641083469669470, guid: 7e451135ed52dec4da7b785d83fae3ad,
+        type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224641083469669470, guid: 7e451135ed52dec4da7b785d83fae3ad,
+        type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224641083469669470, guid: 7e451135ed52dec4da7b785d83fae3ad,
+        type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224641083469669470, guid: 7e451135ed52dec4da7b785d83fae3ad,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224641083469669470, guid: 7e451135ed52dec4da7b785d83fae3ad,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224641083469669470, guid: 7e451135ed52dec4da7b785d83fae3ad,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224641083469669470, guid: 7e451135ed52dec4da7b785d83fae3ad,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 224641083469669470, guid: 7e451135ed52dec4da7b785d83fae3ad,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 700
+      objectReference: {fileID: 0}
+    - target: {fileID: 224641083469669470, guid: 7e451135ed52dec4da7b785d83fae3ad,
+        type: 2}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224641083469669470, guid: 7e451135ed52dec4da7b785d83fae3ad,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224641083469669470, guid: 7e451135ed52dec4da7b785d83fae3ad,
+        type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224641083469669470, guid: 7e451135ed52dec4da7b785d83fae3ad,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224641083469669470, guid: 7e451135ed52dec4da7b785d83fae3ad,
+        type: 2}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224641083469669470, guid: 7e451135ed52dec4da7b785d83fae3ad,
+        type: 2}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 7e451135ed52dec4da7b785d83fae3ad, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &2068954383
 GameObject:
   m_ObjectHideFlags: 0
@@ -25119,9 +25243,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 10
-  points: 10
-  pickUpName: green ball
+  id: 30
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &2108972904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25358,9 +25488,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb99974cd5a1e84ba3c067ef983feb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 9
-  points: 5
-  pickUpName: red ball
+  id: 26
+  artefactInfo:
+    name: 
+    id: 0
+    location: 0
+    museum: 0
+    type: 0
+    description: 
+    points: 0
 --- !u!114 &2118195046
 MonoBehaviour:
   m_ObjectHideFlags: 0

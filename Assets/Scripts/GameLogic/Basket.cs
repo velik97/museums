@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -21,7 +22,7 @@ public class Basket : MonoBehaviour
     
     public UnityEvent onObjectPlacedInBasket;
     
-    public int index;    
+    public Museum museum;    
 
     private int inBasketObjectsCount;
     [HideInInspector] public int overAllObjectsCount;
@@ -29,29 +30,42 @@ public class Basket : MonoBehaviour
 
     private bool noMorePickUpsByMyIndex;
 
-    private static Dictionary<int, Basket> basketByIndex;
+    private static Dictionary<Museum, Basket> basketByIndex;
 
     private PickUpObject lastPickUpObject;
 
     private void Awake()
     {
-        if (basketByIndex == null)
-            basketByIndex = new Dictionary<int, Basket>();
+        WaveGameSetter.SubscribeOnWave(SetBasketsDictionary, 2);
+        WaveGameSetter.SubscribeOnWave(SetBasket, 2);
+        WaveGameSetter.SubscribeOnWave(SetMaterial, 2);
+    }
 
-        if (!basketByIndex.ContainsKey(index))
+    public static void ResetList()
+    {
+        print("reset baskets");
+        basketByIndex.Clear();
+    }
+
+    private void SetBasketsDictionary()
+    {
+        if (basketByIndex == null)
+            basketByIndex = new Dictionary<Museum, Basket>();
+
+        if (!basketByIndex.ContainsKey(museum))
         {
-            basketByIndex.Add(index, this);
+            basketByIndex.Add(museum, this);
         }
         else
         {
-            Debug.LogError("More than 1 basket with index: " + index + "!");
+            Debug.LogError("More than 1 basket with index: " + museum + "!");
         }
     }
 
-    private void Start()
-    {        
+    private void SetBasket()
+    {
         inBasketObjectsCount = 0;
-        overAllObjectsCount = PickUpObject.PickUpsListByIndex[index].Count;
+        overAllObjectsCount = PickUpObject.PickUpsListByIndex[museum].Count;
         initialObjectsCount = overAllObjectsCount;
         
         SetCountText();
@@ -59,15 +73,13 @@ public class Basket : MonoBehaviour
         noMorePickUpsByMyIndex = false;
         
         cover.SetActive(false);
-        
-        SetMaterial();        
     }
 
     private void SetMaterial()
     {
         foreach (var colorMeshRenderer in colorMeshRenderers)
         {
-            colorMeshRenderer.material = materials[(index - 1) % materials.Count];
+            colorMeshRenderer.material = materials[(int)museum % materials.Count];
         }
     }
 
@@ -93,28 +105,28 @@ public class Basket : MonoBehaviour
 
         lastPickUpObject = pu;
         
-        if (pu.index == index)
+        if (pu.artefactInfo.museum == museum)
         {
             inBasketObjectsCount++;
 
             pu.PlaceInBusket(true);            
-            ShowSuccess(pu.points, pu.pickUpName);
+            ShowSuccess(pu.artefactInfo.points, pu.artefactInfo.name);
             SetCountText();
             
-            CollectQuestManager.current.AddPoints(pu.points);
+            CollectQuestManager.current.AddPoints(pu.artefactInfo.points);
         }
         else
         {                   
             pu.PlaceInBusket(true);
-            ShowFailure(pu.points, pu.pickUpName);
+            ShowFailure(pu.artefactInfo.points, pu.artefactInfo.name);
 
-            if (basketByIndex.ContainsKey(pu.index))
+            if (basketByIndex.ContainsKey(pu.artefactInfo.museum))
             {
-                basketByIndex[pu.index].overAllObjectsCount--;
-                basketByIndex[pu.index].SetCountText();
+                basketByIndex[pu.artefactInfo.museum].overAllObjectsCount--;
+                basketByIndex[pu.artefactInfo.museum].SetCountText();
             }
             
-            CollectQuestManager.current.AddPoints(-pu.points);
+            CollectQuestManager.current.AddPoints(-pu.artefactInfo.points);
         }               
           
         onObjectPlacedInBasket.Invoke();        

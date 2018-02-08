@@ -14,31 +14,19 @@ public class TutorialBasket : MonoBehaviour
 
     public UnityEvent onPickUpsWithMyIndexOver;
 
-    private bool noMorePickUpsByMyIndex;
-
-    private void Start()
-    {
-        noMorePickUpsByMyIndex = false;
-
-        if (PickUpObject.PickUpsListByIndex[index].Count == 0)
-        {
-            noMorePickUpsByMyIndex = true;
-            onPickUpsWithMyIndexOver.Invoke();
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        var pu = other.GetComponent<PickUpObject>();
+        var pu = other.GetComponent<TutorialPickUpObject>();
         if (pu != null)
             CountNewPicjUpObject(pu);
     }
 
-    private void CountNewPicjUpObject(PickUpObject pu)
+    private void CountNewPicjUpObject(TutorialPickUpObject pu)
     {
         if (pu.index == index)
         {
             ShowSuccess();
+            onPickUpsWithMyIndexOver.Invoke();
         }
         else
         {
@@ -46,12 +34,6 @@ public class TutorialBasket : MonoBehaviour
         }
 
         pu.PlaceInBusket(pu.index == index);
-
-        if (!noMorePickUpsByMyIndex && PickUpObject.PickUpsListByIndex[index].Count == 0)
-        {
-            noMorePickUpsByMyIndex = true;
-            onPickUpsWithMyIndexOver.Invoke();
-        }
     }
 
     private void ShowSuccess()

@@ -70,19 +70,8 @@ public class StartGameUI : MonoSingleton<StartGameUI>
         }
     }
 
-    public List<Score> Scores
-    {
-        get
-        {
-            if (scores == null)
-                scores = LocalNetworkLeaderboard.Instance.GetLocalScores();
-            return scores;
-        }
-    }
-
     private void Start()
-    {
-        nameField.onValueChanged.AddListener(CheckName);
+    {        
         startTimeDropDown.value = StartTimeOption;
         SetEmpty();
         
@@ -98,6 +87,16 @@ public class StartGameUI : MonoSingleton<StartGameUI>
         
         timeField.onValueChanged.AddListener(CheckTimeFormat);
         timeField.onEndEdit.AddListener(CheckTimeBounds);
+        
+        LeaderboardParallelRequestManager.Instance.GetLocalScores(UpdateScores);
+    }
+
+    private void UpdateScores(List<Score> _scores)
+    {
+        scores = _scores;
+        nameField.onValueChanged.AddListener(CheckName);
+        if (nameField.textComponent.text != "")
+            CheckName(nameField.textComponent.text);
     }
 
     private void CheckName(string playerName)
@@ -142,7 +141,7 @@ public class StartGameUI : MonoSingleton<StartGameUI>
 
         bool contains = false;
         
-        foreach (var score in Scores)
+        foreach (var score in scores)
         {
             if (score.name == playerName)
             {

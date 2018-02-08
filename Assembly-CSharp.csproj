@@ -424,6 +424,7 @@
     <Compile Include="Assets\Extentions\VRTK\Scripts\Utilities\VRTK_SDKTransformModify.cs" />
     <Compile Include="Assets\Extentions\VRTK\Scripts\Utilities\VRTK_SharedMethods.cs" />
     <Compile Include="Assets\Extentions\VRTK\Scripts\Utilities\VRTK_Simulator.cs" />
+    <Compile Include="Assets\Scripts\DataBase\ArtefactDataBase.cs" />
     <Compile Include="Assets\Scripts\GameLogic\Basket.cs" />
     <Compile Include="Assets\Scripts\GameLogic\CollectQuestManager.cs" />
     <Compile Include="Assets\Scripts\GameLogic\DoorAutoClose.cs" />
@@ -436,12 +437,15 @@
     <Compile Include="Assets\Scripts\GameLogic\Tutorial\SlideShow.cs" />
     <Compile Include="Assets\Scripts\GameLogic\Tutorial\TutorialBasket.cs" />
     <Compile Include="Assets\Scripts\GameLogic\Tutorial\TutorialManager.cs" />
+    <Compile Include="Assets\Scripts\GameLogic\Tutorial\TutorialPickUpObject.cs" />
     <Compile Include="Assets\Scripts\GameLogic\Utils\AutoDestroy.cs" />
     <Compile Include="Assets\Scripts\GameLogic\Utils\FloatingFeedback.cs" />
     <Compile Include="Assets\Scripts\GameLogic\Utils\LookAtUser.cs" />
     <Compile Include="Assets\Scripts\GameLogic\Utils\Timer.cs" />
     <Compile Include="Assets\Scripts\GameLogic\Utils\TimerDisplay.cs" />
+    <Compile Include="Assets\Scripts\GameLogic\WaveGameSetter.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\LeaderBoardUI.cs" />
+    <Compile Include="Assets\Scripts\Leaderboard\LeaderboardParallelRequestManager.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\LeaderboardSceneManager.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\LocalNetworkLeaderboard.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\NameUI.cs" />
@@ -449,9 +453,10 @@
     <Compile Include="Assets\Scripts\Leaderboard\ScoreUI.cs" />
     <Compile Include="Assets\Scripts\OperatorUI\StartGameUI.cs" />
     <Compile Include="Assets\Scripts\Test\LocalNetworkDiscovery.cs" />
+    <Compile Include="Assets\Scripts\Test\MonobehaviourTest.cs" />
     <Compile Include="Assets\Scripts\Utils\DirectionFollower.cs" />
     <Compile Include="Assets\Scripts\Utils\DisappearOnGrab.cs" />
-    <Compile Include="Assets\Scripts\Utils\DontDestroyOnLoad.cs" />
+    <Compile Include="Assets\Scripts\Utils\DontDestroyOnSceneLoad.cs" />
     <Compile Include="Assets\Scripts\Utils\MonoSingleton.cs" />
     <Compile Include="Assets\Scripts\Utils\VRCameraFade.cs" />
     <Compile Include="Assets\Scripts\Utils\VRCameraText.cs" />

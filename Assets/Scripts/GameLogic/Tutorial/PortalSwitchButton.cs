@@ -27,10 +27,7 @@ public class PortalSwitchButton : MonoSingleton<PortalSwitchButton>
 
 	public void ReactOnButton(object sender, Control3DEventArgs e)
 	{		
-		DoorAutoClose.Instance.onDoorClosed.AddListener(PortalSwitch.Instance.SwitchPortal);
-		DoorAutoClose.Instance.onDoorClosed.AddListener(DoorAutoClose.Instance.onDoorClosed.RemoveAllListeners);
-		
-		DoorAutoClose.Instance.CloseDoor();
+		DoorAutoClose.Instance.CloseDoor(PortalSwitch.Instance.SwitchPortal);
 	}
 
 	public void Show()

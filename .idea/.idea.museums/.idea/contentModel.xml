@@ -564,6 +564,9 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
+          <e p="DataBase" t="Include">
+            <e p="ArtefactDataBase.cs" t="Include" />
+          </e>
           <e p="GameLogic" t="Include">
             <e p="Basket.cs" t="Include" />
             <e p="CollectQuestManager.cs" t="Include" />
@@ -578,6 +581,7 @@
               <e p="SlideShow.cs" t="Include" />
               <e p="TutorialBasket.cs" t="Include" />
               <e p="TutorialManager.cs" t="Include" />
+              <e p="TutorialPickUpObject.cs" t="Include" />
             </e>
             <e p="Utils" t="Include">
               <e p="AutoDestroy.cs" t="Include" />
@@ -586,8 +590,10 @@
               <e p="Timer.cs" t="Include" />
               <e p="TimerDisplay.cs" t="Include" />
             </e>
+            <e p="WaveGameSetter.cs" t="Include" />
           </e>
           <e p="LeaderBoard" t="Include">
+            <e p="LeaderboardParallelRequestManager.cs" t="Include" />
             <e p="LeaderboardSceneManager.cs" t="Include" />
             <e p="LeaderBoardUI.cs" t="Include" />
             <e p="LocalNetworkLeaderBoard.cs" t="Include" />
@@ -600,11 +606,12 @@
           </e>
           <e p="Test" t="Include">
             <e p="LocalNetworkDiscovery.cs" t="Include" />
+            <e p="MonobehaviourTest.cs" t="Include" />
           </e>
           <e p="Utils" t="Include">
             <e p="DirectionFollower.cs" t="Include" />
             <e p="DisappearOnGrab.cs" t="Include" />
-            <e p="DontDestroyOnLoad.cs" t="Include" />
+            <e p="DontDestroyOnSceneLoad.cs" t="Include" />
             <e p="MonoSingleton.cs" t="Include" />
             <e p="VRCameraFade.cs" t="Include" />
             <e p="VRCameraText.cs" t="Include" />

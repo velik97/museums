@@ -1,19 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LeaderboardSceneManager : MonoBehaviour
 {
     public LeaderBoardUI leaderBoardUI;
-    public int initialLocaionId;
+    public Location initialLocaion;
+
+    public string initialSceneName;
 
     private void Start()
     {
-        if (GameInfo.Instance.locationId != -1)
+        ShwoLeaderboardsOnWall();
+    }
+
+    private void ShwoLeaderboardsOnWall()
+    {
+        if (GameInfo.Instance.location != Location.Tutorial)
         {
             leaderBoardUI.myScore =
                 LocalNetworkLeaderboard.Instance.AddNewScore(
-                    GameInfo.Instance.locationId,
+                    (int)GameInfo.Instance.location,
                     GameInfo.Instance.computerId,
                     GameInfo.Instance.playerName,
                     GameInfo.Instance.points,
@@ -22,9 +30,16 @@ public class LeaderboardSceneManager : MonoBehaviour
         }
         else
         {
-            GameInfo.Instance.locationId = initialLocaionId;
+            GameInfo.Instance.location = initialLocaion;
         }
+        
+        LeaderboardParallelRequestManager.Instance.GetLocalScores(
+            true, (int)GameInfo.Instance.location, leaderBoardUI.ShowAllScores);
+    }
 
-        leaderBoardUI.ShowAllScores();
+    public void RestartGame()
+    {
+        DontDestroyOnSceneLoad.DestroyAll();
+        SceneManager.LoadScene(initialSceneName);
     }
 }

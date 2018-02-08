@@ -20,8 +20,11 @@ public class OperatorLeaderBoardUI : MonoBehaviour
     private List<ScoreUI> scoresUIs;
     private int showingLocationIndex = 1;
 
+    private bool waitingForScoresLoading;
+
     private void Start()
     {
+        waitingForScoresLoading = true;
         Show();
     }
 
@@ -50,7 +53,15 @@ public class OperatorLeaderBoardUI : MonoBehaviour
         while (true)
         {
             header.text = locationNames[showingLocationIndex - 1];
-            PrintScores(showingLocationIndex);
+            
+            LeaderboardParallelRequestManager.Instance.GetLocalScores(true, showingLocationIndex, PrintScores);
+            waitingForScoresLoading = true;
+            
+            while (waitingForScoresLoading)
+            {
+                yield return null;
+            }
+            
             float startTime = Time.time;
             float t = 0;
             
@@ -77,11 +88,8 @@ public class OperatorLeaderBoardUI : MonoBehaviour
         }
     }
 
-    private void PrintScores(int locationId)
+    private void PrintScores(List<Score> scores)
     {
-        LocalNetworkLeaderboard.Instance.SynchronizeScores();
-        List<Score> scores = LocalNetworkLeaderboard.Instance.GetLocalScores(locationId);
-
         scores.Sort();
         float step = 1f / (float) visiableCount;
         
@@ -108,5 +116,7 @@ public class OperatorLeaderBoardUI : MonoBehaviour
             else
                 scoreUi.SetClear();
         }
+
+        waitingForScoresLoading = false;
     }
 }

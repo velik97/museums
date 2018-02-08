@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,7 +11,6 @@ public class DoorAutoClose : MonoSingleton<DoorAutoClose>
 {
     public float minAngleDifferenceToStopClosing = 1f;
     public float minAngleToAutoClose = 15f;
-    public UnityEvent onDoorClosed;
     
     private HingeJoint joint;
     private VRTK_InteractableObject interactableObject;
@@ -36,12 +36,12 @@ public class DoorAutoClose : MonoSingleton<DoorAutoClose>
         joint.useSpring = Mathf.Abs(joint.angle - joint.limits.min) < minAngleToAutoClose;
     }
 
-    public void CloseDoor()
+    public void CloseDoor(Action callback)
     {
-        StartCoroutine(ClosingDoor());
+        StartCoroutine(ClosingDoor(callback));
     }
 
-    private IEnumerator ClosingDoor()
+    private IEnumerator ClosingDoor(Action callback)
     {
         interactableObject.enabled = false;
         joint.useSpring = true;
@@ -58,6 +58,6 @@ public class DoorAutoClose : MonoSingleton<DoorAutoClose>
         
         closingByOther = false;
         
-        onDoorClosed.Invoke();
+        callback.Invoke();
     }
 }

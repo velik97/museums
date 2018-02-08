@@ -13,9 +13,6 @@ public class CollectQuestManager : MonoBehaviour
     public Color successColor;
     public Transform feedbackBirthPlace;
 
-    public int bonusForCompleteBasket;
-    public int bonusForAllCompeteBaskets;
-
     private bool questIsDone;
 
     private int collectedPoints;
@@ -66,8 +63,8 @@ public class CollectQuestManager : MonoBehaviour
 
                 if (completedBaskets[i])
                 {
-                    ShowSuccess(bonusForCompleteBasket, "Complete basket " + baskets[i].name);
-                    AddPoints(bonusForCompleteBasket);
+                    ShowSuccess(GameInfo.Instance.completeBasketBonus, "Complete basket " + baskets[i].name);
+                    AddPoints(GameInfo.Instance.completeBasketBonus);
                 }
             }
         }        
@@ -129,8 +126,8 @@ public class CollectQuestManager : MonoBehaviour
 
         if (allCompeted)
         {
-            ShowSuccess(bonusForAllCompeteBaskets, "Complete all baskets");
-            AddPoints(bonusForAllCompeteBaskets);            
+            ShowSuccess(GameInfo.Instance.completeAllBasketsBonus, "Complete all baskets");
+            AddPoints(GameInfo.Instance.completeAllBasketsBonus);            
         }
         
         GameInfo.Instance.points = collectedPoints;

@@ -9,9 +9,7 @@ public class LeaderBoardUI : MonoBehaviour
     public int visiableTopCount = 3;
     public int visiableNearCount = 3;
     public Color playerHighlightColor;
-
-    private List<Score> scores;
-
+    
     public Score myScore;
     private int myPlace = -1;
 
@@ -20,19 +18,8 @@ public class LeaderBoardUI : MonoBehaviour
         get { return visiableNearCount + visiableTopCount + 1; }
     }
 
-    private void Update()
+    public void ShowAllScores(List<Score> scores)
     {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            ShowAllScores();
-        }
-    }
-
-    public void ShowAllScores()
-    {
-        LocalNetworkLeaderboard.Instance.SynchronizeScores();
-        scores = LocalNetworkLeaderboard.Instance.GetLocalScores(GameInfo.Instance.locationId);
-
         scores.Sort();
         float step = 1f / (float) AllPositionsCount;
         int place;

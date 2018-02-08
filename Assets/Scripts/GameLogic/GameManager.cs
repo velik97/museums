@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -17,6 +18,8 @@ public class GameManager : MonoSingleton<GameManager>
 	public float timeForQuest;
 
 	public List<GameObject> gameObjectsToDeleteAfterTutorial;
+
+	public UnityEvent onGameOver;
 
 	public string[] finalSceneNames;
 
@@ -35,11 +38,14 @@ public class GameManager : MonoSingleton<GameManager>
 		print("start time: " + startTimeOption);
 		timeForQuest = StartGameUI.Instance.GameMinutesTime * 60;
 		StartCoroutine(FadeInAndStartGame());
-		tutorialIsDone = false;
+		tutorialIsDone = false;		
 	}
 
 	public void GameOver()
 	{
+		onGameOver.Invoke();
+		PickUpObject.ResetList();
+		Basket.ResetList();
 		StartCoroutine(FadeOutAndLoadFinalScene());
 	}
 	
@@ -65,12 +71,7 @@ public class GameManager : MonoSingleton<GameManager>
 			
 			if (Vector2.SqrMagnitude(dif2) > minDistanceToDelete * minDistanceToDelete)
 			{
-				DoorAutoClose.Instance.onDoorClosed.AddListener(delegate
-				{
-					TutorialDone();
-					DoorAutoClose.Instance.onDoorClosed.RemoveAllListeners();
-				});
-				DoorAutoClose.Instance.CloseDoor();
+				DoorAutoClose.Instance.CloseDoor(TutorialDone);
 				break;
 			}
 		}
@@ -97,14 +98,15 @@ public class GameManager : MonoSingleton<GameManager>
 			}		
 		}
 
-		GameInfo.Instance.locationId = DimensionExtended.Current.index;
+		GameInfo.Instance.location = DimensionExtended.Current.location;
 		
 		doorTransform.GetComponent<Animator>().SetTrigger("Disolve");
 		
 		yield return new WaitForSeconds(1f);
 		doorTransform.gameObject.SetActive(false);
-				
-		DimensionExtended.Current.GetComponent<CollectQuestManager>().StartQuest(timeForQuest);
+		
+		Timer.Instance.onTimeEnded.RemoveAllListeners();
+		DimensionExtended.Current.GetComponent<CollectQuestManager>().StartQuest(timeForQuest);		
 		if (startTimeOption == StartTimeOption.AfetrTutorial)
 			Timer.Instance.StartTimer(timeForQuest);
 	}
@@ -116,16 +118,24 @@ public class GameManager : MonoSingleton<GameManager>
 		VRCameraText.Instance.HideText();
 		yield return new WaitForSeconds(2f);
 		VRCameraFade.Instance.FadeIn();
-		
+
 		if (startTimeOption == StartTimeOption.FromStart)
+		{
+			Timer.Instance.onTimeEnded.AddListener(delegate
+			{
+				GameOver();
+				Timer.Instance.onTimeEnded.RemoveAllListeners();
+			});
 			Timer.Instance.StartTimer(timeForQuest);
+		}
 	}
 
 	private IEnumerator FadeOutAndLoadFinalScene()
 	{
 		VRCameraFade.Instance.FadeOut();
 		yield return new WaitForSeconds(2f);
-		SceneManager.LoadScene(finalSceneNames[GameInfo.Instance.locationId - 1]);
+		SceneManager.LoadScene(
+			finalSceneNames[Mathf.Clamp((int)GameInfo.Instance.location, 0, finalSceneNames.Length)]);
 	}
 }
 

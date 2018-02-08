@@ -30,7 +30,7 @@ public class SlideShow : MonoSingleton<SlideShow>
             
             e.OnControllerGrabInteractableObject.AddListener(delegate(object sender, ObjectInteractEventArgs args)
             {
-                if (currentSlideNumber == 0 && args.target.GetComponent<PickUpObject>() != null)
+                if (currentSlideNumber == 0 && args.target.GetComponent<TutorialPickUpObject>() != null)
                     SwitchSlide();
             });
         }

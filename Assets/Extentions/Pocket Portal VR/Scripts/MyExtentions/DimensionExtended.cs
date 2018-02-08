@@ -7,7 +7,7 @@ using Object = UnityEngine.Object;
 
 public class DimensionExtended : Dimension
 {
-	public int index;
+	public Location location;
 	
 	public static DimensionExtended initial;
 	private static DimensionExtended current;

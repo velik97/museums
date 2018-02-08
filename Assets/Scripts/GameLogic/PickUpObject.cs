@@ -1,33 +1,25 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PickUpObject : MonoBehaviour
 {
-	public int index;				// -1 is trash
-	public int points;
-	public string pickUpName;
+	public int id;				// -1 is trash
 	
-	private static Dictionary<int, List<PickUpObject>> pickUpsListByIndex; 
+	private static Dictionary<Museum, List<PickUpObject>> pickUpsListByIndex; 
 	
 	private Vector3 initialPosition;
 	private Quaternion initialRotation;
 	private Rigidbody rb;
 
-	public static Dictionary<int, List<PickUpObject>> PickUpsListByIndex
+	[HideInInspector]
+	public ArtefactInfo artefactInfo;
+
+	public static Dictionary<Museum, List<PickUpObject>> PickUpsListByIndex
 	{
 		get { return pickUpsListByIndex; }
-	}
-	
-	private void OnEnable()
-	{
-		if (pickUpsListByIndex == null)
-			pickUpsListByIndex = new Dictionary<int, List<PickUpObject>>();
-			
-		if (!pickUpsListByIndex.ContainsKey(index))	
-			pickUpsListByIndex.Add(index, new List<PickUpObject>());
-		
-		pickUpsListByIndex[index].Add(this);
 	}
 
 	private void Awake()
@@ -36,13 +28,34 @@ public class PickUpObject : MonoBehaviour
 		initialRotation = transform.rotation;
 
 		rb = GetComponent<Rigidbody>();
+		
+		WaveGameSetter.SubscribeOnWave(SetPickUpsDictionary, 1);
 	}
-	
+
+	private void SetPickUpsDictionary()
+	{
+		artefactInfo = GameInfo.Instance.ArtefactById(id);
+		
+		if (pickUpsListByIndex == null)
+			pickUpsListByIndex = new Dictionary<Museum, List<PickUpObject>>();
+			
+		if (!pickUpsListByIndex.ContainsKey(artefactInfo.museum))	
+			pickUpsListByIndex.Add(artefactInfo.museum, new List<PickUpObject>());
+		
+		pickUpsListByIndex[artefactInfo.museum].Add(this);
+	}
+
+	public static void ResetList()
+	{
+		print("reset pick ups");		
+		pickUpsListByIndex.Clear();
+	}
+
 	public void PlaceInBusket(bool destroy)
 	{
 		if (destroy)
 		{
-			pickUpsListByIndex[index].Remove(this);
+			pickUpsListByIndex[artefactInfo.museum].Remove(this);
 			Destroy(gameObject);
 		}
 		else
