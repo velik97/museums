@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 4303560597851196}
   - component: {fileID: 65417870372134414}
   - component: {fileID: 114607423284055898}
+  - component: {fileID: 114925737776350906}
   m_Layer: 0
   m_Name: Basket
   m_TagString: Untagged
@@ -700,22 +701,12 @@ MonoBehaviour:
   failureColor: {r: 0.9705882, g: 0.11418684, b: 0.11418684, a: 1}
   feedbackBirthPlace: {fileID: 4330717895079934}
   cover: {fileID: 1233530359938220}
-  materials:
-  - {fileID: 2100000, guid: 5fb4b893e3c84aa44992ad2b7cccbd6d, type: 2}
-  - {fileID: 2100000, guid: a82800a950b99fa41b8010e7f52451f8, type: 2}
-  - {fileID: 2100000, guid: 95d16b4967d713f4285bda20cb734dda, type: 2}
-  colorMeshRenderers:
-  - {fileID: 23903895543249878}
-  - {fileID: 23535427860580616}
-  - {fileID: 23834121782961952}
-  - {fileID: 23403590120193088}
-  - {fileID: 23951541735162410}
   onObjectPlacedInBasket:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
-  index: 4
+  museum: 0
   overAllObjectsCount: 0
   initialObjectsCount: 0
 --- !u!114 &114775355763201620
@@ -751,6 +742,33 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 88/88
+--- !u!114 &114925737776350906
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1339014629471236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db726712d1e7ca444ae4081e696d30a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materials:
+  - {fileID: 2100000, guid: 3838179506932af478bcfe620daf6978, type: 2}
+  - {fileID: 2100000, guid: 0d4e5b22d4ea78849850089b80a8bf45, type: 2}
+  - {fileID: 2100000, guid: 800e4aa37e832c34cafadf2e7470089f, type: 2}
+  - {fileID: 2100000, guid: b22a251513726e1469efd61f3db6f677, type: 2}
+  - {fileID: 2100000, guid: 59d5aded5281a634aacf9705949c1e75, type: 2}
+  - {fileID: 2100000, guid: 35183eed981c71444bc110bcded611f2, type: 2}
+  - {fileID: 2100000, guid: cf926b6715b9a434bb33847aaa7e4a64, type: 2}
+  - {fileID: 2100000, guid: 05782c2248688024a9a7d54a9590ef2d, type: 2}
+  - {fileID: 2100000, guid: 4dc3fae59a99a31448f8b4b117b225c1, type: 2}
+  meshRenderers:
+  - {fileID: 23903895543249878}
+  - {fileID: 23535427860580616}
+  - {fileID: 23834121782961952}
+  - {fileID: 23403590120193088}
+  - {fileID: 23951541735162410}
 --- !u!222 &222131015137934938
 CanvasRenderer:
   m_ObjectHideFlags: 1

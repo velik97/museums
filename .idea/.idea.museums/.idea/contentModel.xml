@@ -571,6 +571,8 @@
             <e p="Basket.cs" t="Include" />
             <e p="CollectQuestManager.cs" t="Include" />
             <e p="DoorAutoClose.cs" t="Include" />
+            <e p="FinalPedestal.cs" t="Include" />
+            <e p="FinalPickUp.cs" t="Include" />
             <e p="GameInfo.cs" t="Include" />
             <e p="GameManager.cs" t="Include" />
             <e p="PickUpObject.cs" t="Include" />
@@ -603,6 +605,9 @@
           </e>
           <e p="OperatorUI" t="Include">
             <e p="StartGameUI.cs" t="Include" />
+          </e>
+          <e p="Protoyping" t="Include">
+            <e p="PrototypeMuseumMaterials.cs" t="Include" />
           </e>
           <e p="Test" t="Include">
             <e p="LocalNetworkDiscovery.cs" t="Include" />

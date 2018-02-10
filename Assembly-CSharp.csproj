@@ -428,6 +428,8 @@
     <Compile Include="Assets\Scripts\GameLogic\Basket.cs" />
     <Compile Include="Assets\Scripts\GameLogic\CollectQuestManager.cs" />
     <Compile Include="Assets\Scripts\GameLogic\DoorAutoClose.cs" />
+    <Compile Include="Assets\Scripts\GameLogic\FinalPedestal.cs" />
+    <Compile Include="Assets\Scripts\GameLogic\FinalPickUp.cs" />
     <Compile Include="Assets\Scripts\GameLogic\GameInfo.cs" />
     <Compile Include="Assets\Scripts\GameLogic\GameManager.cs" />
     <Compile Include="Assets\Scripts\GameLogic\PickUpObject.cs" />
@@ -452,6 +454,7 @@
     <Compile Include="Assets\Scripts\Leaderboard\OperatorLeaderBoardUI.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\ScoreUI.cs" />
     <Compile Include="Assets\Scripts\OperatorUI\StartGameUI.cs" />
+    <Compile Include="Assets\Scripts\Protoyping\PrototypeMuseumMaterials.cs" />
     <Compile Include="Assets\Scripts\Test\LocalNetworkDiscovery.cs" />
     <Compile Include="Assets\Scripts\Test\MonobehaviourTest.cs" />
     <Compile Include="Assets\Scripts\Utils\DirectionFollower.cs" />

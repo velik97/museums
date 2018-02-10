@@ -16,9 +16,6 @@ public class Basket : MonoBehaviour
     public Transform feedbackBirthPlace;
 
     public GameObject cover;
-
-    public List<Material> materials;
-    public List<MeshRenderer> colorMeshRenderers;
     
     public UnityEvent onObjectPlacedInBasket;
     
@@ -38,7 +35,14 @@ public class Basket : MonoBehaviour
     {
         WaveGameSetter.SubscribeOnWave(SetBasketsDictionary, 2);
         WaveGameSetter.SubscribeOnWave(SetBasket, 2);
-        WaveGameSetter.SubscribeOnWave(SetMaterial, 2);
+        
+        // TODO prototype line ===================================
+        WaveGameSetter.SubscribeOnWave(delegate
+        {
+            if (GetComponent<PrototypeMuseumMaterials>() != null)
+                GetComponent<PrototypeMuseumMaterials>().SetMaterial(museum);
+        }, 2);
+        // =======================================================
     }
 
     public static void ResetList()
@@ -75,14 +79,6 @@ public class Basket : MonoBehaviour
         cover.SetActive(false);
     }
 
-    private void SetMaterial()
-    {
-        foreach (var colorMeshRenderer in colorMeshRenderers)
-        {
-            colorMeshRenderer.material = materials[(int)museum % materials.Count];
-        }
-    }
-
     public void Deactivate()
     {
         cover.SetActive(true);
@@ -114,6 +110,7 @@ public class Basket : MonoBehaviour
             SetCountText();
             
             CollectQuestManager.current.AddPoints(pu.artefactInfo.points);
+            GameInfo.Instance.OnArtefactCollecetd(pu.id);
         }
         else
         {                   

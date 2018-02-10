@@ -10,9 +10,10 @@ public class LeaderboardSceneManager : MonoBehaviour
 
     public string initialSceneName;
 
-    private void Start()
+    private void Awake()
     {
-        ShwoLeaderboardsOnWall();
+        WaveGameSetter.SubscribeOnWave(ShwoLeaderboardsOnWall, 0);
+        WaveGameSetter.SubscribeOnWave(DeleteNotFoundArtefacts, 2);
     }
 
     private void ShwoLeaderboardsOnWall()
@@ -35,6 +36,19 @@ public class LeaderboardSceneManager : MonoBehaviour
         
         LeaderboardParallelRequestManager.Instance.GetLocalScores(
             true, (int)GameInfo.Instance.location, leaderBoardUI.ShowAllScores);
+    }
+
+    private void DeleteNotFoundArtefacts()
+    {
+        Dictionary<int, FinalPickUp>.KeyCollection pickUpsInSceneKeys = FinalPickUp.PickUpByIndex.Keys;
+        
+        foreach (var key in pickUpsInSceneKeys)
+        {
+            if (!GameInfo.Instance.ArtefactCollected(key))
+            {
+                FinalPickUp.PickUpByIndex[key].gameObject.SetActive(false);
+            }
+        }        
     }
 
     public void RestartGame()

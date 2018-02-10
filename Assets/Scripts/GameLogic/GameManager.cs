@@ -26,9 +26,10 @@ public class GameManager : MonoSingleton<GameManager>
 	private bool tutorialIsDone;
 	private StartTimeOption startTimeOption;
 
-	private void Start()
+	private void Awake()
 	{
 		VRCameraText.Instance.ShowText(startText);
+		GameInfo.Instance.FreeCollectedArtefactsIdsList();
 	}
 
 	public void StartGame()
@@ -134,8 +135,7 @@ public class GameManager : MonoSingleton<GameManager>
 	{
 		VRCameraFade.Instance.FadeOut();
 		yield return new WaitForSeconds(2f);
-		SceneManager.LoadScene(
-			finalSceneNames[Mathf.Clamp((int)GameInfo.Instance.location, 0, finalSceneNames.Length)]);
+		SceneManager.LoadScene(finalSceneNames[(int)GameInfo.Instance.location]);
 	}
 }
 

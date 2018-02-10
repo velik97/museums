@@ -30,6 +30,14 @@ public class PickUpObject : MonoBehaviour
 		rb = GetComponent<Rigidbody>();
 		
 		WaveGameSetter.SubscribeOnWave(SetPickUpsDictionary, 1);
+		
+		// TODO prototype line ===================================
+		WaveGameSetter.SubscribeOnWave(delegate
+		{
+			if (GetComponent<PrototypeMuseumMaterials>() != null)
+				GetComponent<PrototypeMuseumMaterials>().SetMaterial(artefactInfo.museum);
+		}, 2);
+		// =======================================================
 	}
 
 	private void SetPickUpsDictionary()

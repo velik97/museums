@@ -18,10 +18,13 @@ public class GameInfo : MonoSingleton<GameInfo>
 
     [HideInInspector] public List<Status> statuses;
     [HideInInspector] public List<ArtefactInfo> artefacts;
-    [HideInInspector] public List<ArtefactInfo> trash;        
+    [HideInInspector] public List<ArtefactInfo> trash;
+
+    private List<int> collectedArtefactsIds;
 
     private void Awake()
     {
+        collectedArtefactsIds = new List<int>();
         WaveGameSetter.SubscribeOnWave(SetInfo, 0);
     }
 
@@ -41,6 +44,25 @@ public class GameInfo : MonoSingleton<GameInfo>
         trash = dataBase.trash;
     }
 
+    public void FreeCollectedArtefactsIdsList()
+    {
+        if (collectedArtefactsIds != null && collectedArtefactsIds.Count != 0)
+            collectedArtefactsIds.Clear();
+    }
+
+    public void OnArtefactCollecetd(int id)
+    {
+        collectedArtefactsIds.Add(id);
+    }
+
+    public bool ArtefactCollected(int id)
+    {
+        if (collectedArtefactsIds == null)
+            return false;
+
+        return collectedArtefactsIds.Contains(id);
+    }
+    
     public string Status
     {
         get

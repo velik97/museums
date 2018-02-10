@@ -386,7 +386,7 @@ MonoBehaviour:
     id: 44
     location: 2
     museum: 8
-    type: 2
+    type: 1
     description: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       tempor incididunt ut labore et dolore magna aliqua.
     points: 5

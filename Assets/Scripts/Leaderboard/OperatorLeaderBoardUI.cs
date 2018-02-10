@@ -18,7 +18,7 @@ public class OperatorLeaderBoardUI : MonoBehaviour
     public float waitbeforeNextTime;
     
     private List<ScoreUI> scoresUIs;
-    private int showingLocationIndex = 1;
+    private int showingLocationIndex = 0;
 
     private bool waitingForScoresLoading;
 
@@ -52,7 +52,7 @@ public class OperatorLeaderBoardUI : MonoBehaviour
     {
         while (true)
         {
-            header.text = locationNames[showingLocationIndex - 1];
+            header.text = locationNames[showingLocationIndex];
             
             LeaderboardParallelRequestManager.Instance.GetLocalScores(true, showingLocationIndex, PrintScores);
             waitingForScoresLoading = true;
@@ -83,8 +83,8 @@ public class OperatorLeaderBoardUI : MonoBehaviour
             loadBar.offsetMin = Vector2.zero;
             loadBar.offsetMax = Vector2.zero;
             
-            showingLocationIndex %= 3;
             showingLocationIndex++;
+            showingLocationIndex %= 3;            
         }
     }
 
