@@ -599,19 +599,16 @@
             <e p="LeaderboardSceneManager.cs" t="Include" />
             <e p="LeaderBoardUI.cs" t="Include" />
             <e p="LocalNetworkLeaderBoard.cs" t="Include" />
-            <e p="NameUI.cs" t="Include" />
             <e p="OperatorLeaderBoardUI.cs" t="Include" />
             <e p="ScoreUI.cs" t="Include" />
           </e>
           <e p="OperatorUI" t="Include">
+            <e p="MatchImages.cs" t="Include" />
+            <e p="RemoteLeaderboardCheckUI.cs" t="Include" />
             <e p="StartGameUI.cs" t="Include" />
           </e>
           <e p="Protoyping" t="Include">
             <e p="PrototypeMuseumMaterials.cs" t="Include" />
-          </e>
-          <e p="Test" t="Include">
-            <e p="LocalNetworkDiscovery.cs" t="Include" />
-            <e p="MonobehaviourTest.cs" t="Include" />
           </e>
           <e p="Utils" t="Include">
             <e p="DirectionFollower.cs" t="Include" />

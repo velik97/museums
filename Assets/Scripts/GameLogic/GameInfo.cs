@@ -6,7 +6,6 @@ using UnityEngine;
 public class GameInfo : MonoSingleton<GameInfo>
 {
     public string playerName = "";
-    public int computerId = 1;
 
     public ArtefactDataBase dataBase;
     

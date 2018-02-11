@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using System.Xml;
 using System.Xml.Linq;
 using UnityEngine;
@@ -9,123 +10,70 @@ using UnityEngine;
 public class LocalNetworkLeaderboard : MonoSingleton<LocalNetworkLeaderboard>
 {
     public string localLeaderboardFilePath = "C:\\net folder\\leaderboard.xml";
-    private string remoteLeaderboardPath;
+    private string remotePcName = "";
 
     private XDocument localLeaderboardXml;
     private XDocument remoteLeaderboardXml;
 
+    private int computerId = -1;
+
     #region Labels & Attributes
 
-    private string rootLabel = "data";
+    private const string RootLabel = "data";
 
-    private string remotePathLabel = "remotePath";
+    private const string RemotePcNameLabel = "remotePc";
+    private const string ComputerIdLabel = "computerId";
 
-    private string scoresLabel = "scores";
-    private string scoreLabel = "score";
+    private const string ScoresLabel = "scores";
+    private const string ScoreLabel = "score";
 
-    private string computerIdAttribute = "computerId";
-    private string locationIdAttribute = "loactionId";
-    private string idAttribute = "id";
+    private const string ComputerIdAttribute = "computerId";
+    private const string LocationIdAttribute = "loactionId";
+    private const string IdAttribute = "id";
 
-    private string nameLabel = "name";
-    private string pointsLabel = "points";
-    private string statusLabel = "status";
-
-    #endregion
-
-    private void Awake()
-    {
-        SynchronizeScores();
-    }
-
-    #region Public Methods
-
-    /// <summary>
-    /// Returns all scores listed on local computer
-    /// </summary>
-    public List<Score> GetLocalScores()
-    {
-        return GetScores(LocalLeaderboardXml);
-    }
-    
-    /// <summary>
-    /// Returns all scores listed on local computer for specific location
-    /// </summary>
-    public List<Score> GetLocalScores(int locationId)
-    {
-        return GetScores(LocalLeaderboardXml, locationId);
-    }
-
-    /// <summary>
-    /// Synchronizes all local scores with remote scores
-    /// </summary>
-    public void SynchronizeScores()
-    {
-        if (LocalLeaderboardXml == null)
-            return;
-
-        remoteLeaderboardPath = LocalLeaderboardXml.Element(rootLabel).Element(remotePathLabel).Value;
-
-        if (RemoteLeaderboardXml == null)
-            return;
-
-        List<Score> localScores = GetScores(LocalLeaderboardXml);
-        List<Score> remoteScores = GetScores(RemoteLeaderboardXml);
-
-        foreach (var remoteScore in remoteScores)
-        {
-            bool contains = false;
-            foreach (var localScore in localScores)
-            {
-                if (localScore.computerId == remoteScore.computerId &&
-                    localScore.id == remoteScore.id)
-                {
-                    contains = true;
-                    break;
-                }
-            }
-
-            if (!contains)
-            {
-                AddScoreToLocalLeaderboard(remoteScore);
-            }
-        }
-        
-        SaveLocalLeaderboard();
-    }
-
-    /// <summary>
-    /// Adds new score to local leaderboard
-    /// </summary>
-    public Score AddNewScore(int locationId, int computerId, string playerName, int points, string status)
-    {
-        if (LocalLeaderboardXml == null)
-            return null;
-
-        List<Score> currentScores = GetScores(LocalLeaderboardXml);
-
-        int maxId = 0;
-
-        foreach (var currentScore in currentScores)
-        {
-            if (currentScore.locationId == locationId && currentScore.computerId == computerId
-                && currentScore.id > maxId)
-                maxId = currentScore.id;
-        }
-
-        int newId = maxId + 1;
-
-        Score newScore = new Score(computerId, locationId, newId, playerName, points, status);
-
-        AddScoreToLocalLeaderboard(newScore);
-        SaveLocalLeaderboard();
-
-        return newScore;
-    }
+    private const string NameLabel = "name";
+    private const string PointsLabel = "points";
+    private const string StatusLabel = "status";
 
     #endregion
 
-    #region Private Methods
+    #region Properties
+
+    public int ComputerId
+    {
+        get
+        {
+            if (computerId == -1)
+            {
+                computerId = int.Parse(LocalLeaderboardXml.Element(RootLabel).Element(ComputerIdLabel).Value);
+            }
+            return computerId;
+        }
+        set
+        {
+            LocalLeaderboardXml.Element(RootLabel).Element(ComputerIdLabel).Value = computerId.ToString();
+            SaveLocalLeaderboard();
+            computerId = value;
+        }
+    }
+
+    public string RemotePcName
+    {
+        get
+        {
+            if (remotePcName == "")
+            {
+                remotePcName = LocalLeaderboardXml.Element(RootLabel).Element(RemotePcNameLabel).Value;
+            }
+            return remotePcName;
+        }
+        set
+        {
+            LocalLeaderboardXml.Element(RootLabel).Element(RemotePcNameLabel).Value = value;
+            SaveLocalLeaderboard();
+            remotePcName = value;
+        }
+    }
 
     private XDocument LocalLeaderboardXml
     {
@@ -145,9 +93,9 @@ public class LocalNetworkLeaderboard : MonoSingleton<LocalNetworkLeaderboard>
                     }
                 }
                 catch (Exception e)
-                {
-                    Debug.LogError(e.ToString());
+                {   
                     localLeaderboardXml = CreateNewLocalXmlDocument();
+                    throw;                    
                 }
             }
 
@@ -159,27 +107,180 @@ public class LocalNetworkLeaderboard : MonoSingleton<LocalNetworkLeaderboard>
     {
         get
         {
-            if (remoteLeaderboardXml == null)
+            string path = "\\\\" + RemotePcName + "\\net folder\\leaderboard.xml";
+            if (File.Exists(path))
+                remoteLeaderboardXml = XDocument.Load(path);
+            else
             {
-                if (File.Exists(remoteLeaderboardPath))
-                    remoteLeaderboardXml = XDocument.Load(remoteLeaderboardPath);
-                else
-                {
-                    Debug.Log("[LeaderBoard] Can't find remote leaderboard by path: " +
-                              remoteLeaderboardPath + ".");
-                }
+                Debug.Log("[LeaderBoard] Can't find remote leaderboard by path: " +
+                          path + ".");
             }
 
             return remoteLeaderboardXml;
         }
     }
 
+    #endregion
+
+    private void Awake()
+    {
+        remotePcName = "";
+        computerId = -1;
+    }
+
+    #region Public Methods
+
+    /// <summary>
+    /// Returns all scores listed on local computer
+    /// </summary>
+    public List<Score> GetLocalScores()
+    {
+        return GetScores(LocalLeaderboardXml);
+    }
+
+    /// <summary>
+    /// Returns all scores listed on local computer for specific location
+    /// </summary>
+    public List<Score> GetLocalScores(int locationId)
+    {
+        return GetScores(LocalLeaderboardXml, locationId);
+    }
+
+    /// <summary>
+    /// Synchronizes all local scores with remote scores
+    /// </summary>
+    public void SynchronizeScores()
+    {
+        if (LocalLeaderboardXml == null)
+            return;
+
+        if (RemoteLeaderboardXml == null)
+            return;
+
+        List<Score> localScores = GetScores(LocalLeaderboardXml);
+        List<Score> remoteScores = GetScores(remoteLeaderboardXml);
+
+        foreach (var remoteScore in remoteScores)
+        {
+            bool contains = false;
+            foreach (var localScore in localScores)
+            {
+                if (localScore.computerId == remoteScore.computerId &&
+                    localScore.id == remoteScore.id)
+                {
+                    contains = true;
+                    break;
+                }
+            }
+
+            if (!contains)
+            {
+                AddScoreToLocalLeaderboard(remoteScore);
+            }
+        }
+
+        SaveLocalLeaderboard();
+    }
+
+    /// <summary>
+    /// Adds new score to local leaderboard
+    /// </summary>
+    public Score AddNewScore(int locationId, string playerName, int points, string status)
+    {
+        if (LocalLeaderboardXml == null)
+            return null;
+
+        List<Score> currentScores = GetScores(LocalLeaderboardXml);
+
+        int maxId = 0;
+
+        foreach (var currentScore in currentScores)
+        {
+            if (currentScore.locationId == locationId && currentScore.computerId == ComputerId
+                && currentScore.id > maxId)
+                maxId = currentScore.id;
+        }
+
+        int newId = maxId + 1;
+
+        Score newScore = new Score(ComputerId, locationId, newId, playerName, points, status);
+
+        AddScoreToLocalLeaderboard(newScore);
+        SaveLocalLeaderboard();
+
+        return newScore;
+    }
+
+    /// <summary>
+    /// Deletes all scores from local leaderboard
+    /// </summary>
+    public void ClearScores()
+    {
+        ClearScoresList();
+        SaveLocalLeaderboard();
+    }
+    
+    /// <summary>
+    /// Deletes all scores with given locationId from local leaderboard
+    /// </summary>
+    public void ClearScores(int locationId)
+    {
+        ClearScoresList(locationId);
+        SaveLocalLeaderboard();
+    }
+
+    /// <summary>
+    /// Checks accessability of remote leaderboard for given remote PC name and my computerId
+    /// </summary>
+    public RemoteLeaderboardAccess GetRemoteLeaderboardAccessCode(string assumedRemotePcName, int myComputerId)
+    {
+        string path = "\\\\" + assumedRemotePcName + "\\net folder";
+
+        if (!new DirectoryInfo(path).Exists)
+            return RemoteLeaderboardAccess.NetFolderDoesntExistOrNotAccessible;
+
+        path += "\\leaderboard.xml";
+
+        if (!new FileInfo(path).Exists)
+            return RemoteLeaderboardAccess.XmlDoesntExist;
+
+        string prevRemotePcName = remotePcName;
+        try
+        {
+            remotePcName = assumedRemotePcName;
+            if (RemoteLeaderboardXml == null)
+                return RemoteLeaderboardAccess.XmlIsNotAccessible;
+        }
+        catch (Exception e)
+        {
+            return RemoteLeaderboardAccess.BadRemoteXml;
+        }
+        remotePcName = prevRemotePcName;
+
+        try
+        {
+            if (remoteLeaderboardXml.Element(RootLabel).Element(ComputerIdLabel).Value == myComputerId.ToString())
+                return RemoteLeaderboardAccess.ComputerIdsAreSame;
+        }
+        catch (Exception e)
+        {
+            return RemoteLeaderboardAccess.BadRemoteXml;
+        }
+
+        return 0;
+    }
+
+    #endregion
+
+    #region Private Methods    
+
     private XDocument CreateNewLocalXmlDocument()
     {
         XDocument xDoc = new XDocument(
-            new XElement(rootLabel,
-                new XElement(remotePathLabel, remoteLeaderboardPath),
-                new XElement(scoresLabel)
+            new XElement(RootLabel,
+                new XElement(RemotePcNameLabel, remotePcName),
+                new XElement(ComputerIdLabel, 1),
+                new XElement(ScoresLabel)
             )
         );
 
@@ -191,37 +292,37 @@ public class LocalNetworkLeaderboard : MonoSingleton<LocalNetworkLeaderboard>
     private List<Score> GetScores(XDocument xDoc, int locationId)
     {
         List<Score> scores = new List<Score>();
-        foreach (var scoresElement in xDoc.Element(rootLabel).Element(scoresLabel).Elements(scoreLabel))
+        foreach (var scoresElement in xDoc.Element(RootLabel).Element(ScoresLabel).Elements(ScoreLabel))
         {
-            if (int.Parse(scoresElement.Attribute(locationIdAttribute).Value) != locationId)
+            if (int.Parse(scoresElement.Attribute(LocationIdAttribute).Value) != locationId)
                 continue;
-            
+
             Score newScore = new Score(
-                int.Parse(scoresElement.Attribute(computerIdAttribute).Value),
-                int.Parse(scoresElement.Attribute(locationIdAttribute).Value),
-                int.Parse(scoresElement.Attribute(idAttribute).Value),
-                scoresElement.Element(nameLabel).Value,
-                int.Parse(scoresElement.Element(pointsLabel).Value),
-                scoresElement.Element(statusLabel).Value
+                int.Parse(scoresElement.Attribute(ComputerIdAttribute).Value),
+                int.Parse(scoresElement.Attribute(LocationIdAttribute).Value),
+                int.Parse(scoresElement.Attribute(IdAttribute).Value),
+                scoresElement.Element(NameLabel).Value,
+                int.Parse(scoresElement.Element(PointsLabel).Value),
+                scoresElement.Element(StatusLabel).Value
             );
 
             scores.Add(newScore);
         }
         return scores;
     }
-    
+
     private List<Score> GetScores(XDocument xDoc)
     {
         List<Score> scores = new List<Score>();
-        foreach (var scoresElement in xDoc.Element(rootLabel).Element(scoresLabel).Elements(scoreLabel))
+        foreach (var scoresElement in xDoc.Element(RootLabel).Element(ScoresLabel).Elements(ScoreLabel))
         {
             Score newScore = new Score(
-                int.Parse(scoresElement.Attribute(computerIdAttribute).Value),
-                int.Parse(scoresElement.Attribute(locationIdAttribute).Value),
-                int.Parse(scoresElement.Attribute(idAttribute).Value),
-                scoresElement.Element(nameLabel).Value,
-                int.Parse(scoresElement.Element(pointsLabel).Value),
-                scoresElement.Element(statusLabel).Value
+                int.Parse(scoresElement.Attribute(ComputerIdAttribute).Value),
+                int.Parse(scoresElement.Attribute(LocationIdAttribute).Value),
+                int.Parse(scoresElement.Attribute(IdAttribute).Value),
+                scoresElement.Element(NameLabel).Value,
+                int.Parse(scoresElement.Element(PointsLabel).Value),
+                scoresElement.Element(StatusLabel).Value
             );
 
             scores.Add(newScore);
@@ -233,24 +334,40 @@ public class LocalNetworkLeaderboard : MonoSingleton<LocalNetworkLeaderboard>
     {
         if (LocalLeaderboardXml != null)
         {
-            XElement newScore = new XElement(scoreLabel,
-                new XAttribute(computerIdAttribute, score.computerId.ToString()),
-                new XAttribute(locationIdAttribute, score.locationId.ToString()),
-                new XAttribute(idAttribute,         score.id.ToString()),
-                
-                new XElement(  nameLabel,           score.name),
-                new XElement(  pointsLabel,         score.points.ToString()),
-                new XElement(  statusLabel,         score.status)
+            XElement newScore = new XElement(ScoreLabel,
+                new XAttribute(ComputerIdAttribute, score.computerId.ToString()),
+                new XAttribute(LocationIdAttribute, score.locationId.ToString()),
+                new XAttribute(IdAttribute, score.id.ToString()),
+                new XElement(NameLabel, score.name),
+                new XElement(PointsLabel, score.points.ToString()),
+                new XElement(StatusLabel, score.status)
             );
 
-            LocalLeaderboardXml.Element(rootLabel).Element(scoresLabel).Add(newScore);
+            LocalLeaderboardXml.Element(RootLabel).Element(ScoresLabel).Add(newScore);
+        }
+    }
+
+    private void ClearScoresList()
+    {
+        LocalLeaderboardXml.Element(RootLabel).Element(ScoresLabel).RemoveAll();
+    }
+    
+    private void ClearScoresList(int locationId)
+    {
+        foreach (var xElement in LocalLeaderboardXml.Element(RootLabel).Element(ScoresLabel).Elements(ScoreLabel))
+        {
+            if (int.Parse(xElement.Element(ScoreLabel).Value) == locationId)
+                xElement.RemoveAll();
         }
     }
 
     private void SaveLocalLeaderboard()
     {
-        if (LocalLeaderboardXml != null)
-            LocalLeaderboardXml.Save(localLeaderboardFilePath);
+        lock (localLeaderboardXml)
+        {
+            if (LocalLeaderboardXml != null)
+                localLeaderboardXml.Save(localLeaderboardFilePath);
+        }
     }
 
     #endregion
@@ -291,7 +408,7 @@ public class Score : IComparable
 
             return otherScore.points - this.points;
         }
-        
+
         return this.locationId - otherScore.locationId;
     }
 
@@ -300,4 +417,14 @@ public class Score : IComparable
         return "computerId: " + computerId + ", locationId: " + locationId + ", id: " + id +
                "\nname: " + name + ", points: " + points + ", status: " + status;
     }
+}
+
+public enum RemoteLeaderboardAccess
+{
+    Accessible = 0,
+    NetFolderDoesntExistOrNotAccessible = 1,
+    XmlDoesntExist = 2,
+    XmlIsNotAccessible = 3,
+    BadRemoteXml = 4,
+    ComputerIdsAreSame = 5
 }

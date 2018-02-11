@@ -450,13 +450,12 @@
     <Compile Include="Assets\Scripts\Leaderboard\LeaderboardParallelRequestManager.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\LeaderboardSceneManager.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\LocalNetworkLeaderboard.cs" />
-    <Compile Include="Assets\Scripts\Leaderboard\NameUI.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\OperatorLeaderBoardUI.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\ScoreUI.cs" />
+    <Compile Include="Assets\Scripts\OperatorUI\MatchImages.cs" />
+    <Compile Include="Assets\Scripts\OperatorUI\RemoteLeaderboardCheckUI.cs" />
     <Compile Include="Assets\Scripts\OperatorUI\StartGameUI.cs" />
     <Compile Include="Assets\Scripts\Protoyping\PrototypeMuseumMaterials.cs" />
-    <Compile Include="Assets\Scripts\Test\LocalNetworkDiscovery.cs" />
-    <Compile Include="Assets\Scripts\Test\MonobehaviourTest.cs" />
     <Compile Include="Assets\Scripts\Utils\DirectionFollower.cs" />
     <Compile Include="Assets\Scripts\Utils\DisappearOnGrab.cs" />
     <Compile Include="Assets\Scripts\Utils\DontDestroyOnSceneLoad.cs" />

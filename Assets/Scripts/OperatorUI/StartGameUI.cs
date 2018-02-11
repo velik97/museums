@@ -10,9 +10,7 @@ public class StartGameUI : MonoSingleton<StartGameUI>
     public Dropdown startTimeDropDown;
     public Button startButton;
 
-    public Image loadingImage;
-    public Image matchImage;
-    public Image notMatchImage;
+    public MatchImages matchImages;
 
     public int minGameTime;
     public int maxGameTime;
@@ -161,36 +159,28 @@ public class StartGameUI : MonoSingleton<StartGameUI>
 
     private void SetLoading()
     {
-        loadingImage.gameObject.SetActive(true);
-        matchImage.gameObject.SetActive(false);
-        notMatchImage.gameObject.SetActive(false);
+        matchImages.SetLoading();
         
         startButton.interactable = false;
     }
     
     private void SetMatch()
     {
-        loadingImage.gameObject.SetActive(false);
-        matchImage.gameObject.SetActive(true);
-        notMatchImage.gameObject.SetActive(false);
+        matchImages.SetMatch();
         
         startButton.interactable = true;
     }
     
     private void SetNotMatch()
     {
-        loadingImage.gameObject.SetActive(false);
-        matchImage.gameObject.SetActive(false);
-        notMatchImage.gameObject.SetActive(true);
+        matchImages.SetNotMatch();
         
         startButton.interactable = false;
     }
 
     private void SetEmpty()
     {
-        loadingImage.gameObject.SetActive(false);
-        matchImage.gameObject.SetActive(false);
-        notMatchImage.gameObject.SetActive(false);
+        matchImages.SetEmpty();
         
         startButton.interactable = false;
     }

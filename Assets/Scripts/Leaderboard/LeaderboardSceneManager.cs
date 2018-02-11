@@ -23,7 +23,6 @@ public class LeaderboardSceneManager : MonoBehaviour
             leaderBoardUI.myScore =
                 LocalNetworkLeaderboard.Instance.AddNewScore(
                     (int)GameInfo.Instance.location,
-                    GameInfo.Instance.computerId,
                     GameInfo.Instance.playerName,
                     GameInfo.Instance.points,
                     GameInfo.Instance.Status
