@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OperatorLeaderBoardUI : MonoBehaviour
+public class ViewerLeaderBoardUI : MonoBehaviour
 {
     public ScoreUI scoreUIPrefab;
     public int visiableCount = 10;
@@ -25,7 +25,6 @@ public class OperatorLeaderBoardUI : MonoBehaviour
     private void Start()
     {
         waitingForScoresLoading = true;
-        Show();
     }
 
     public void ChangeState()

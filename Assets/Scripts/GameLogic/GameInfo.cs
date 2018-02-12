@@ -107,4 +107,59 @@ public class GameInfo : MonoSingleton<GameInfo>
     {
         return artefacts.FindAll(o => o.type == type);
     }
+
+    public static string MuseumNameByIndex(int index)
+    {
+        return MuseumNameByIndex((Museum) index);
+    }
+    
+    public static string MuseumNameByIndex(Museum index)
+    {
+        switch (index)
+        {
+            case Museum.Trash:
+                return "Мусор";
+            case Museum.Музей_космонавтки:
+                return "Музей космонавтки";
+            case Museum.Музей_танка_Т_34:
+                return "Музей танка Т 34";
+            case Museum.Музей_Цветаевой:
+                return "Музей Цветаевой";
+            case Museum.Дарвиновский_музей:
+                return "Дарвиновский музей";
+            case Museum.Дом_Гоголя:
+                return "Дом Гоголя";
+            case Museum.Музей_Cкрябина:
+                return "Музей Cкрябина";
+            case Museum.Бородинская_битва:
+                return "Бородинская битва";
+            case Museum.Музей_имение_АС_Пушкина:
+                return "Музей имение АС Пушкина";
+            case Museum.Музей_Булгакова:
+                return "Музей Булгакова";
+            default:
+                return "";
+        }
+    }
+
+    public static string LocationByIndex(int index)
+    {
+        return LocationByIndex((Location) index);
+    }
+
+    public static string LocationByIndex(Location index)
+    {
+        switch (index)
+        {
+            case Location.Моя_улица:
+                return "Моя улица";
+            case Location.Раскопки:
+                return "Раскопки";
+            case Location.Чердак:
+                return "Чердак";
+            default:
+                return "";
+        }
+    }
+    
 }

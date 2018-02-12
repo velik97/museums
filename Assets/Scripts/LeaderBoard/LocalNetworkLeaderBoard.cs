@@ -92,7 +92,7 @@ public class LocalNetworkLeaderboard : MonoSingleton<LocalNetworkLeaderboard>
                         localLeaderboardXml = CreateNewLocalXmlDocument();
                     }
                 }
-                catch (Exception e)
+                catch
                 {   
                     localLeaderboardXml = CreateNewLocalXmlDocument();
                     throw;                    
@@ -126,6 +126,13 @@ public class LocalNetworkLeaderboard : MonoSingleton<LocalNetworkLeaderboard>
     {
         remotePcName = "";
         computerId = -1;
+
+//        AddNewScore(0, "velik90", 100, "good boy");
+//        AddNewScore(0, "velik91", 101, "good boy1");
+//        AddNewScore(1, "velik92", 102, "good boy2");
+//        AddNewScore(1, "velik93", 103, "good boy3");
+//        AddNewScore(2, "velik94", 104, "good boy4");
+//        AddNewScore(2, "velik95", 105, "good boy5");
     }
 
     #region Public Methods
@@ -251,7 +258,7 @@ public class LocalNetworkLeaderboard : MonoSingleton<LocalNetworkLeaderboard>
             if (RemoteLeaderboardXml == null)
                 return RemoteLeaderboardAccess.XmlIsNotAccessible;
         }
-        catch (Exception e)
+        catch
         {
             return RemoteLeaderboardAccess.BadRemoteXml;
         }
@@ -262,7 +269,7 @@ public class LocalNetworkLeaderboard : MonoSingleton<LocalNetworkLeaderboard>
             if (remoteLeaderboardXml.Element(RootLabel).Element(ComputerIdLabel).Value == myComputerId.ToString())
                 return RemoteLeaderboardAccess.ComputerIdsAreSame;
         }
-        catch (Exception e)
+        catch
         {
             return RemoteLeaderboardAccess.BadRemoteXml;
         }
@@ -356,8 +363,9 @@ public class LocalNetworkLeaderboard : MonoSingleton<LocalNetworkLeaderboard>
     {
         foreach (var xElement in LocalLeaderboardXml.Element(RootLabel).Element(ScoresLabel).Elements(ScoreLabel))
         {
-            if (int.Parse(xElement.Element(ScoreLabel).Value) == locationId)
-                xElement.RemoveAll();
+//            throw new Exception(xElement.Value);
+            if (int.Parse(xElement.Attribute(LocationIdAttribute).Value) == locationId)
+                xElement.Remove();
         }
     }
 

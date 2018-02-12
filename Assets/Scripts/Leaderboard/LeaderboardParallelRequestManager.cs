@@ -22,6 +22,9 @@ public class LeaderboardParallelRequestManager : MonoSingleton<LeaderboardParall
     private void Awake()
     {
         leaderboard = GetComponent<LocalNetworkLeaderboard>();
+        
+        if (leaderboard == null)
+            print("null");
 
         scoreListCallbackQueue = new Queue<GenericRequestCallback<List<Score>>>();
         remoteLeaderboardAccessCallbackQueue = new Queue<GenericRequestCallback<RemoteLeaderboardAccess>>();
@@ -110,6 +113,20 @@ public class LeaderboardParallelRequestManager : MonoSingleton<LeaderboardParall
         new Thread(threadStart).Start();
     }
 
+    public void RemoveScores(Action callback)
+    {
+        ThreadStart threadStart = delegate { RemoveScoresParallel(callback); };
+
+        new Thread(threadStart).Start();
+    }
+    
+    public void RemoveScores(int locationId, Action callback)
+    {
+        ThreadStart threadStart = delegate { RemoveScoresParallel(locationId, callback); };
+
+        new Thread(threadStart).Start();
+    }
+
     public void GetRemoteLeaderboardAccessCode(string assumedRemotePcName, int myComputerId,
         Action<RemoteLeaderboardAccess> callback)
     {
@@ -146,6 +163,20 @@ public class LeaderboardParallelRequestManager : MonoSingleton<LeaderboardParall
     {
         ThreadStart threadStart = delegate { SetRemoterPcNameParallel(pcName); };
 
+        new Thread(threadStart).Start();
+    }
+
+    public void SaveScoresToXlsx(string folderName, string fileName, Action<string> callback)
+    {
+        ThreadStart threadStart = delegate { SaveScoresToXlsxParallel(folderName, fileName, callback); };
+        
+        new Thread(threadStart).Start();
+    }
+    
+    public void SaveScoresToXlsx(string folderName, string fileName, int locationId, Action<string> callback)
+    {
+        ThreadStart threadStart = delegate { SaveScoresToXlsxParallel(folderName, fileName, locationId, callback); };
+        
         new Thread(threadStart).Start();
     }
 
@@ -194,6 +225,32 @@ public class LeaderboardParallelRequestManager : MonoSingleton<LeaderboardParall
             List<Score> scores = leaderboard.GetLocalScores(locationId);
 
             scoreListCallbackQueue.Enqueue(new GenericRequestCallback<List<Score>>(scores, callback));
+        }
+        catch (Exception e)
+        {
+            errors.Enqueue(e);
+        }
+    }
+
+    private void RemoveScoresParallel(Action callback)
+    {
+        try
+        {
+            leaderboard.ClearScores();
+            simpleCallbackQueue.Enqueue(callback);
+        }
+        catch (Exception e)
+        {
+            errors.Enqueue(e);
+        }
+    }
+    
+    private void RemoveScoresParallel(int locationId, Action callback)
+    {
+        try
+        {
+            leaderboard.ClearScores(locationId);
+            simpleCallbackQueue.Enqueue(callback);
         }
         catch (Exception e)
         {
@@ -259,6 +316,34 @@ public class LeaderboardParallelRequestManager : MonoSingleton<LeaderboardParall
         try
         {
             leaderboard.RemotePcName = pcName;
+        }
+        catch (Exception e)
+        {
+            errors.Enqueue(e);
+        }
+    }
+
+    private void SaveScoresToXlsxParallel(string folderName, string fileName, Action<string> callback)
+    {
+        try
+        {
+            List<Score> scores = leaderboard.GetLocalScores();
+            
+            stringCallbackQueue.Enqueue(new GenericRequestCallback<string>(LeaderboardToXlsx.SaveXlsx(scores, folderName, fileName), callback));
+        }
+        catch (Exception e)
+        {
+            errors.Enqueue(e);
+        }
+    }
+    
+    private void SaveScoresToXlsxParallel(string folderName, string fileName, int locationId, Action<string> callback)
+    {        
+        try
+        {
+            List<Score> scores = leaderboard.GetLocalScores(locationId);
+           
+            stringCallbackQueue.Enqueue(new GenericRequestCallback<string>(LeaderboardToXlsx.SaveXlsx(scores, folderName, fileName), callback));
         }
         catch (Exception e)
         {

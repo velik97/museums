@@ -70,6 +70,7 @@
     <None Include="Assets\Extentions\VRTK\Scripts\Internal\Shaders\Unlit_TransparentColor.shader" />
     <None Include="Assets\Extentions\SteamVR\Resources\SteamVR_ColorOut.shader" />
     <None Include="Assets\Extentions\SteamVR\InteractionSystem\Core\Shaders\SeeThru.shader" />
+    <None Include="Assets\Extentions\Excel\EPPlus\readme.txt" />
     <None Include="Assets\Extentions\SteamVR\InteractionSystem\Readme_InteractionSystem.txt" />
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
@@ -124,6 +125,9 @@
     </Reference>
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
       <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>C:/Users/PC4/Documents/museums/Assets/Extentions/Excel/EPPlus/EPPlus.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

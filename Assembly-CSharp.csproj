@@ -50,6 +50,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Extentions\Excel\Scripts\Excel.cs" />
+    <Compile Include="Assets\Extentions\Excel\Scripts\ExcelHelper.cs" />
+    <Compile Include="Assets\Extentions\Excel\Scripts\ExcelTable.cs" />
+    <Compile Include="Assets\Extentions\Excel\Scripts\ExcelTableCell.cs" />
     <Compile Include="Assets\Extentions\Pocket Portal VR\Demo\Scripts\ARKitPlacement.cs" />
     <Compile Include="Assets\Extentions\Pocket Portal VR\Demo\Scripts\ControllerGrabObject.cs" />
     <Compile Include="Assets\Extentions\Pocket Portal VR\Demo\Scripts\GearGrabObject.cs" />
@@ -449,13 +453,19 @@
     <Compile Include="Assets\Scripts\Leaderboard\LeaderBoardUI.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\LeaderboardParallelRequestManager.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\LeaderboardSceneManager.cs" />
+    <Compile Include="Assets\Scripts\Leaderboard\LeaderboardToXlsx.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\LocalNetworkLeaderboard.cs" />
-    <Compile Include="Assets\Scripts\Leaderboard\OperatorLeaderBoardUI.cs" />
     <Compile Include="Assets\Scripts\Leaderboard\ScoreUI.cs" />
+    <Compile Include="Assets\Scripts\Leaderboard\ViewerLeaderBoardUI.cs" />
+    <Compile Include="Assets\Scripts\OperatorUI\DeleteTableDialog.cs" />
     <Compile Include="Assets\Scripts\OperatorUI\MatchImages.cs" />
+    <Compile Include="Assets\Scripts\OperatorUI\OperatorLeaderBoardUI.cs" />
     <Compile Include="Assets\Scripts\OperatorUI\RemoteLeaderboardCheckUI.cs" />
+    <Compile Include="Assets\Scripts\OperatorUI\SaveTableDialog.cs" />
     <Compile Include="Assets\Scripts\OperatorUI\StartGameUI.cs" />
     <Compile Include="Assets\Scripts\Protoyping\PrototypeMuseumMaterials.cs" />
+    <Compile Include="Assets\Scripts\Test\LocalNetworkDiscovery.cs" />
+    <Compile Include="Assets\Scripts\Test\TestScript.cs" />
     <Compile Include="Assets\Scripts\Utils\DirectionFollower.cs" />
     <Compile Include="Assets\Scripts\Utils\DisappearOnGrab.cs" />
     <Compile Include="Assets\Scripts\Utils\DontDestroyOnSceneLoad.cs" />
@@ -481,6 +491,7 @@
     <None Include="Assets\Extentions\VRTK\Scripts\Internal\Shaders\Unlit_TransparentColor.shader" />
     <None Include="Assets\Extentions\SteamVR\Resources\SteamVR_ColorOut.shader" />
     <None Include="Assets\Extentions\SteamVR\InteractionSystem\Core\Shaders\SeeThru.shader" />
+    <None Include="Assets\Extentions\Excel\EPPlus\readme.txt" />
     <None Include="Assets\Extentions\SteamVR\InteractionSystem\Readme_InteractionSystem.txt" />
     <Reference Include="UnityEngine.UI">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
@@ -502,6 +513,9 @@
     </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus">
+      <HintPath>C:/Users/PC4/Documents/museums/Assets/Extentions/Excel/EPPlus/EPPlus.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 224697563381622086}
   - component: {fileID: 114916334337579294}
   m_Layer: 5
-  m_Name: OperatorScoreUI
+  m_Name: ViewerScoreUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

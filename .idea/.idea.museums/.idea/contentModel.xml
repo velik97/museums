@@ -8,6 +8,17 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Extentions" t="Include">
+          <e p="Excel" t="Include">
+            <e p="EPPlus" t="Include">
+              <e p="readme.txt" t="Include" />
+            </e>
+            <e p="Scripts" t="Include">
+              <e p="Excel.cs" t="Include" />
+              <e p="ExcelHelper.cs" t="Include" />
+              <e p="ExcelTable.cs" t="Include" />
+              <e p="ExcelTableCell.cs" t="Include" />
+            </e>
+          </e>
           <e p="Pocket Portal VR" t="Include">
             <e p="Demo" t="Include">
               <e p="Scripts" t="Include">
@@ -597,18 +608,29 @@
           <e p="LeaderBoard" t="Include">
             <e p="LeaderboardParallelRequestManager.cs" t="Include" />
             <e p="LeaderboardSceneManager.cs" t="Include" />
+            <e p="LeaderboardToXlsx.cs" t="Include" />
             <e p="LeaderBoardUI.cs" t="Include" />
             <e p="LocalNetworkLeaderBoard.cs" t="Include" />
-            <e p="OperatorLeaderBoardUI.cs" t="Include" />
             <e p="ScoreUI.cs" t="Include" />
+            <e p="ViewerLeaderBoardUI.cs" t="Include" />
           </e>
           <e p="OperatorUI" t="Include">
+            <e p="DeleteTableDialog.cs" t="Include" />
             <e p="MatchImages.cs" t="Include" />
+            <e p="OperatorLeaderBoardUI.cs" t="Include" />
             <e p="RemoteLeaderboardCheckUI.cs" t="Include" />
+            <e p="SaveTableDialog.cs" t="Include" />
             <e p="StartGameUI.cs" t="Include" />
           </e>
           <e p="Protoyping" t="Include">
+            <e p="Editor" t="Include">
+              <e p="ObjExporter.cs" t="Include" />
+            </e>
             <e p="PrototypeMuseumMaterials.cs" t="Include" />
+          </e>
+          <e p="Test" t="Include">
+            <e p="LocalNetworkDiscovery.cs" t="Include" />
+            <e p="TestScript.cs" t="Include" />
           </e>
           <e p="Utils" t="Include">
             <e p="DirectionFollower.cs" t="Include" />

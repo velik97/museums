@@ -83,7 +83,6 @@ public class VRCameraText : MonoSingleton<VRCameraText>
 
         float startTime = Time.time;
         float currenTime = Time.time - startTime;
-        Color currentColor = new Color(finalColor.r, finalColor.g, finalColor.b, fadeCurve.Evaluate(currenTime / fadeTime));
 
         while ((currenTime / fadeTime) < 1)
         {
@@ -103,7 +102,6 @@ public class VRCameraText : MonoSingleton<VRCameraText>
 
         float startTime = Time.time;
         float currenTime = Time.time - startTime;
-        Color currentColor = new Color(finalColor.r, finalColor.g, finalColor.b, 1 - fadeCurve.Evaluate(currenTime / fadeTime));
 
         while ((currenTime / fadeTime) < 1)
         {

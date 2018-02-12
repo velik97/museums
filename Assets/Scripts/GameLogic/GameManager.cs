@@ -36,7 +36,6 @@ public class GameManager : MonoSingleton<GameManager>
 	{
 		GameInfo.Instance.playerName = StartGameUI.Instance.finalPlayerName;
 		startTimeOption = (StartTimeOption) StartGameUI.Instance.StartTimeOption;
-		print("start time: " + startTimeOption);
 		timeForQuest = StartGameUI.Instance.GameMinutesTime * 60;
 		StartCoroutine(FadeInAndStartGame());
 		tutorialIsDone = false;		

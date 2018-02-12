@@ -17,6 +17,8 @@ public class StartGameUI : MonoSingleton<StartGameUI>
     
     public float checkDuration = .4f;
 
+    public GameObject inGameCanvas;
+
     private List<Score> scores;
 
     [HideInInspector] public string finalPlayerName;
@@ -77,6 +79,7 @@ public class StartGameUI : MonoSingleton<StartGameUI>
         {
             StartTimeOption = startTimeDropDown.value;
             GameManager.Instance.StartGame();
+            inGameCanvas.SetActive(true);
             gameObject.SetActive(false);
         });
 
